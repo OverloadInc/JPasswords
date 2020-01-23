@@ -1,11 +1,13 @@
+package view;
+
+
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
-
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,14 +23,9 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         this.usuario = "administrador";
-        this.clave = "admin";                
+        this.clave = "admin";
         
         initComponents();
-                
-        //ImageIcon iconLogo = new ImageIcon("img/logo_holiwallet_small.png");                               
-        //lblImagen.setIcon(iconLogo);
-        
-        //lblImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("logo_holiwallet_small.png")));
     }
 
     /**
@@ -41,133 +38,104 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        panelFormulario = new javax.swing.JPanel();
+        panelLogin = new javax.swing.JPanel();
         lblLogo = new javax.swing.JLabel();
-        lblUsuario = new javax.swing.JLabel();
-        txtUsuario = new javax.swing.JTextField();
-        lblClave = new javax.swing.JLabel();
-        txtClave = new javax.swing.JPasswordField();
-        btnInicio = new javax.swing.JButton();
-        panelAyuda = new javax.swing.JPanel();
-        btnAyuda = new javax.swing.JButton();
+        lblUser = new javax.swing.JLabel();
+        txtUser = new javax.swing.JTextField();
+        lblPassword = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
+        btnLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Holiwallet");
-        setLocationByPlatform(true);
+        setTitle("Inicio de sesión");
+        setMinimumSize(new java.awt.Dimension(350, 500));
         setName("frmLogin"); // NOI18N
+        setResizable(false);
 
-        panelFormulario.setName("panelFormulario"); // NOI18N
-        java.awt.GridBagLayout panelFormularioLayout = new java.awt.GridBagLayout();
-        panelFormularioLayout.columnWidths = new int[] {0};
-        panelFormularioLayout.rowHeights = new int[] {0};
-        panelFormularioLayout.columnWeights = new double[] {0.0};
-        panelFormularioLayout.rowWeights = new double[] {0.0};
-        panelFormulario.setLayout(panelFormularioLayout);
+        panelLogin.setMinimumSize(new java.awt.Dimension(350, 500));
+        panelLogin.setName("panelLogin"); // NOI18N
+        panelLogin.setPreferredSize(new java.awt.Dimension(350, 500));
+        panelLogin.setLayout(new java.awt.GridBagLayout());
 
         lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/logo_holiwallet_small.png"))); // NOI18N
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/login/holiday_shield.png"))); // NOI18N
         lblLogo.setName("lblLogo"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.gridheight = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        panelFormulario.add(lblLogo, gridBagConstraints);
+        panelLogin.add(lblLogo, gridBagConstraints);
 
-        lblUsuario.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        lblUsuario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblUsuario.setText("Usuario:");
-        lblUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lblUsuario.setName("lblUsuario"); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.weightx = 1.0;
-        panelFormulario.add(lblUsuario, gridBagConstraints);
-
-        txtUsuario.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        txtUsuario.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtUsuario.setToolTipText("Introduce tu nombre de usuario.");
-        txtUsuario.setMinimumSize(new java.awt.Dimension(250, 30));
-        txtUsuario.setName("txtUsuario"); // NOI18N
-        txtUsuario.setPreferredSize(new java.awt.Dimension(250, 30));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.weightx = 1.0;
-        panelFormulario.add(txtUsuario, gridBagConstraints);
-
-        lblClave.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        lblClave.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblClave.setText("Clave:");
-        lblClave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lblClave.setName("lblClave"); // NOI18N
+        lblUser.setText("Usuario");
+        lblUser.setName("lblUser"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.weightx = 1.0;
-        panelFormulario.add(lblClave, gridBagConstraints);
+        panelLogin.add(lblUser, gridBagConstraints);
 
-        txtClave.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        txtClave.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtClave.setToolTipText("Introduce tu clave.");
-        txtClave.setMinimumSize(new java.awt.Dimension(250, 30));
-        txtClave.setName("txtClave"); // NOI18N
-        txtClave.setPreferredSize(new java.awt.Dimension(250, 30));
+        txtUser.setMinimumSize(new java.awt.Dimension(200, 30));
+        txtUser.setName("txtUser"); // NOI18N
+        txtUser.setPreferredSize(new java.awt.Dimension(200, 30));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
-        panelFormulario.add(txtClave, gridBagConstraints);
+        gridBagConstraints.weighty = 1.0;
+        panelLogin.add(txtUser, gridBagConstraints);
 
-        btnInicio.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        btnInicio.setText("Iniciar sesión");
-        btnInicio.setToolTipText("Iniciar sesión");
-        btnInicio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnInicio.setName("btnInicio"); // NOI18N
-        btnInicio.addActionListener(new java.awt.event.ActionListener() {
+        lblPassword.setText("Clave");
+        lblPassword.setName("lblPassword"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.weightx = 1.0;
+        panelLogin.add(lblPassword, gridBagConstraints);
+
+        txtPassword.setMinimumSize(new java.awt.Dimension(200, 30));
+        txtPassword.setName("txtPassword"); // NOI18N
+        txtPassword.setPreferredSize(new java.awt.Dimension(200, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        panelLogin.add(txtPassword, gridBagConstraints);
+
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/login/login.png"))); // NOI18N
+        btnLogin.setText("Entrar");
+        btnLogin.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnLogin.setName("btnLogin"); // NOI18N
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInicioActionPerformed(evt);
+                btnLoginActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        panelFormulario.add(btnInicio, gridBagConstraints);
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        panelLogin.add(btnLogin, gridBagConstraints);
 
-        getContentPane().add(panelFormulario, java.awt.BorderLayout.CENTER);
-
-        panelAyuda.setName("panelAyuda"); // NOI18N
-        panelAyuda.setLayout(new java.awt.BorderLayout());
-
-        btnAyuda.setText("[ ? ]");
-        btnAyuda.setToolTipText("¿Olvidaste tu contraseña?");
-        btnAyuda.setName("btnAyuda"); // NOI18N
-        panelAyuda.add(btnAyuda, java.awt.BorderLayout.EAST);
-
-        getContentPane().add(panelAyuda, java.awt.BorderLayout.SOUTH);
+        getContentPane().add(panelLogin, java.awt.BorderLayout.CENTER);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    
-    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-        String miUsuario = txtUsuario.getText();
-        char[] caracteres = txtClave.getPassword();
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        String miUsuario = txtUser.getText();
+        char[] caracteres = txtPassword.getPassword();
         String miClave = "";
         
         for(char letra : caracteres){
@@ -176,11 +144,14 @@ public class Login extends javax.swing.JFrame {
         
         if(miUsuario.equals(usuario) && miClave.equals(clave)){
             JOptionPane.showMessageDialog(null, "Bienvenido " + miUsuario);
+            
+            new Dashboard().setVisible(true);
+            this.setVisible(false);
         }
         else {
             JOptionPane.showMessageDialog(null, "Usuario o clave incorrecta");
         }
-    }//GEN-LAST:event_btnInicioActionPerformed
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -218,14 +189,12 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAyuda;
-    private javax.swing.JButton btnInicio;
-    private javax.swing.JLabel lblClave;
+    private javax.swing.JButton btnLogin;
     private javax.swing.JLabel lblLogo;
-    private javax.swing.JLabel lblUsuario;
-    private javax.swing.JPanel panelAyuda;
-    private javax.swing.JPanel panelFormulario;
-    private javax.swing.JPasswordField txtClave;
-    private javax.swing.JTextField txtUsuario;
+    private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblUser;
+    private javax.swing.JPanel panelLogin;
+    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }
