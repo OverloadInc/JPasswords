@@ -26,21 +26,142 @@ public class Dashboard extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
+
+        panelDashboard = new javax.swing.JPanel();
+        lblKindProductLogo = new javax.swing.JLabel();
+        lblProductLogo = new javax.swing.JLabel();
+        lblCredentialsLogo = new javax.swing.JLabel();
+        lblEmployees = new javax.swing.JLabel();
+        lblDepartmentsLogo = new javax.swing.JLabel();
+        lblHierarchyLogo = new javax.swing.JLabel();
+        lblPrivilegesLogo = new javax.swing.JLabel();
+        lblAccessLogo = new javax.swing.JLabel();
+        menuBar = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Holiwallet v0.1");
+        setMinimumSize(new java.awt.Dimension(600, 600));
+        setName("frmDashboard"); // NOI18N
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        panelDashboard.setMinimumSize(new java.awt.Dimension(600, 600));
+        panelDashboard.setName("panelDashboard"); // NOI18N
+        panelDashboard.setPreferredSize(new java.awt.Dimension(600, 600));
+        panelDashboard.setLayout(new java.awt.GridBagLayout());
+
+        lblKindProductLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/dashboard/kind_of_product.png"))); // NOI18N
+        lblKindProductLogo.setText("Tipo de productos");
+        lblKindProductLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblKindProductLogo.setName("lblKindProductLogo"); // NOI18N
+        lblKindProductLogo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipady = 30;
+        gridBagConstraints.weightx = 1.0;
+        panelDashboard.add(lblKindProductLogo, gridBagConstraints);
+
+        lblProductLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/dashboard/products.png"))); // NOI18N
+        lblProductLogo.setText("Productos");
+        lblProductLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblProductLogo.setName("lblProductLogo"); // NOI18N
+        lblProductLogo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipady = 30;
+        gridBagConstraints.weightx = 1.0;
+        panelDashboard.add(lblProductLogo, gridBagConstraints);
+
+        lblCredentialsLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/dashboard/credentials.png"))); // NOI18N
+        lblCredentialsLogo.setText("Credenciales");
+        lblCredentialsLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblCredentialsLogo.setName("lblCredentialsLogo"); // NOI18N
+        lblCredentialsLogo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipady = 30;
+        gridBagConstraints.weightx = 1.0;
+        panelDashboard.add(lblCredentialsLogo, gridBagConstraints);
+
+        lblEmployees.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/dashboard/users.png"))); // NOI18N
+        lblEmployees.setText("Empleados");
+        lblEmployees.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblEmployees.setName("lblEmployees"); // NOI18N
+        lblEmployees.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipady = 30;
+        gridBagConstraints.weightx = 1.0;
+        panelDashboard.add(lblEmployees, gridBagConstraints);
+
+        lblDepartmentsLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/dashboard/departments.png"))); // NOI18N
+        lblDepartmentsLogo.setText("Departamentos");
+        lblDepartmentsLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblDepartmentsLogo.setName("lblDepartmentsLogo"); // NOI18N
+        lblDepartmentsLogo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipady = 30;
+        gridBagConstraints.weightx = 1.0;
+        panelDashboard.add(lblDepartmentsLogo, gridBagConstraints);
+
+        lblHierarchyLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/dashboard/hierarchy.png"))); // NOI18N
+        lblHierarchyLogo.setText("Jerarquías");
+        lblHierarchyLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblHierarchyLogo.setName("lblHierarchyLogo"); // NOI18N
+        lblHierarchyLogo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipady = 30;
+        gridBagConstraints.weightx = 1.0;
+        panelDashboard.add(lblHierarchyLogo, gridBagConstraints);
+
+        lblPrivilegesLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/dashboard/privileges.png"))); // NOI18N
+        lblPrivilegesLogo.setText("Privilegios");
+        lblPrivilegesLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblPrivilegesLogo.setName("lblPrivilegesLogo"); // NOI18N
+        lblPrivilegesLogo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipady = 30;
+        gridBagConstraints.weightx = 1.0;
+        panelDashboard.add(lblPrivilegesLogo, gridBagConstraints);
+
+        lblAccessLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAccessLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/dashboard/access.png"))); // NOI18N
+        lblAccessLogo.setText("Accesos");
+        lblAccessLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblAccessLogo.setName("lblAccessLogo"); // NOI18N
+        lblAccessLogo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipady = 30;
+        gridBagConstraints.weightx = 1.0;
+        panelDashboard.add(lblAccessLogo, gridBagConstraints);
+
+        getContentPane().add(panelDashboard, java.awt.BorderLayout.CENTER);
+
+        menuBar.setName("menuBar"); // NOI18N
+
+        jMenu1.setText("File");
+        menuBar.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        menuBar.add(jMenu2);
+
+        setJMenuBar(menuBar);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -79,5 +200,17 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JLabel lblAccessLogo;
+    private javax.swing.JLabel lblCredentialsLogo;
+    private javax.swing.JLabel lblDepartmentsLogo;
+    private javax.swing.JLabel lblEmployees;
+    private javax.swing.JLabel lblHierarchyLogo;
+    private javax.swing.JLabel lblKindProductLogo;
+    private javax.swing.JLabel lblPrivilegesLogo;
+    private javax.swing.JLabel lblProductLogo;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JPanel panelDashboard;
     // End of variables declaration//GEN-END:variables
 }
