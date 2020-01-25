@@ -5,6 +5,8 @@
  */
 package view;
 
+import java.awt.CardLayout;
+
 /**
  *
  * @author Recepcion03
@@ -28,6 +30,12 @@ public class Dashboard extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        toolBar = new javax.swing.JToolBar();
+        btnHome = new javax.swing.JButton();
+        separator = new javax.swing.JToolBar.Separator();
+        btnBack = new javax.swing.JButton();
+        btnNext = new javax.swing.JButton();
+        panelCenter = new javax.swing.JPanel();
         panelDashboard = new javax.swing.JPanel();
         lblKindProductLogo = new javax.swing.JLabel();
         lblProductLogo = new javax.swing.JLabel();
@@ -37,14 +45,63 @@ public class Dashboard extends javax.swing.JFrame {
         lblHierarchyLogo = new javax.swing.JLabel();
         lblPrivilegesLogo = new javax.swing.JLabel();
         lblAccessLogo = new javax.swing.JLabel();
+        internalPanel = new javax.swing.JPanel();
+        panelNewKind = new javax.swing.JPanel();
+        lblName = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        btnAddProduct = new javax.swing.JButton();
+        panelExistingProducts = new javax.swing.JPanel();
+        scrollExistingProducts = new javax.swing.JScrollPane();
+        listExistingProducts = new javax.swing.JList<>();
+        btnModifyProduct = new javax.swing.JButton();
+        btnDeleteProduct = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        menuFile = new javax.swing.JMenu();
+        itemExport = new javax.swing.JMenuItem();
+        itemPrint = new javax.swing.JMenuItem();
+        itemExit = new javax.swing.JMenuItem();
+        helpMenu = new javax.swing.JMenu();
+        itemAbout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Holiwallet v0.1");
         setMinimumSize(new java.awt.Dimension(600, 600));
         setName("frmDashboard"); // NOI18N
+
+        toolBar.setRollover(true);
+        toolBar.setName("toolBar"); // NOI18N
+
+        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/toolbar/home.png"))); // NOI18N
+        btnHome.setToolTipText("Inicio");
+        btnHome.setFocusable(false);
+        btnHome.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnHome.setName("btnHome"); // NOI18N
+        btnHome.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(btnHome);
+
+        separator.setName("separator"); // NOI18N
+        toolBar.add(separator);
+
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/toolbar/back.png"))); // NOI18N
+        btnBack.setToolTipText("Atras");
+        btnBack.setFocusable(false);
+        btnBack.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnBack.setName("btnBack"); // NOI18N
+        btnBack.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(btnBack);
+
+        btnNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/toolbar/next.png"))); // NOI18N
+        btnNext.setToolTipText("Adelante");
+        btnNext.setFocusable(false);
+        btnNext.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnNext.setName("btnNext"); // NOI18N
+        btnNext.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(btnNext);
+
+        getContentPane().add(toolBar, java.awt.BorderLayout.NORTH);
+
+        panelCenter.setName("panelCenter"); // NOI18N
+        panelCenter.setLayout(new java.awt.CardLayout());
 
         panelDashboard.setMinimumSize(new java.awt.Dimension(600, 600));
         panelDashboard.setName("panelDashboard"); // NOI18N
@@ -56,6 +113,11 @@ public class Dashboard extends javax.swing.JFrame {
         lblKindProductLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblKindProductLogo.setName("lblKindProductLogo"); // NOI18N
         lblKindProductLogo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        lblKindProductLogo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblKindProductLogoMouseClicked(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -148,21 +210,143 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         panelDashboard.add(lblAccessLogo, gridBagConstraints);
 
-        getContentPane().add(panelDashboard, java.awt.BorderLayout.CENTER);
+        panelCenter.add(panelDashboard, "panelDashboard");
+
+        internalPanel.setMinimumSize(new java.awt.Dimension(600, 600));
+        internalPanel.setName("internalPanel"); // NOI18N
+        internalPanel.setPreferredSize(new java.awt.Dimension(600, 600));
+        internalPanel.setLayout(new java.awt.GridBagLayout());
+
+        panelNewKind.setBorder(javax.swing.BorderFactory.createTitledBorder("Agregar tipo de producto"));
+        panelNewKind.setMinimumSize(new java.awt.Dimension(300, 60));
+        panelNewKind.setName("panelNewKind"); // NOI18N
+        panelNewKind.setPreferredSize(new java.awt.Dimension(300, 60));
+
+        lblName.setText("Nombre");
+        lblName.setName("lblName"); // NOI18N
+        panelNewKind.add(lblName);
+
+        txtName.setMinimumSize(new java.awt.Dimension(200, 30));
+        txtName.setName("txtName"); // NOI18N
+        txtName.setPreferredSize(new java.awt.Dimension(200, 30));
+        panelNewKind.add(txtName);
+
+        btnAddProduct.setText("Agregar");
+        btnAddProduct.setName("btnAddProduct"); // NOI18N
+        panelNewKind.add(btnAddProduct);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipady = 40;
+        gridBagConstraints.weightx = 1.0;
+        internalPanel.add(panelNewKind, gridBagConstraints);
+
+        panelExistingProducts.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de productos existentes"));
+        panelExistingProducts.setName("panelExistingProducts"); // NOI18N
+        panelExistingProducts.setPreferredSize(new java.awt.Dimension(300, 180));
+        panelExistingProducts.setLayout(new java.awt.GridBagLayout());
+
+        scrollExistingProducts.setMinimumSize(new java.awt.Dimension(319, 162));
+        scrollExistingProducts.setName("scrollExistingProducts"); // NOI18N
+
+        listExistingProducts.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        listExistingProducts.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listExistingProducts.setMaximumSize(new java.awt.Dimension(300, 300));
+        listExistingProducts.setMinimumSize(new java.awt.Dimension(300, 300));
+        listExistingProducts.setName("listExistingProducts"); // NOI18N
+        listExistingProducts.setPreferredSize(new java.awt.Dimension(300, 300));
+        listExistingProducts.setVisibleRowCount(10);
+        scrollExistingProducts.setViewportView(listExistingProducts);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridheight = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        panelExistingProducts.add(scrollExistingProducts, gridBagConstraints);
+
+        btnModifyProduct.setText("Modificar");
+        btnModifyProduct.setName("btnModifyProduct"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        panelExistingProducts.add(btnModifyProduct, gridBagConstraints);
+
+        btnDeleteProduct.setText("Eliminar");
+        btnDeleteProduct.setName("btnDeleteProduct"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        panelExistingProducts.add(btnDeleteProduct, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipady = 40;
+        gridBagConstraints.weightx = 1.0;
+        internalPanel.add(panelExistingProducts, gridBagConstraints);
+
+        panelCenter.add(internalPanel, "internalPanel");
+
+        getContentPane().add(panelCenter, java.awt.BorderLayout.CENTER);
 
         menuBar.setName("menuBar"); // NOI18N
 
-        jMenu1.setText("File");
-        menuBar.add(jMenu1);
+        menuFile.setText("File");
+        menuFile.setName("menuFile"); // NOI18N
 
-        jMenu2.setText("Edit");
-        menuBar.add(jMenu2);
+        itemExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/menubar/export.png"))); // NOI18N
+        itemExport.setText("Exportar");
+        itemExport.setName("itemExport"); // NOI18N
+        menuFile.add(itemExport);
+
+        itemPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/menubar/print.png"))); // NOI18N
+        itemPrint.setText("Imprimir");
+        itemPrint.setName("itemPrint"); // NOI18N
+        menuFile.add(itemPrint);
+
+        itemExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/menubar/logout.png"))); // NOI18N
+        itemExit.setText("Salir");
+        itemExit.setName("itemExit"); // NOI18N
+        menuFile.add(itemExit);
+
+        menuBar.add(menuFile);
+
+        helpMenu.setText("Help");
+        helpMenu.setName("helpMenu"); // NOI18N
+
+        itemAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/menubar/about.png"))); // NOI18N
+        itemAbout.setText("Acerca de...");
+        itemAbout.setName("itemAbout"); // NOI18N
+        helpMenu.add(itemAbout);
+
+        menuBar.add(helpMenu);
 
         setJMenuBar(menuBar);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lblKindProductLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKindProductLogoMouseClicked
+        CardLayout cardLayout = (CardLayout)(panelCenter.getLayout());
+        cardLayout.show(this.panelCenter, "internalPanel");
+        //internalKindOfProducts.setVisible(true);
+    }//GEN-LAST:event_lblKindProductLogoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -200,17 +384,37 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JButton btnAddProduct;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnDeleteProduct;
+    private javax.swing.JButton btnHome;
+    private javax.swing.JButton btnModifyProduct;
+    private javax.swing.JButton btnNext;
+    private javax.swing.JMenu helpMenu;
+    private javax.swing.JPanel internalPanel;
+    private javax.swing.JMenuItem itemAbout;
+    private javax.swing.JMenuItem itemExit;
+    private javax.swing.JMenuItem itemExport;
+    private javax.swing.JMenuItem itemPrint;
     private javax.swing.JLabel lblAccessLogo;
     private javax.swing.JLabel lblCredentialsLogo;
     private javax.swing.JLabel lblDepartmentsLogo;
     private javax.swing.JLabel lblEmployees;
     private javax.swing.JLabel lblHierarchyLogo;
     private javax.swing.JLabel lblKindProductLogo;
+    private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPrivilegesLogo;
     private javax.swing.JLabel lblProductLogo;
+    private javax.swing.JList<String> listExistingProducts;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenu menuFile;
+    private javax.swing.JPanel panelCenter;
     private javax.swing.JPanel panelDashboard;
+    private javax.swing.JPanel panelExistingProducts;
+    private javax.swing.JPanel panelNewKind;
+    private javax.swing.JScrollPane scrollExistingProducts;
+    private javax.swing.JToolBar.Separator separator;
+    private javax.swing.JToolBar toolBar;
+    private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 }
