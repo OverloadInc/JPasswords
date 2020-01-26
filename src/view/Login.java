@@ -38,7 +38,7 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        panelLogin = new javax.swing.JPanel();
+        loginPanel = new javax.swing.JPanel();
         lblLogo = new javax.swing.JLabel();
         lblUser = new javax.swing.JLabel();
         txtUser = new javax.swing.JTextField();
@@ -52,10 +52,10 @@ public class Login extends javax.swing.JFrame {
         setName("frmLogin"); // NOI18N
         setResizable(false);
 
-        panelLogin.setMinimumSize(new java.awt.Dimension(350, 500));
-        panelLogin.setName("panelLogin"); // NOI18N
-        panelLogin.setPreferredSize(new java.awt.Dimension(350, 500));
-        panelLogin.setLayout(new java.awt.GridBagLayout());
+        loginPanel.setMinimumSize(new java.awt.Dimension(350, 500));
+        loginPanel.setName("loginPanel"); // NOI18N
+        loginPanel.setPreferredSize(new java.awt.Dimension(350, 500));
+        loginPanel.setLayout(new java.awt.GridBagLayout());
 
         lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/login/holiday_shield.png"))); // NOI18N
@@ -68,7 +68,7 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        panelLogin.add(lblLogo, gridBagConstraints);
+        loginPanel.add(lblLogo, gridBagConstraints);
 
         lblUser.setText("Usuario");
         lblUser.setName("lblUser"); // NOI18N
@@ -77,7 +77,7 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.weightx = 1.0;
-        panelLogin.add(lblUser, gridBagConstraints);
+        loginPanel.add(lblUser, gridBagConstraints);
 
         txtUser.setMinimumSize(new java.awt.Dimension(200, 30));
         txtUser.setName("txtUser"); // NOI18N
@@ -88,7 +88,7 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        panelLogin.add(txtUser, gridBagConstraints);
+        loginPanel.add(txtUser, gridBagConstraints);
 
         lblPassword.setText("Clave");
         lblPassword.setName("lblPassword"); // NOI18N
@@ -97,7 +97,7 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.weightx = 1.0;
-        panelLogin.add(lblPassword, gridBagConstraints);
+        loginPanel.add(lblPassword, gridBagConstraints);
 
         txtPassword.setMinimumSize(new java.awt.Dimension(200, 30));
         txtPassword.setName("txtPassword"); // NOI18N
@@ -108,7 +108,7 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        panelLogin.add(txtPassword, gridBagConstraints);
+        loginPanel.add(txtPassword, gridBagConstraints);
 
         btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/login/login.png"))); // NOI18N
         btnLogin.setText("Entrar");
@@ -125,9 +125,9 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        panelLogin.add(btnLogin, gridBagConstraints);
+        loginPanel.add(btnLogin, gridBagConstraints);
 
-        getContentPane().add(panelLogin, java.awt.BorderLayout.CENTER);
+        getContentPane().add(loginPanel, java.awt.BorderLayout.CENTER);
 
         pack();
         setLocationRelativeTo(null);
@@ -193,7 +193,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblUser;
-    private javax.swing.JPanel panelLogin;
+    private javax.swing.JPanel loginPanel;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
