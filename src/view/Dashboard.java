@@ -35,8 +35,8 @@ public class Dashboard extends javax.swing.JFrame {
         separator = new javax.swing.JToolBar.Separator();
         btnBack = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
-        panelCenter = new javax.swing.JPanel();
-        panelDashboard = new javax.swing.JPanel();
+        mainPanel = new javax.swing.JPanel();
+        dashboardPanel = new javax.swing.JPanel();
         lblKindProductLogo = new javax.swing.JLabel();
         lblProductLogo = new javax.swing.JLabel();
         lblCredentialsLogo = new javax.swing.JLabel();
@@ -46,22 +46,22 @@ public class Dashboard extends javax.swing.JFrame {
         lblPrivilegesLogo = new javax.swing.JLabel();
         lblAccessLogo = new javax.swing.JLabel();
         internalPanel = new javax.swing.JPanel();
-        panelNewKind = new javax.swing.JPanel();
+        productPanel = new javax.swing.JPanel();
         lblName = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
-        btnAddProduct = new javax.swing.JButton();
-        panelExistingProducts = new javax.swing.JPanel();
-        scrollExistingProducts = new javax.swing.JScrollPane();
-        listExistingProducts = new javax.swing.JList<>();
+        btnAdd = new javax.swing.JButton();
+        existingProductsPanel = new javax.swing.JPanel();
+        existingProductsScroll = new javax.swing.JScrollPane();
+        existingProductsList = new javax.swing.JList<>();
         btnModifyProduct = new javax.swing.JButton();
         btnDeleteProduct = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
-        menuFile = new javax.swing.JMenu();
-        itemExport = new javax.swing.JMenuItem();
-        itemPrint = new javax.swing.JMenuItem();
-        itemExit = new javax.swing.JMenuItem();
+        fileMenu = new javax.swing.JMenu();
+        exportItem = new javax.swing.JMenuItem();
+        printItem = new javax.swing.JMenuItem();
+        exitItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
-        itemAbout = new javax.swing.JMenuItem();
+        aboutItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Holiwallet v0.1");
@@ -100,13 +100,13 @@ public class Dashboard extends javax.swing.JFrame {
 
         getContentPane().add(toolBar, java.awt.BorderLayout.NORTH);
 
-        panelCenter.setName("panelCenter"); // NOI18N
-        panelCenter.setLayout(new java.awt.CardLayout());
+        mainPanel.setName("mainPanel"); // NOI18N
+        mainPanel.setLayout(new java.awt.CardLayout());
 
-        panelDashboard.setMinimumSize(new java.awt.Dimension(600, 600));
-        panelDashboard.setName("panelDashboard"); // NOI18N
-        panelDashboard.setPreferredSize(new java.awt.Dimension(600, 600));
-        panelDashboard.setLayout(new java.awt.GridBagLayout());
+        dashboardPanel.setMinimumSize(new java.awt.Dimension(600, 600));
+        dashboardPanel.setName("dashboardPanel"); // NOI18N
+        dashboardPanel.setPreferredSize(new java.awt.Dimension(600, 600));
+        dashboardPanel.setLayout(new java.awt.GridBagLayout());
 
         lblKindProductLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/dashboard/kind_of_product.png"))); // NOI18N
         lblKindProductLogo.setText("Tipo de productos");
@@ -123,7 +123,7 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.ipady = 30;
         gridBagConstraints.weightx = 1.0;
-        panelDashboard.add(lblKindProductLogo, gridBagConstraints);
+        dashboardPanel.add(lblKindProductLogo, gridBagConstraints);
 
         lblProductLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/dashboard/products.png"))); // NOI18N
         lblProductLogo.setText("Productos");
@@ -135,7 +135,7 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.ipady = 30;
         gridBagConstraints.weightx = 1.0;
-        panelDashboard.add(lblProductLogo, gridBagConstraints);
+        dashboardPanel.add(lblProductLogo, gridBagConstraints);
 
         lblCredentialsLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/dashboard/credentials.png"))); // NOI18N
         lblCredentialsLogo.setText("Credenciales");
@@ -147,7 +147,7 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.ipady = 30;
         gridBagConstraints.weightx = 1.0;
-        panelDashboard.add(lblCredentialsLogo, gridBagConstraints);
+        dashboardPanel.add(lblCredentialsLogo, gridBagConstraints);
 
         lblEmployees.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/dashboard/users.png"))); // NOI18N
         lblEmployees.setText("Empleados");
@@ -159,7 +159,7 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipady = 30;
         gridBagConstraints.weightx = 1.0;
-        panelDashboard.add(lblEmployees, gridBagConstraints);
+        dashboardPanel.add(lblEmployees, gridBagConstraints);
 
         lblDepartmentsLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/dashboard/departments.png"))); // NOI18N
         lblDepartmentsLogo.setText("Departamentos");
@@ -171,7 +171,7 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipady = 30;
         gridBagConstraints.weightx = 1.0;
-        panelDashboard.add(lblDepartmentsLogo, gridBagConstraints);
+        dashboardPanel.add(lblDepartmentsLogo, gridBagConstraints);
 
         lblHierarchyLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/dashboard/hierarchy.png"))); // NOI18N
         lblHierarchyLogo.setText("Jerarquías");
@@ -183,7 +183,7 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipady = 30;
         gridBagConstraints.weightx = 1.0;
-        panelDashboard.add(lblHierarchyLogo, gridBagConstraints);
+        dashboardPanel.add(lblHierarchyLogo, gridBagConstraints);
 
         lblPrivilegesLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/dashboard/privileges.png"))); // NOI18N
         lblPrivilegesLogo.setText("Privilegios");
@@ -195,7 +195,7 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.gridy = 3;
         gridBagConstraints.ipady = 30;
         gridBagConstraints.weightx = 1.0;
-        panelDashboard.add(lblPrivilegesLogo, gridBagConstraints);
+        dashboardPanel.add(lblPrivilegesLogo, gridBagConstraints);
 
         lblAccessLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAccessLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/dashboard/access.png"))); // NOI18N
@@ -208,32 +208,32 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.gridy = 3;
         gridBagConstraints.ipady = 30;
         gridBagConstraints.weightx = 1.0;
-        panelDashboard.add(lblAccessLogo, gridBagConstraints);
+        dashboardPanel.add(lblAccessLogo, gridBagConstraints);
 
-        panelCenter.add(panelDashboard, "panelDashboard");
+        mainPanel.add(dashboardPanel, "panelDashboard");
 
         internalPanel.setMinimumSize(new java.awt.Dimension(600, 600));
         internalPanel.setName("internalPanel"); // NOI18N
         internalPanel.setPreferredSize(new java.awt.Dimension(600, 600));
         internalPanel.setLayout(new java.awt.GridBagLayout());
 
-        panelNewKind.setBorder(javax.swing.BorderFactory.createTitledBorder("Agregar tipo de producto"));
-        panelNewKind.setMinimumSize(new java.awt.Dimension(300, 60));
-        panelNewKind.setName("panelNewKind"); // NOI18N
-        panelNewKind.setPreferredSize(new java.awt.Dimension(300, 60));
+        productPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Agregar tipo de producto"));
+        productPanel.setMinimumSize(new java.awt.Dimension(300, 60));
+        productPanel.setName("productPanel"); // NOI18N
+        productPanel.setPreferredSize(new java.awt.Dimension(300, 60));
 
         lblName.setText("Nombre");
         lblName.setName("lblName"); // NOI18N
-        panelNewKind.add(lblName);
+        productPanel.add(lblName);
 
         txtName.setMinimumSize(new java.awt.Dimension(200, 30));
         txtName.setName("txtName"); // NOI18N
         txtName.setPreferredSize(new java.awt.Dimension(200, 30));
-        panelNewKind.add(txtName);
+        productPanel.add(txtName);
 
-        btnAddProduct.setText("Agregar");
-        btnAddProduct.setName("btnAddProduct"); // NOI18N
-        panelNewKind.add(btnAddProduct);
+        btnAdd.setText("Agregar");
+        btnAdd.setName("btnAdd"); // NOI18N
+        productPanel.add(btnAdd);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -241,28 +241,28 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipady = 40;
         gridBagConstraints.weightx = 1.0;
-        internalPanel.add(panelNewKind, gridBagConstraints);
+        internalPanel.add(productPanel, gridBagConstraints);
 
-        panelExistingProducts.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de productos existentes"));
-        panelExistingProducts.setName("panelExistingProducts"); // NOI18N
-        panelExistingProducts.setPreferredSize(new java.awt.Dimension(300, 180));
-        panelExistingProducts.setLayout(new java.awt.GridBagLayout());
+        existingProductsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de productos existentes"));
+        existingProductsPanel.setName("existingProductsPanel"); // NOI18N
+        existingProductsPanel.setPreferredSize(new java.awt.Dimension(300, 180));
+        existingProductsPanel.setLayout(new java.awt.GridBagLayout());
 
-        scrollExistingProducts.setMinimumSize(new java.awt.Dimension(319, 162));
-        scrollExistingProducts.setName("scrollExistingProducts"); // NOI18N
+        existingProductsScroll.setMinimumSize(new java.awt.Dimension(319, 162));
+        existingProductsScroll.setName("existingProductsScroll"); // NOI18N
 
-        listExistingProducts.setModel(new javax.swing.AbstractListModel<String>() {
+        existingProductsList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        listExistingProducts.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        listExistingProducts.setMaximumSize(new java.awt.Dimension(300, 300));
-        listExistingProducts.setMinimumSize(new java.awt.Dimension(300, 300));
-        listExistingProducts.setName("listExistingProducts"); // NOI18N
-        listExistingProducts.setPreferredSize(new java.awt.Dimension(300, 300));
-        listExistingProducts.setVisibleRowCount(10);
-        scrollExistingProducts.setViewportView(listExistingProducts);
+        existingProductsList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        existingProductsList.setMaximumSize(new java.awt.Dimension(300, 300));
+        existingProductsList.setMinimumSize(new java.awt.Dimension(300, 300));
+        existingProductsList.setName("existingProductsList"); // NOI18N
+        existingProductsList.setPreferredSize(new java.awt.Dimension(300, 300));
+        existingProductsList.setVisibleRowCount(10);
+        existingProductsScroll.setViewportView(existingProductsList);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -272,7 +272,7 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        panelExistingProducts.add(scrollExistingProducts, gridBagConstraints);
+        existingProductsPanel.add(existingProductsScroll, gridBagConstraints);
 
         btnModifyProduct.setText("Modificar");
         btnModifyProduct.setName("btnModifyProduct"); // NOI18N
@@ -281,7 +281,7 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        panelExistingProducts.add(btnModifyProduct, gridBagConstraints);
+        existingProductsPanel.add(btnModifyProduct, gridBagConstraints);
 
         btnDeleteProduct.setText("Eliminar");
         btnDeleteProduct.setName("btnDeleteProduct"); // NOI18N
@@ -290,7 +290,7 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.gridy = 4;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        panelExistingProducts.add(btnDeleteProduct, gridBagConstraints);
+        existingProductsPanel.add(btnDeleteProduct, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -298,41 +298,41 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipady = 40;
         gridBagConstraints.weightx = 1.0;
-        internalPanel.add(panelExistingProducts, gridBagConstraints);
+        internalPanel.add(existingProductsPanel, gridBagConstraints);
 
-        panelCenter.add(internalPanel, "internalPanel");
+        mainPanel.add(internalPanel, "internalPanel");
 
-        getContentPane().add(panelCenter, java.awt.BorderLayout.CENTER);
+        getContentPane().add(mainPanel, java.awt.BorderLayout.CENTER);
 
         menuBar.setName("menuBar"); // NOI18N
 
-        menuFile.setText("File");
-        menuFile.setName("menuFile"); // NOI18N
+        fileMenu.setText("Archivo");
+        fileMenu.setName("fileMenu"); // NOI18N
 
-        itemExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/menubar/export.png"))); // NOI18N
-        itemExport.setText("Exportar");
-        itemExport.setName("itemExport"); // NOI18N
-        menuFile.add(itemExport);
+        exportItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/menubar/export.png"))); // NOI18N
+        exportItem.setText("Exportar");
+        exportItem.setName("exportItem"); // NOI18N
+        fileMenu.add(exportItem);
 
-        itemPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/menubar/print.png"))); // NOI18N
-        itemPrint.setText("Imprimir");
-        itemPrint.setName("itemPrint"); // NOI18N
-        menuFile.add(itemPrint);
+        printItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/menubar/print.png"))); // NOI18N
+        printItem.setText("Imprimir");
+        printItem.setName("printItem"); // NOI18N
+        fileMenu.add(printItem);
 
-        itemExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/menubar/logout.png"))); // NOI18N
-        itemExit.setText("Salir");
-        itemExit.setName("itemExit"); // NOI18N
-        menuFile.add(itemExit);
+        exitItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/menubar/logout.png"))); // NOI18N
+        exitItem.setText("Salir");
+        exitItem.setName("exitItem"); // NOI18N
+        fileMenu.add(exitItem);
 
-        menuBar.add(menuFile);
+        menuBar.add(fileMenu);
 
-        helpMenu.setText("Help");
+        helpMenu.setText("Ayuda");
         helpMenu.setName("helpMenu"); // NOI18N
 
-        itemAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/menubar/about.png"))); // NOI18N
-        itemAbout.setText("Acerca de...");
-        itemAbout.setName("itemAbout"); // NOI18N
-        helpMenu.add(itemAbout);
+        aboutItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/menubar/about.png"))); // NOI18N
+        aboutItem.setText("Acerca de...");
+        aboutItem.setName("aboutItem"); // NOI18N
+        helpMenu.add(aboutItem);
 
         menuBar.add(helpMenu);
 
@@ -343,8 +343,8 @@ public class Dashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblKindProductLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKindProductLogoMouseClicked
-        CardLayout cardLayout = (CardLayout)(panelCenter.getLayout());
-        cardLayout.show(this.panelCenter, "internalPanel");
+        CardLayout cardLayout = (CardLayout)(mainPanel.getLayout());
+        cardLayout.show(this.mainPanel, "internalPanel");
         //internalKindOfProducts.setVisible(true);
     }//GEN-LAST:event_lblKindProductLogoMouseClicked
 
@@ -384,18 +384,22 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddProduct;
+    private javax.swing.JMenuItem aboutItem;
+    private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDeleteProduct;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnModifyProduct;
     private javax.swing.JButton btnNext;
+    private javax.swing.JPanel dashboardPanel;
+    private javax.swing.JList<String> existingProductsList;
+    private javax.swing.JPanel existingProductsPanel;
+    private javax.swing.JScrollPane existingProductsScroll;
+    private javax.swing.JMenuItem exitItem;
+    private javax.swing.JMenuItem exportItem;
+    private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JPanel internalPanel;
-    private javax.swing.JMenuItem itemAbout;
-    private javax.swing.JMenuItem itemExit;
-    private javax.swing.JMenuItem itemExport;
-    private javax.swing.JMenuItem itemPrint;
     private javax.swing.JLabel lblAccessLogo;
     private javax.swing.JLabel lblCredentialsLogo;
     private javax.swing.JLabel lblDepartmentsLogo;
@@ -405,14 +409,10 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPrivilegesLogo;
     private javax.swing.JLabel lblProductLogo;
-    private javax.swing.JList<String> listExistingProducts;
+    private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenu menuFile;
-    private javax.swing.JPanel panelCenter;
-    private javax.swing.JPanel panelDashboard;
-    private javax.swing.JPanel panelExistingProducts;
-    private javax.swing.JPanel panelNewKind;
-    private javax.swing.JScrollPane scrollExistingProducts;
+    private javax.swing.JMenuItem printItem;
+    private javax.swing.JPanel productPanel;
     private javax.swing.JToolBar.Separator separator;
     private javax.swing.JToolBar toolBar;
     private javax.swing.JTextField txtName;

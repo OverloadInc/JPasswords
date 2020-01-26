@@ -7,54 +7,54 @@
         <Property name="name" type="java.lang.String" value="menuBar" noResource="true"/>
       </Properties>
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="menuFile">
+        <Menu class="javax.swing.JMenu" name="fileMenu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="File"/>
-            <Property name="name" type="java.lang.String" value="menuFile" noResource="true"/>
+            <Property name="text" type="java.lang.String" value="Archivo"/>
+            <Property name="name" type="java.lang.String" value="fileMenu" noResource="true"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="itemExport">
+            <MenuItem class="javax.swing.JMenuItem" name="exportItem">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/view/img/menubar/export.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Exportar"/>
-                <Property name="name" type="java.lang.String" value="itemExport" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="exportItem" noResource="true"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="itemPrint">
+            <MenuItem class="javax.swing.JMenuItem" name="printItem">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/view/img/menubar/print.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Imprimir"/>
-                <Property name="name" type="java.lang.String" value="itemPrint" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="printItem" noResource="true"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="itemExit">
+            <MenuItem class="javax.swing.JMenuItem" name="exitItem">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/view/img/menubar/logout.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Salir"/>
-                <Property name="name" type="java.lang.String" value="itemExit" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="exitItem" noResource="true"/>
               </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="helpMenu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Help"/>
+            <Property name="text" type="java.lang.String" value="Ayuda"/>
             <Property name="name" type="java.lang.String" value="helpMenu" noResource="true"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="itemAbout">
+            <MenuItem class="javax.swing.JMenuItem" name="aboutItem">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/view/img/menubar/about.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Acerca de..."/>
-                <Property name="name" type="java.lang.String" value="itemAbout" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="aboutItem" noResource="true"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -146,9 +146,9 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="panelCenter">
+    <Container class="javax.swing.JPanel" name="mainPanel">
       <Properties>
-        <Property name="name" type="java.lang.String" value="panelCenter" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="mainPanel" noResource="true"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
@@ -158,12 +158,12 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="panelDashboard">
+        <Container class="javax.swing.JPanel" name="dashboardPanel">
           <Properties>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[600, 600]"/>
             </Property>
-            <Property name="name" type="java.lang.String" value="panelDashboard" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="dashboardPanel" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[600, 600]"/>
             </Property>
@@ -328,7 +328,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="panelNewKind">
+            <Container class="javax.swing.JPanel" name="productPanel">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -338,7 +338,7 @@
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[300, 60]"/>
                 </Property>
-                <Property name="name" type="java.lang.String" value="panelNewKind" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="productPanel" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[300, 60]"/>
                 </Property>
@@ -368,22 +368,22 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnAddProduct">
+                <Component class="javax.swing.JButton" name="btnAdd">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Agregar"/>
-                    <Property name="name" type="java.lang.String" value="btnAddProduct" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="btnAdd" noResource="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="panelExistingProducts">
+            <Container class="javax.swing.JPanel" name="existingProductsPanel">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                     <TitledBorder title="Tipos de productos existentes"/>
                   </Border>
                 </Property>
-                <Property name="name" type="java.lang.String" value="panelExistingProducts" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="existingProductsPanel" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[300, 180]"/>
                 </Property>
@@ -396,12 +396,12 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
               <SubComponents>
-                <Container class="javax.swing.JScrollPane" name="scrollExistingProducts">
+                <Container class="javax.swing.JScrollPane" name="existingProductsScroll">
                   <Properties>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[319, 162]"/>
                     </Property>
-                    <Property name="name" type="java.lang.String" value="scrollExistingProducts" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="existingProductsScroll" noResource="true"/>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -414,7 +414,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JList" name="listExistingProducts">
+                    <Component class="javax.swing.JList" name="existingProductsList">
                       <Properties>
                         <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                           <StringArray count="5">
@@ -432,7 +432,7 @@
                         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[300, 300]"/>
                         </Property>
-                        <Property name="name" type="java.lang.String" value="listExistingProducts" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="existingProductsList" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[300, 300]"/>
                         </Property>
