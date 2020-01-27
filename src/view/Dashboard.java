@@ -5,19 +5,21 @@
  */
 package view;
 
-import java.awt.CardLayout;
+import java.awt.*;
 
 /**
  *
  * @author Recepcion03
  */
 public class Dashboard extends javax.swing.JFrame {
+    private final CardLayout cardLayout;
 
     /**
      * Creates new form Dashboard
      */
     public Dashboard() {
         initComponents();
+        cardLayout = (CardLayout)(mainPanel.getLayout());
     }
 
     /**
@@ -45,7 +47,7 @@ public class Dashboard extends javax.swing.JFrame {
         lblHierarchyLogo = new javax.swing.JLabel();
         lblPrivilegesLogo = new javax.swing.JLabel();
         lblAccessLogo = new javax.swing.JLabel();
-        internalPanel = new javax.swing.JPanel();
+        kindProductsPanel = new javax.swing.JPanel();
         productPanel = new javax.swing.JPanel();
         lblName = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
@@ -55,6 +57,13 @@ public class Dashboard extends javax.swing.JFrame {
         existingProductsList = new javax.swing.JList<>();
         btnModifyProduct = new javax.swing.JButton();
         btnDeleteProduct = new javax.swing.JButton();
+        productsPanel = new javax.swing.JPanel();
+        credentialsPanel = new javax.swing.JPanel();
+        exployeesPanel = new javax.swing.JPanel();
+        departmentsPanel = new javax.swing.JPanel();
+        hierarchiesPanel = new javax.swing.JPanel();
+        privilegesPanel = new javax.swing.JPanel();
+        accessesPanel = new javax.swing.JPanel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         exportItem = new javax.swing.JMenuItem();
@@ -71,31 +80,46 @@ public class Dashboard extends javax.swing.JFrame {
         toolBar.setRollover(true);
         toolBar.setName("toolBar"); // NOI18N
 
-        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/toolbar/home.png"))); // NOI18N
+        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/toolbar/home.png"))); // NOI18N
         btnHome.setToolTipText("Inicio");
         btnHome.setFocusable(false);
         btnHome.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnHome.setName("btnHome"); // NOI18N
         btnHome.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
         toolBar.add(btnHome);
 
         separator.setName("separator"); // NOI18N
         toolBar.add(separator);
 
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/toolbar/back.png"))); // NOI18N
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/toolbar/back.png"))); // NOI18N
         btnBack.setToolTipText("Atras");
         btnBack.setFocusable(false);
         btnBack.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnBack.setName("btnBack"); // NOI18N
         btnBack.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
         toolBar.add(btnBack);
 
-        btnNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/toolbar/next.png"))); // NOI18N
+        btnNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/toolbar/next.png"))); // NOI18N
         btnNext.setToolTipText("Adelante");
         btnNext.setFocusable(false);
         btnNext.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNext.setName("btnNext"); // NOI18N
         btnNext.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
         toolBar.add(btnNext);
 
         getContentPane().add(toolBar, java.awt.BorderLayout.NORTH);
@@ -108,7 +132,7 @@ public class Dashboard extends javax.swing.JFrame {
         dashboardPanel.setPreferredSize(new java.awt.Dimension(600, 600));
         dashboardPanel.setLayout(new java.awt.GridBagLayout());
 
-        lblKindProductLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/dashboard/kind_of_product.png"))); // NOI18N
+        lblKindProductLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/dashboard/kind_of_product.png"))); // NOI18N
         lblKindProductLogo.setText("Tipo de productos");
         lblKindProductLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblKindProductLogo.setName("lblKindProductLogo"); // NOI18N
@@ -125,11 +149,16 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         dashboardPanel.add(lblKindProductLogo, gridBagConstraints);
 
-        lblProductLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/dashboard/products.png"))); // NOI18N
+        lblProductLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/dashboard/products.png"))); // NOI18N
         lblProductLogo.setText("Productos");
         lblProductLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblProductLogo.setName("lblProductLogo"); // NOI18N
         lblProductLogo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        lblProductLogo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblProductLogoMouseClicked(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -137,11 +166,16 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         dashboardPanel.add(lblProductLogo, gridBagConstraints);
 
-        lblCredentialsLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/dashboard/credentials.png"))); // NOI18N
+        lblCredentialsLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/dashboard/credentials.png"))); // NOI18N
         lblCredentialsLogo.setText("Credenciales");
         lblCredentialsLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblCredentialsLogo.setName("lblCredentialsLogo"); // NOI18N
         lblCredentialsLogo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        lblCredentialsLogo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCredentialsLogoMouseClicked(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
@@ -149,11 +183,16 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         dashboardPanel.add(lblCredentialsLogo, gridBagConstraints);
 
-        lblEmployees.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/dashboard/users.png"))); // NOI18N
+        lblEmployees.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/dashboard/users.png"))); // NOI18N
         lblEmployees.setText("Empleados");
         lblEmployees.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblEmployees.setName("lblEmployees"); // NOI18N
         lblEmployees.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        lblEmployees.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblEmployeesMouseClicked(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -161,11 +200,16 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         dashboardPanel.add(lblEmployees, gridBagConstraints);
 
-        lblDepartmentsLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/dashboard/departments.png"))); // NOI18N
+        lblDepartmentsLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/dashboard/departments.png"))); // NOI18N
         lblDepartmentsLogo.setText("Departamentos");
         lblDepartmentsLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblDepartmentsLogo.setName("lblDepartmentsLogo"); // NOI18N
         lblDepartmentsLogo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        lblDepartmentsLogo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDepartmentsLogoMouseClicked(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
@@ -173,11 +217,16 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         dashboardPanel.add(lblDepartmentsLogo, gridBagConstraints);
 
-        lblHierarchyLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/dashboard/hierarchy.png"))); // NOI18N
+        lblHierarchyLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/dashboard/hierarchy.png"))); // NOI18N
         lblHierarchyLogo.setText("Jerarquías");
         lblHierarchyLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblHierarchyLogo.setName("lblHierarchyLogo"); // NOI18N
         lblHierarchyLogo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        lblHierarchyLogo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHierarchyLogoMouseClicked(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
@@ -185,11 +234,16 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         dashboardPanel.add(lblHierarchyLogo, gridBagConstraints);
 
-        lblPrivilegesLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/dashboard/privileges.png"))); // NOI18N
+        lblPrivilegesLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/dashboard/privileges.png"))); // NOI18N
         lblPrivilegesLogo.setText("Privilegios");
         lblPrivilegesLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblPrivilegesLogo.setName("lblPrivilegesLogo"); // NOI18N
         lblPrivilegesLogo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        lblPrivilegesLogo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblPrivilegesLogoMouseClicked(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
@@ -198,11 +252,16 @@ public class Dashboard extends javax.swing.JFrame {
         dashboardPanel.add(lblPrivilegesLogo, gridBagConstraints);
 
         lblAccessLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAccessLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/dashboard/access.png"))); // NOI18N
+        lblAccessLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/dashboard/access.png"))); // NOI18N
         lblAccessLogo.setText("Accesos");
         lblAccessLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblAccessLogo.setName("lblAccessLogo"); // NOI18N
         lblAccessLogo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        lblAccessLogo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAccessLogoMouseClicked(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
@@ -212,10 +271,11 @@ public class Dashboard extends javax.swing.JFrame {
 
         mainPanel.add(dashboardPanel, "panelDashboard");
 
-        internalPanel.setMinimumSize(new java.awt.Dimension(600, 600));
-        internalPanel.setName("internalPanel"); // NOI18N
-        internalPanel.setPreferredSize(new java.awt.Dimension(600, 600));
-        internalPanel.setLayout(new java.awt.GridBagLayout());
+        kindProductsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipos de productos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        kindProductsPanel.setMinimumSize(new java.awt.Dimension(600, 600));
+        kindProductsPanel.setName("kindProductsPanel"); // NOI18N
+        kindProductsPanel.setPreferredSize(new java.awt.Dimension(600, 600));
+        kindProductsPanel.setLayout(new java.awt.GridBagLayout());
 
         productPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Agregar tipo de producto"));
         productPanel.setMinimumSize(new java.awt.Dimension(300, 60));
@@ -241,7 +301,7 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipady = 40;
         gridBagConstraints.weightx = 1.0;
-        internalPanel.add(productPanel, gridBagConstraints);
+        kindProductsPanel.add(productPanel, gridBagConstraints);
 
         existingProductsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de productos existentes"));
         existingProductsPanel.setName("existingProductsPanel"); // NOI18N
@@ -298,40 +358,104 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipady = 40;
         gridBagConstraints.weightx = 1.0;
-        internalPanel.add(existingProductsPanel, gridBagConstraints);
+        kindProductsPanel.add(existingProductsPanel, gridBagConstraints);
 
-        mainPanel.add(internalPanel, "internalPanel");
+        mainPanel.add(kindProductsPanel, "kindProductsPanel");
+
+        productsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Productos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        productsPanel.setMinimumSize(new java.awt.Dimension(600, 600));
+        productsPanel.setName("productsPanel"); // NOI18N
+        productsPanel.setPreferredSize(new java.awt.Dimension(600, 600));
+        mainPanel.add(productsPanel, "productsPanel");
+
+        credentialsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Credenciales", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        credentialsPanel.setMinimumSize(new java.awt.Dimension(600, 600));
+        credentialsPanel.setName("credentialsPanel"); // NOI18N
+        credentialsPanel.setPreferredSize(new java.awt.Dimension(600, 600));
+        mainPanel.add(credentialsPanel, "credentialsPanel");
+
+        exployeesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Empleados", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        exployeesPanel.setMinimumSize(new java.awt.Dimension(600, 600));
+        exployeesPanel.setName("employeesPanel"); // NOI18N
+        exployeesPanel.setPreferredSize(new java.awt.Dimension(600, 600));
+        mainPanel.add(exployeesPanel, "employeesPanel");
+
+        departmentsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Departamentos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        departmentsPanel.setMinimumSize(new java.awt.Dimension(600, 600));
+        departmentsPanel.setName("departmentsPanel"); // NOI18N
+        departmentsPanel.setPreferredSize(new java.awt.Dimension(600, 600));
+        mainPanel.add(departmentsPanel, "departmentsPanel");
+
+        hierarchiesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Jerarquías", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        hierarchiesPanel.setMinimumSize(new java.awt.Dimension(600, 600));
+        hierarchiesPanel.setName("hierarchiesPanel"); // NOI18N
+        hierarchiesPanel.setPreferredSize(new java.awt.Dimension(600, 600));
+        mainPanel.add(hierarchiesPanel, "hierarchiesPanel");
+
+        privilegesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Privilegios", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        privilegesPanel.setMinimumSize(new java.awt.Dimension(600, 600));
+        privilegesPanel.setName("privilegesPanel"); // NOI18N
+        privilegesPanel.setPreferredSize(new java.awt.Dimension(600, 600));
+        mainPanel.add(privilegesPanel, "privilegesPanel");
+
+        accessesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Accesos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        accessesPanel.setMinimumSize(new java.awt.Dimension(600, 600));
+        accessesPanel.setName("accessesPanel"); // NOI18N
+        accessesPanel.setPreferredSize(new java.awt.Dimension(600, 600));
+        mainPanel.add(accessesPanel, "accessesPanel");
 
         getContentPane().add(mainPanel, java.awt.BorderLayout.CENTER);
 
         menuBar.setName("menuBar"); // NOI18N
 
+        fileMenu.setMnemonic('A');
         fileMenu.setText("Archivo");
         fileMenu.setName("fileMenu"); // NOI18N
 
-        exportItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/menubar/export.png"))); // NOI18N
+        exportItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/menubar/export.png"))); // NOI18N
         exportItem.setText("Exportar");
         exportItem.setName("exportItem"); // NOI18N
+        exportItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exportItemActionPerformed(evt);
+            }
+        });
         fileMenu.add(exportItem);
 
-        printItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/menubar/print.png"))); // NOI18N
+        printItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/menubar/print.png"))); // NOI18N
         printItem.setText("Imprimir");
         printItem.setName("printItem"); // NOI18N
+        printItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printItemActionPerformed(evt);
+            }
+        });
         fileMenu.add(printItem);
 
-        exitItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/menubar/logout.png"))); // NOI18N
+        exitItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/menubar/logout.png"))); // NOI18N
         exitItem.setText("Salir");
         exitItem.setName("exitItem"); // NOI18N
+        exitItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitItemActionPerformed(evt);
+            }
+        });
         fileMenu.add(exitItem);
 
         menuBar.add(fileMenu);
 
+        helpMenu.setMnemonic('y');
         helpMenu.setText("Ayuda");
         helpMenu.setName("helpMenu"); // NOI18N
 
-        aboutItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/menubar/about.png"))); // NOI18N
+        aboutItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/menubar/about.png"))); // NOI18N
         aboutItem.setText("Acerca de...");
         aboutItem.setName("aboutItem"); // NOI18N
+        aboutItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutItemActionPerformed(evt);
+            }
+        });
         helpMenu.add(aboutItem);
 
         menuBar.add(helpMenu);
@@ -343,63 +467,87 @@ public class Dashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblKindProductLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKindProductLogoMouseClicked
-        CardLayout cardLayout = (CardLayout)(mainPanel.getLayout());
-        cardLayout.show(this.mainPanel, "internalPanel");
-        //internalKindOfProducts.setVisible(true);
+        cardLayout.show(this.mainPanel, "kindProductsPanel");
     }//GEN-LAST:event_lblKindProductLogoMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void lblProductLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblProductLogoMouseClicked
+        cardLayout.show(this.mainPanel, "productsPanel");
+    }//GEN-LAST:event_lblProductLogoMouseClicked
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Dashboard().setVisible(true);
-            }
-        });
-    }
+    private void lblCredentialsLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCredentialsLogoMouseClicked
+        cardLayout.show(this.mainPanel, "credentialsPanel");
+    }//GEN-LAST:event_lblCredentialsLogoMouseClicked
 
+    private void lblEmployeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEmployeesMouseClicked
+        cardLayout.show(this.mainPanel, "employeesPanel");
+    }//GEN-LAST:event_lblEmployeesMouseClicked
+
+    private void lblDepartmentsLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDepartmentsLogoMouseClicked
+        cardLayout.show(this.mainPanel, "departmentsPanel");
+    }//GEN-LAST:event_lblDepartmentsLogoMouseClicked
+
+    private void lblHierarchyLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHierarchyLogoMouseClicked
+        cardLayout.show(this.mainPanel, "hierarchiesPanel");
+    }//GEN-LAST:event_lblHierarchyLogoMouseClicked
+
+    private void lblPrivilegesLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPrivilegesLogoMouseClicked
+        cardLayout.show(this.mainPanel, "privilegesPanel");
+    }//GEN-LAST:event_lblPrivilegesLogoMouseClicked
+
+    private void lblAccessLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAccessLogoMouseClicked
+        cardLayout.show(this.mainPanel, "accessesPanel");
+    }//GEN-LAST:event_lblAccessLogoMouseClicked
+
+    private void exportItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_exportItemActionPerformed
+
+    private void printItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_printItemActionPerformed
+
+    private void exitItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_exitItemActionPerformed
+
+    private void aboutItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutItemActionPerformed
+        new About().setVisible(true);
+    }//GEN-LAST:event_aboutItemActionPerformed
+
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHomeActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNextActionPerformed
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutItem;
+    private javax.swing.JPanel accessesPanel;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDeleteProduct;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnModifyProduct;
     private javax.swing.JButton btnNext;
+    private javax.swing.JPanel credentialsPanel;
     private javax.swing.JPanel dashboardPanel;
+    private javax.swing.JPanel departmentsPanel;
     private javax.swing.JList<String> existingProductsList;
     private javax.swing.JPanel existingProductsPanel;
     private javax.swing.JScrollPane existingProductsScroll;
     private javax.swing.JMenuItem exitItem;
+    private javax.swing.JPanel exployeesPanel;
     private javax.swing.JMenuItem exportItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
-    private javax.swing.JPanel internalPanel;
+    private javax.swing.JPanel hierarchiesPanel;
+    private javax.swing.JPanel kindProductsPanel;
     private javax.swing.JLabel lblAccessLogo;
     private javax.swing.JLabel lblCredentialsLogo;
     private javax.swing.JLabel lblDepartmentsLogo;
@@ -412,7 +560,9 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem printItem;
+    private javax.swing.JPanel privilegesPanel;
     private javax.swing.JPanel productPanel;
+    private javax.swing.JPanel productsPanel;
     private javax.swing.JToolBar.Separator separator;
     private javax.swing.JToolBar toolBar;
     private javax.swing.JTextField txtName;
