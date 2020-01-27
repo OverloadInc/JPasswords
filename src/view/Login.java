@@ -1,7 +1,7 @@
 package view;
 
-
-import javax.swing.JOptionPane;
+import javax.swing.*;
+import java.awt.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  *
  * @author Recepcion03
  */
-public class Login extends javax.swing.JFrame {
+public class Login extends JFrame {
 
     private String usuario;
     private String clave;
@@ -58,7 +58,7 @@ public class Login extends javax.swing.JFrame {
         loginPanel.setLayout(new java.awt.GridBagLayout());
 
         lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/login/holiday_shield.png"))); // NOI18N
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/login/holiday_shield.png"))); // NOI18N
         lblLogo.setName("lblLogo"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -110,7 +110,7 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.weighty = 1.0;
         loginPanel.add(txtPassword, gridBagConstraints);
 
-        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/login/login.png"))); // NOI18N
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/login/login.png"))); // NOI18N
         btnLogin.setText("Entrar");
         btnLogin.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         btnLogin.setName("btnLogin"); // NOI18N
@@ -157,34 +157,15 @@ public class Login extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        }
+        catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
-            }
+        EventQueue.invokeLater(() -> {
+            new Login().setVisible(true);
         });
     }
 

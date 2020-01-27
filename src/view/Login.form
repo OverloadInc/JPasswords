@@ -51,7 +51,7 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/view/img/login/holiday_shield.png"/>
+              <Image iconType="3" name="/resources/img/login/holiday_shield.png"/>
             </Property>
             <Property name="name" type="java.lang.String" value="lblLogo" noResource="true"/>
           </Properties>
@@ -118,7 +118,7 @@
         <Component class="javax.swing.JButton" name="btnLogin">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/view/img/login/login.png"/>
+              <Image iconType="3" name="/resources/img/login/login.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Entrar"/>
             <Property name="horizontalTextPosition" type="int" value="2"/>
