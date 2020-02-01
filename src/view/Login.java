@@ -1,31 +1,23 @@
 package view;
 
+import controller.BackgroundImage;
 import javax.swing.*;
 import java.awt.*;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Recepcion03
- */
 public class Login extends JFrame {
 
     private String usuario;
     private String clave;
+    private final Image image;
     
-    /**
-     * Creates new form Login
-     */
     public Login() {
         this.usuario = "administrador";
         this.clave = "admin";
         
-        initComponents();
+        BackgroundImage.setName("login03.jpg");
+        image = BackgroundImage.request();
+        
+        initComponents();                
     }
 
     /**
@@ -38,31 +30,50 @@ public class Login extends JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        loginPanel = new javax.swing.JPanel();
+        loginPanel = new javax.swing.JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(image, 0, 0, null);
+            }
+        };
+        northFiller = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
         lblLogo = new javax.swing.JLabel();
         lblUser = new javax.swing.JLabel();
         txtUser = new javax.swing.JTextField();
         lblPassword = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
         btnLogin = new javax.swing.JButton();
+        southFiller = new javax.swing.Box.Filler(new java.awt.Dimension(0, 15), new java.awt.Dimension(0, 15), new java.awt.Dimension(0, 15));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inicio de sesión");
-        setMinimumSize(new java.awt.Dimension(350, 500));
+        setMinimumSize(new java.awt.Dimension(300, 450));
         setName("frmLogin"); // NOI18N
+        setPreferredSize(new java.awt.Dimension(300, 450));
         setResizable(false);
 
-        loginPanel.setMinimumSize(new java.awt.Dimension(350, 500));
+        loginPanel.setBackground(new java.awt.Color(255, 255, 255));
+        loginPanel.setMinimumSize(new java.awt.Dimension(300, 450));
         loginPanel.setName("loginPanel"); // NOI18N
-        loginPanel.setPreferredSize(new java.awt.Dimension(350, 500));
+        loginPanel.setPreferredSize(new java.awt.Dimension(300, 450));
         loginPanel.setLayout(new java.awt.GridBagLayout());
+
+        northFiller.setName("northFiller"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        loginPanel.add(northFiller, gridBagConstraints);
 
         lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/login/holiday_shield.png"))); // NOI18N
         lblLogo.setName("lblLogo"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.gridheight = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
@@ -74,7 +85,7 @@ public class Login extends JFrame {
         lblUser.setName("lblUser"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.weightx = 1.0;
         loginPanel.add(lblUser, gridBagConstraints);
@@ -84,7 +95,7 @@ public class Login extends JFrame {
         txtUser.setPreferredSize(new java.awt.Dimension(200, 30));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -94,7 +105,7 @@ public class Login extends JFrame {
         lblPassword.setName("lblPassword"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.weightx = 1.0;
         loginPanel.add(lblPassword, gridBagConstraints);
@@ -104,7 +115,7 @@ public class Login extends JFrame {
         txtPassword.setPreferredSize(new java.awt.Dimension(200, 30));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -121,11 +132,20 @@ public class Login extends JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         loginPanel.add(btnLogin, gridBagConstraints);
+
+        southFiller.setName("southFiller"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        loginPanel.add(southFiller, gridBagConstraints);
 
         getContentPane().add(loginPanel, java.awt.BorderLayout.CENTER);
 
@@ -153,9 +173,6 @@ public class Login extends JFrame {
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -175,6 +192,8 @@ public class Login extends JFrame {
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblUser;
     private javax.swing.JPanel loginPanel;
+    private javax.swing.Box.Filler northFiller;
+    private javax.swing.Box.Filler southFiller;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
