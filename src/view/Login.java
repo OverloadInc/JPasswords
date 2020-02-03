@@ -14,10 +14,10 @@ public class Login extends JFrame {
         this.usuario = "administrador";
         this.clave = "admin";
         
-        BackgroundImage.setName("login03.jpg");
-        image = BackgroundImage.request();
+        BackgroundImage.setName("login_white_blue01.jpg");
+        image = BackgroundImage.request();                
         
-        initComponents();                
+        initComponents();
     }
 
     /**
@@ -50,7 +50,6 @@ public class Login extends JFrame {
         setTitle("Inicio de sesión");
         setMinimumSize(new java.awt.Dimension(300, 450));
         setName("frmLogin"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(300, 450));
         setResizable(false);
 
         loginPanel.setBackground(new java.awt.Color(255, 255, 255));

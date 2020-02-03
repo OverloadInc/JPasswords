@@ -8,7 +8,7 @@ public class Dashboard extends javax.swing.JFrame {
     private final Image image;
 
     public Dashboard() {
-        BackgroundImage.setName("dashboard02.jpg");
+        BackgroundImage.setName("dashboard_white_blue01.jpg");
         image = BackgroundImage.request();
         
         initComponents();
