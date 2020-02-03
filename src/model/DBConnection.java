@@ -1,7 +1,6 @@
 package model;
 
 import java.sql.*;
-import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,17 +15,13 @@ public class DBConnection {
     
     public Connection connect() throws SQLException {
         try{
-            System.out.println("Entering try-catch");
-            
-            host = "jdbc:postgresql://localhost:53498/dbHolywallet";
+            host = "jdbc:postgresql://localhost/dbBank";
             user = "postgres";
-            password = "admin";
+            password = "postgres";
             
             Class.forName("org.postgresql.Driver");
             
             conn = DriverManager.getConnection(host, user, password);
-            
-            System.out.println("Conn: " + conn);
             
             if(conn != null) {
                 System.out.println("Connected to database");
