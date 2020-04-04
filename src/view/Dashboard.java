@@ -2,6 +2,7 @@ package view;
 
 import java.awt.*;
 import controller.*;
+import javax.swing.*;
 
 public class Dashboard extends javax.swing.JFrame {
     private final CardLayout cardLayout;    
@@ -109,6 +110,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Holiwallet v0.1");
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setMinimumSize(new java.awt.Dimension(800, 600));
         setName("frmDashboard"); // NOI18N
         setPreferredSize(new java.awt.Dimension(800, 600));
