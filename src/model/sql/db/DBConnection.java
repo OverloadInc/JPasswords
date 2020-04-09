@@ -3,7 +3,6 @@ package model.sql.db;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.*;
 
 public class DBConnection {
 
@@ -16,7 +15,7 @@ public class DBConnection {
         host = "jdbc:postgresql://localhost:5432/dbPasswords";
         user = "postgres";
         password = "postgres";
-    }  
+    }
 
     public Connection connect() throws SQLException {
         try {            
@@ -42,6 +41,8 @@ public class DBConnection {
         try {
             if (connection != null) {
                 connection.close();
+                
+                System.out.println("Database disconnected");
             }
         }
         catch (SQLException e) {
@@ -51,6 +52,7 @@ public class DBConnection {
     public void finalize() {
         try {
             connection.close();
+            
             connection = null;
         }
         catch(SQLException e) {            
@@ -68,10 +70,12 @@ public class DBConnection {
         }
         catch(SQLException e) {
             connection.rollback();
+            
             throw e;
         }
         finally {
             statement.close();
+            
             statement = null;
         }
         
@@ -84,33 +88,15 @@ public class DBConnection {
         
         try {
             statement = connection.createStatement();
-            resultSet = statement.executeQuery(query);
+            
+            resultSet = statement.executeQuery(query);                        
         }
         catch(SQLException e) {
             connection.rollback();
+            
             throw e;
         }
-        finally {
-            if(resultSet != null) {
-                resultSet.close();
-                statement.close();
-            }
-            
-            resultSet = null;
-            statement = null;
-        }
-        
+                
         return resultSet;
-    }
-
-    public static void main(String... args) {
-        DBConnection db = new DBConnection();
-        try {
-            db.connect();
-            db.disconnect();
-        }
-        catch (SQLException ex) {
-            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }
