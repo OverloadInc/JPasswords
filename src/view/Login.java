@@ -3,18 +3,17 @@ package view;
 import controller.BackgroundImage;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import model.pojo.User;
+import model.sql.security.Encryption;
 
 public class Login extends JFrame {
 
-    private String usuario;
-    private String clave;
     private final Image image;
     
     public Login() {
-        this.usuario = "administrador";
-        this.clave = "admin";
-        
         BackgroundImage.setName("login_white_blue01.jpg");
+        
         image = BackgroundImage.request();                
         
         initComponents();
@@ -92,6 +91,11 @@ public class Login extends JFrame {
         txtUser.setMinimumSize(new java.awt.Dimension(200, 30));
         txtUser.setName("txtUser"); // NOI18N
         txtUser.setPreferredSize(new java.awt.Dimension(200, 30));
+        txtUser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtUserKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 5;
@@ -112,6 +116,11 @@ public class Login extends JFrame {
         txtPassword.setMinimumSize(new java.awt.Dimension(200, 30));
         txtPassword.setName("txtPassword"); // NOI18N
         txtPassword.setPreferredSize(new java.awt.Dimension(200, 30));
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
@@ -127,6 +136,11 @@ public class Login extends JFrame {
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
+            }
+        });
+        btnLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnLoginKeyPressed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -153,25 +167,94 @@ public class Login extends JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        String miUsuario = txtUser.getText();
-        char[] caracteres = txtPassword.getPassword();
-        String miClave = "";
-        
-        for(char letra : caracteres){
-            miClave = miClave + letra;
-        }                
-        
-        if(miUsuario.equals(usuario) && miClave.equals(clave)){
-            JOptionPane.showMessageDialog(null, "Bienvenido " + miUsuario);
+        try {
+            String userName = txtUser.getText();
+            String userPassword = Encryption.encrypt(getClearPassword(txtPassword.getPassword()));
             
-            new Dashboard().setVisible(true);
-            this.setVisible(false);
+            login(new User(userName, userPassword));
         }
-        else {
-            JOptionPane.showMessageDialog(null, "Usuario o clave incorrecta");
+        catch(Exception e) {            
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
+    private void txtUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyPressed
+        setFocus(evt);
+    }//GEN-LAST:event_txtUserKeyPressed
+
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
+        setFocus(evt);
+    }//GEN-LAST:event_txtPasswordKeyPressed
+
+    private void btnLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLoginKeyPressed
+        setFocus(evt);
+    }//GEN-LAST:event_btnLoginKeyPressed
+
+    public void setFocus(KeyEvent evt) {
+        String keySource = getKeySource(evt);
+        int keyCode = evt.getKeyCode();
+        
+        if(keyCode == 40)
+            switch(keySource){
+                case "txtUser": txtPassword.requestFocusInWindow(); selectText("txtPassword"); break;
+                case "txtPassword": btnLogin.requestFocusInWindow(); break;
+                case "btnLogin": txtUser.requestFocusInWindow(); selectText("txtUser"); break;
+            }
+        else if(keyCode == 38)
+            switch(keySource){
+                case "txtUser": btnLogin.requestFocusInWindow(); break;
+                case "txtPassword": txtUser.requestFocusInWindow(); selectText("txtUser"); break;
+                case "btnLogin": txtPassword.requestFocusInWindow(); selectText("txtPassword"); break;
+            }
+        else if(keyCode == 10)
+            btnLoginActionPerformed(null);        
+    }
+    
+    public String getKeySource(KeyEvent evt) {
+        String keySource = evt.getSource().getClass().getSimpleName();
+        String key = null;
+        
+        if(keySource.equals("JTextField"))
+            key = ((JTextField)evt.getSource()).getName();
+        else if(keySource.equals("JButton"))
+            key = ((JButton)evt.getSource()).getName();
+        else if(keySource.equals("JPasswordField"))
+            key = ((JPasswordField)evt.getSource()).getName();
+        
+        return key;
+    }
+    
+    private String getClearPassword(char[] userPassword) {
+        String clearPassword = "";
+        
+        for(char character : userPassword)
+            clearPassword = clearPassword + character;        
+        
+        return clearPassword;
+    }
+    
+    private void selectText(String name) {
+        switch(name) {
+            case "txtUser" : txtUser.setSelectionStart(0); txtUser.setSelectionEnd(txtUser.getText().length()); break;
+            case "txtPassword" : txtPassword.setSelectionStart(0); txtPassword.setSelectionEnd(txtPassword.getPassword().length); break;
+        }
+    }
+    
+    private void login(User user) {        
+        try {
+            if(user.find()){
+                JOptionPane.showMessageDialog(null, "Bienvenido " + user.getName());
+
+                new Dashboard().setVisible(true);
+
+                this.setVisible(false);
+            }
+            else
+                JOptionPane.showMessageDialog(null, "Usuario o clave incorrecta");            
+        }
+        catch(Exception e) {
+        }
+    }
+    
     public static void main(String args[]) {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
