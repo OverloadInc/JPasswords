@@ -11,9 +11,7 @@ public class Login extends JFrame {
 
     private final Image image;
     
-    public Login() {
-        BackgroundImage.setName("login_white_blue01.jpg");
-        
+    public Login() {                
         image = BackgroundImage.request();                
         
         initComponents();
