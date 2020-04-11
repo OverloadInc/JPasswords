@@ -1,15 +1,17 @@
 package view;
 
 import controller.BackgroundImage;
+import controller.login.LoginController;
+import model.pojo.User;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import model.pojo.User;
-import model.sql.security.Encryption;
 
 public class Login extends JFrame {
 
     private final Image image;
+    private static boolean flag;
     
     public Login() {                
         image = BackgroundImage.request();                
@@ -167,7 +169,7 @@ public class Login extends JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         try {
             String userName = txtUser.getText();
-            String userPassword = Encryption.encrypt(getClearPassword(txtPassword.getPassword()));
+            String userPassword = LoginController.encryptPassword(txtPassword.getPassword());
             
             login(new User(userName, userPassword));
         }
@@ -187,10 +189,35 @@ public class Login extends JFrame {
         setFocus(evt);
     }//GEN-LAST:event_btnLoginKeyPressed
 
-    public void setFocus(KeyEvent evt) {
+    private String getKeySource(KeyEvent evt) {
+        String keySource = evt.getSource().getClass().getSimpleName();
+        String key = null;
+
+        if(keySource.equals("JTextField"))
+            key = ((JTextField)evt.getSource()).getName();
+        else if(keySource.equals("JButton"))
+            key = ((JButton)evt.getSource()).getName();
+        else if(keySource.equals("JPasswordField"))
+            key = ((JPasswordField)evt.getSource()).getName();
+
+        return key;
+    }
+
+    private void login(User user) {
+        this.setVisible(flag);
+    }
+
+    private void selectText(String name) {
+        switch(name) {
+            case "txtUser" : txtUser.setSelectionStart(0); txtUser.setSelectionEnd(txtUser.getText().length()); break;
+            case "txtPassword" : txtPassword.setSelectionStart(0); txtPassword.setSelectionEnd(txtPassword.getPassword().length); break;
+        }
+    }
+
+    private void setFocus(KeyEvent evt) {
         String keySource = getKeySource(evt);
         int keyCode = evt.getKeyCode();
-        
+
         if(keyCode == 40)
             switch(keySource){
                 case "txtUser": txtPassword.requestFocusInWindow(); selectText("txtPassword"); break;
@@ -204,63 +231,10 @@ public class Login extends JFrame {
                 case "btnLogin": txtPassword.requestFocusInWindow(); selectText("txtPassword"); break;
             }
         else if(keyCode == 10)
-            btnLoginActionPerformed(null);        
+            btnLoginActionPerformed(null);
     }
-    
-    public String getKeySource(KeyEvent evt) {
-        String keySource = evt.getSource().getClass().getSimpleName();
-        String key = null;
-        
-        if(keySource.equals("JTextField"))
-            key = ((JTextField)evt.getSource()).getName();
-        else if(keySource.equals("JButton"))
-            key = ((JButton)evt.getSource()).getName();
-        else if(keySource.equals("JPasswordField"))
-            key = ((JPasswordField)evt.getSource()).getName();
-        
-        return key;
-    }
-    
-    private String getClearPassword(char[] userPassword) {
-        String clearPassword = "";
-        
-        for(char character : userPassword)
-            clearPassword = clearPassword + character;        
-        
-        return clearPassword;
-    }
-    
-    private void selectText(String name) {
-        switch(name) {
-            case "txtUser" : txtUser.setSelectionStart(0); txtUser.setSelectionEnd(txtUser.getText().length()); break;
-            case "txtPassword" : txtPassword.setSelectionStart(0); txtPassword.setSelectionEnd(txtPassword.getPassword().length); break;
-        }
-    }
-    
-    private void login(User user) {        
-        try {
-            if(user.find()){
-                JOptionPane.showMessageDialog(null, "Bienvenido " + user.getName());
 
-                new Dashboard().setVisible(true);
-
-                this.setVisible(false);
-            }
-            else
-                JOptionPane.showMessageDialog(null, "Usuario o clave incorrecta");            
-        }
-        catch(Exception e) {
-        }
-    }
-    
     public static void main(String args[]) {
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        }
-        catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-
         EventQueue.invokeLater(() -> {
             new Login().setVisible(true);
         });
