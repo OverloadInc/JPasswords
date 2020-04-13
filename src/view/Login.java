@@ -1,22 +1,33 @@
 package view;
 
 import controller.BackgroundImage;
-import controller.login.LoginController;
+import controller.Controller;
+import controller.LoginController;
 import model.pojo.User;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Login extends JFrame {
 
-    private final Image image;
     private static boolean flag;
+    private final Image backgroundImage;
+    private List<Component> componentList;
+    private Controller controller;
     
     public Login() {                
-        image = BackgroundImage.request();                
+        backgroundImage = BackgroundImage.request();
         
         initComponents();
+
+        componentList = new ArrayList<Component>();
+        componentList.add(txtUser);
+        componentList.add(txtPassword);
+        componentList.add(btnLogin);
+
+        controller = new LoginController(componentList);
     }
 
     /**
@@ -33,7 +44,7 @@ public class Login extends JFrame {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawImage(image, 0, 0, null);
+                g.drawImage(backgroundImage, 0, 0, null);
             }
         };
         northFiller = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
@@ -169,7 +180,7 @@ public class Login extends JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         try {
             String userName = txtUser.getText();
-            String userPassword = LoginController.encryptPassword(txtPassword.getPassword());
+            String userPassword = controller.encryptPassword(txtPassword.getPassword());
             
             login(new User(userName, userPassword));
         }
@@ -178,60 +189,19 @@ public class Login extends JFrame {
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyPressed
-        setFocus(evt);
+        controller.setFocus(evt);
     }//GEN-LAST:event_txtUserKeyPressed
 
     private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
-        setFocus(evt);
+        controller.setFocus(evt);
     }//GEN-LAST:event_txtPasswordKeyPressed
 
     private void btnLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLoginKeyPressed
-        setFocus(evt);
+        controller.setFocus(evt);
     }//GEN-LAST:event_btnLoginKeyPressed
-
-    private String getKeySource(KeyEvent evt) {
-        String keySource = evt.getSource().getClass().getSimpleName();
-        String key = null;
-
-        if(keySource.equals("JTextField"))
-            key = ((JTextField)evt.getSource()).getName();
-        else if(keySource.equals("JButton"))
-            key = ((JButton)evt.getSource()).getName();
-        else if(keySource.equals("JPasswordField"))
-            key = ((JPasswordField)evt.getSource()).getName();
-
-        return key;
-    }
 
     private void login(User user) {
         this.setVisible(flag);
-    }
-
-    private void selectText(String name) {
-        switch(name) {
-            case "txtUser" : txtUser.setSelectionStart(0); txtUser.setSelectionEnd(txtUser.getText().length()); break;
-            case "txtPassword" : txtPassword.setSelectionStart(0); txtPassword.setSelectionEnd(txtPassword.getPassword().length); break;
-        }
-    }
-
-    private void setFocus(KeyEvent evt) {
-        String keySource = getKeySource(evt);
-        int keyCode = evt.getKeyCode();
-
-        if(keyCode == 40)
-            switch(keySource){
-                case "txtUser": txtPassword.requestFocusInWindow(); selectText("txtPassword"); break;
-                case "txtPassword": btnLogin.requestFocusInWindow(); break;
-                case "btnLogin": txtUser.requestFocusInWindow(); selectText("txtUser"); break;
-            }
-        else if(keyCode == 38)
-            switch(keySource){
-                case "txtUser": btnLogin.requestFocusInWindow(); break;
-                case "txtPassword": txtUser.requestFocusInWindow(); selectText("txtUser"); break;
-                case "btnLogin": txtPassword.requestFocusInWindow(); selectText("txtPassword"); break;
-            }
-        else if(keyCode == 10)
-            btnLoginActionPerformed(null);
     }
 
     public static void main(String args[]) {
