@@ -6,11 +6,11 @@ import javax.swing.*;
 
 public class Dashboard extends javax.swing.JFrame {
     private final CardLayout cardLayout;    
-    private final Image image;
+    private final Image backgroundImage;
 
     public Dashboard() {
         BackgroundImage.setName("dashboard_white_blue01.jpg");
-        image = BackgroundImage.request();
+        backgroundImage = BackgroundImage.request();
         
         initComponents();
         
@@ -36,7 +36,7 @@ public class Dashboard extends javax.swing.JFrame {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawImage(image, 0, 0, null);
+                g.drawImage(backgroundImage, 0, 0, null);
             }
         };
         dashboardPanel = new javax.swing.JPanel();
@@ -109,7 +109,7 @@ public class Dashboard extends javax.swing.JFrame {
         aboutItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Holiwallet v0.1");
+        setTitle("Holiwallet v0.1 - Dashboard");
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setMinimumSize(new java.awt.Dimension(800, 600));
         setName("frmDashboard"); // NOI18N
