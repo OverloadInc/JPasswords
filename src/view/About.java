@@ -1,5 +1,7 @@
 package view;
 
+import controller.FontEditor;
+
 public class About extends javax.swing.JFrame {
     
     public About() {
@@ -9,7 +11,24 @@ public class About extends javax.swing.JFrame {
     }
     
     public void setAbout() {
-        txtAbout.setText("<b>JPasswords</b> is an open source application and is licensed under GNU General Public License v3.");
+        String application = "JPasswords";
+        String description = " is an open source application and is licensed under GNU General Public License v3.";
+        String team = "Developer";
+        String developer_name = "\tJuan-Alberto Hernández-Martínez";
+        String contact = "\nContacto";
+        String email = "\tjuan.alberto.hernandez.martinez@gmail.com";
+
+        try {
+            FontEditor fontEditor = new FontEditor();
+            fontEditor.setBold(txtAbout, application);
+            fontEditor.setSimple(txtAbout, description);
+            fontEditor.setBold(txtCredits, team);
+            fontEditor.setSimple(txtCredits, developer_name);
+            fontEditor.setBold(txtCredits, contact);
+            fontEditor.setSimple(txtCredits, email);
+        }
+        catch(Exception e) {
+        }
     }
 
     /**
