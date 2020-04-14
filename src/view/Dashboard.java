@@ -1,12 +1,17 @@
 package view;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+
 import controller.*;
 import javax.swing.*;
 
 public class Dashboard extends javax.swing.JFrame {
     private final CardLayout cardLayout;    
     private final Image backgroundImage;
+    private List<Component> componentList;
+    private Controller controller;
 
     public Dashboard() {
         BackgroundImage.setName("dashboard_white_blue01.jpg");
@@ -15,6 +20,12 @@ public class Dashboard extends javax.swing.JFrame {
         initComponents();
         
         cardLayout = (CardLayout)(mainPanel.getLayout());
+
+        componentList = new ArrayList<Component>();
+        componentList.add(txtProduct);
+        componentList.add(btnAddProduct);
+
+        controller = new LoginController(componentList);
     }
        
     /**
