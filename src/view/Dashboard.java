@@ -338,10 +338,20 @@ public class Dashboard extends javax.swing.JFrame {
         txtProduct.setMinimumSize(new java.awt.Dimension(200, 30));
         txtProduct.setName("txtProduct"); // NOI18N
         txtProduct.setPreferredSize(new java.awt.Dimension(200, 30));
+        txtProduct.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtProductKeyPressed(evt);
+            }
+        });
         productPanel.add(txtProduct);
 
         btnAddProduct.setText("Agregar");
         btnAddProduct.setName("btnAddProduct"); // NOI18N
+        btnAddProduct.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnAddProductKeyPressed(evt);
+            }
+        });
         productPanel.add(btnAddProduct);
 
         kindProductsPanel.add(productPanel);
@@ -364,6 +374,11 @@ public class Dashboard extends javax.swing.JFrame {
         existingProductsList.setName("existingProductsList"); // NOI18N
         existingProductsList.setPreferredSize(new java.awt.Dimension(300, 300));
         existingProductsList.setVisibleRowCount(10);
+        existingProductsList.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                existingProductsListKeyPressed(evt);
+            }
+        });
         existingProductsScroll.setViewportView(existingProductsList);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -378,6 +393,11 @@ public class Dashboard extends javax.swing.JFrame {
 
         btnModifyProduct.setText("Modificar");
         btnModifyProduct.setName("btnModifyProduct"); // NOI18N
+        btnModifyProduct.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnModifyProductKeyReleased(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 2;
@@ -387,6 +407,11 @@ public class Dashboard extends javax.swing.JFrame {
 
         btnDeleteProduct.setText("Eliminar");
         btnDeleteProduct.setName("btnDeleteProduct"); // NOI18N
+        btnDeleteProduct.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnDeleteProductKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 4;
@@ -774,7 +799,7 @@ public class Dashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblKindProductLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKindProductLogoMouseClicked
-        cardLayout.show(this.mainPanel, "kindProductsPanel");
+        cardLayout.show(this.mainPanel, "kindProductsPanel");        
     }//GEN-LAST:event_lblKindProductLogoMouseClicked
 
     private void lblProductLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblProductLogoMouseClicked
@@ -832,6 +857,26 @@ public class Dashboard extends javax.swing.JFrame {
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         cardLayout.show(this.mainPanel, Carousel.next(Carousel.getActivePanel(mainPanel))); 
     }//GEN-LAST:event_btnNextActionPerformed
+
+    private void txtProductKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProductKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtProductKeyPressed
+
+    private void btnAddProductKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAddProductKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddProductKeyPressed
+
+    private void existingProductsListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_existingProductsListKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_existingProductsListKeyPressed
+
+    private void btnModifyProductKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnModifyProductKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModifyProductKeyReleased
+
+    private void btnDeleteProductKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDeleteProductKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteProductKeyPressed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutItem;
