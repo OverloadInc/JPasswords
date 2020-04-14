@@ -1,9 +1,15 @@
 package view;
 
 public class About extends javax.swing.JFrame {
-
+    
     public About() {
         initComponents();
+        
+        setAbout();
+    }
+    
+    public void setAbout() {
+        txtAbout.setText("<b>JPasswords</b> is an open source application and is licensed under GNU General Public License v3.");
     }
 
     /**
