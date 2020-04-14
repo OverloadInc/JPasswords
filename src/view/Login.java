@@ -57,7 +57,7 @@ public class Login extends JFrame {
         southFiller = new javax.swing.Box.Filler(new java.awt.Dimension(0, 15), new java.awt.Dimension(0, 15), new java.awt.Dimension(0, 15));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Inicio de sesión");
+        setTitle("Holiwallet v0.1 - Inicio de sesión");
         setMinimumSize(new java.awt.Dimension(300, 450));
         setName("frmLogin"); // NOI18N
         setResizable(false);
