@@ -11,21 +11,15 @@ public class Dashboard extends javax.swing.JFrame {
     private final CardLayout cardLayout;    
     private final Image backgroundImage;
     private List<Component> componentList;
-    private Controller controller;
+    private Controller productKindController;
 
     public Dashboard() {
-        BackgroundImage.setName("dashboard_white_blue01.jpg");
+        BackgroundImage.setName("dashboard_white_blue01.jpg"); //aspecto
         backgroundImage = BackgroundImage.request();
         
         initComponents();
         
         cardLayout = (CardLayout)(mainPanel.getLayout());
-
-        componentList = new ArrayList<Component>();
-        componentList.add(txtProduct);
-        componentList.add(btnAddProduct);
-
-        controller = new LoginController(componentList);
     }
        
     /**
@@ -810,7 +804,13 @@ public class Dashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblKindProductLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKindProductLogoMouseClicked
-        cardLayout.show(this.mainPanel, "kindProductsPanel");        
+        componentList = new ArrayList<>();
+        componentList.add(txtProduct);
+        componentList.add(btnAddProduct);
+
+        productKindController = new ProductKindController(componentList);
+
+        cardLayout.show(this.mainPanel, "kindProductsPanel");
     }//GEN-LAST:event_lblKindProductLogoMouseClicked
 
     private void lblProductLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblProductLogoMouseClicked
@@ -870,11 +870,11 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void txtProductKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProductKeyPressed
-        // TODO add your handling code here:
+        productKindController.setFocus(evt);
     }//GEN-LAST:event_txtProductKeyPressed
 
     private void btnAddProductKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAddProductKeyPressed
-        // TODO add your handling code here:
+        productKindController.setFocus(evt);
     }//GEN-LAST:event_btnAddProductKeyPressed
 
     private void existingProductsListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_existingProductsListKeyPressed

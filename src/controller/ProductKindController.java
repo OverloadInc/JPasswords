@@ -1,16 +1,19 @@
 package controller;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.List;
 
 public class ProductKindController extends Controller {
-    JTextField txtProduct;
-    JButton btnAddProduct;
+
+    private JTextField txtProduct;
+    private JButton btnAddProduct;
 
     public ProductKindController(List components) {
         super(components);
+
+        txtProduct = (JTextField)components.get(0);
+        btnAddProduct = (JButton)components.get(1);
     }
 
     @Override
