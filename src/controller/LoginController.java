@@ -1,21 +1,34 @@
 package controller;
 
+import model.sql.security.Encryption;
+
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.util.List;
 
-public class LoginController extends Controller {
+public class LoginController implements Controller {
 
     private JTextField txtUser;
     private JPasswordField txtPassword;
     private JButton btnLogin;
 
     public LoginController(List components) {
-        super(components);
-
         txtUser = (JTextField)components.get(0);
         txtPassword = (JPasswordField)components.get(1);
         btnLogin = (JButton)components.get(2);
+    }
+
+    public String getPassword(char[] userPassword) {
+        String clearPassword = "";
+
+        for(char character : userPassword)
+            clearPassword += character;
+
+        return clearPassword;
+    }
+
+    public String encryptPassword(char[] userPassword) throws Exception {
+        return Encryption.encrypt(getPassword(userPassword));
     }
 
     @Override
