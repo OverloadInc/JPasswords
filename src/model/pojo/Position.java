@@ -1,6 +1,7 @@
 package model.pojo;
 
 public class Position {
+
     private int id;
     private String name;
     private Department department;

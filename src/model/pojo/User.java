@@ -39,11 +39,9 @@ public class User {
                 String query = "select nombre, clave from usuarios where nombre = '" + this.name + "' and clave = '" + this.password + "'";
                 
                 DBConnection dbConnection = new DBConnection();
-                
                 dbConnection.connect();
                 
                 ResultSet resultSet = dbConnection.executeQuery(query);
-                
                 result = resultSet.next();
                 
                 dbConnection.disconnect();

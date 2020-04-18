@@ -1,6 +1,7 @@
 package model.pojo;
 
 public class Privilege {
+
     private int id;
     private String name;
 

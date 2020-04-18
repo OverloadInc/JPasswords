@@ -1,6 +1,7 @@
 package model.pojo;
 
 public class Credential {
+
     private int id;
     private String user;
     private String password;

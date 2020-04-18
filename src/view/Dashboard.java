@@ -5,13 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import controller.*;
+import model.pojo.KindOfProduct;
+
 import javax.swing.*;
 
 public class Dashboard extends javax.swing.JFrame {
     private final CardLayout cardLayout;    
     private final Image backgroundImage;
     private List<Component> componentList;
-    private Controller productKindController;
+    private ProductKindController productKindController;
 
     public Dashboard() {
         BackgroundImage.setName("dashboard_white_blue01.jpg"); //aspecto
@@ -810,6 +812,14 @@ public class Dashboard extends javax.swing.JFrame {
 
         productKindController = new ProductKindController(componentList);
 
+        DefaultListModel nameListModel = new DefaultListModel();
+
+        for(KindOfProduct current : productKindController.getAllKindOfProduct()) {
+            nameListModel.addElement(current);
+        }
+
+        existingProductsList.setModel(nameListModel);
+
         cardLayout.show(this.mainPanel, "kindProductsPanel");
     }//GEN-LAST:event_lblKindProductLogoMouseClicked
 
@@ -882,11 +892,11 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_existingProductsListKeyPressed
 
     private void btnModifyProductKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnModifyProductKeyReleased
-        // TODO add your handling code here:
+        productKindController.setFocus(evt);
     }//GEN-LAST:event_btnModifyProductKeyReleased
 
     private void btnDeleteProductKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDeleteProductKeyPressed
-        // TODO add your handling code here:
+        productKindController.setFocus(evt);
     }//GEN-LAST:event_btnDeleteProductKeyPressed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

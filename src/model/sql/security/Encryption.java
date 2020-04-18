@@ -15,44 +15,42 @@ public class Encryption {
     private static final String ENCRYPTION_TECHNIQUE = "Blowfish";
     
     public static String encrypt(String clearPassword) throws Exception{
-	String encryptedPassword = "";
-	
-	try {
-            SecretKeySpec secretKeySpec = new SecretKeySpec(PRIVATE_KEY.getBytes(), ENCRYPTION_TECHNIQUE);
-            
-            Cipher cipher = Cipher.getInstance(ENCRYPTION_TECHNIQUE);
-            
-            cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);
-            
-            byte[] encrypted = cipher.doFinal(clearPassword.getBytes());
-            
-            encryptedPassword = new String(Base64.getEncoder().encode(encrypted));		
-	}
+        String encryptedPassword = "";
+
+        try {
+                SecretKeySpec secretKeySpec = new SecretKeySpec(PRIVATE_KEY.getBytes(), ENCRYPTION_TECHNIQUE);
+
+                Cipher cipher = Cipher.getInstance(ENCRYPTION_TECHNIQUE);
+                cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);
+
+                byte[] encrypted = cipher.doFinal(clearPassword.getBytes());
+
+                encryptedPassword = new String(Base64.getEncoder().encode(encrypted));
+        }
         catch (InvalidKeyException | NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException | NoSuchPaddingException e) {
             throw new Exception(e);
-	}
-        
-	return encryptedPassword;
+        }
+
+        return encryptedPassword;
     }
     
     public static String decrypt(String encryptedPassword) throws Exception{
-	String decryptedPassword = "";
+	    String decryptedPassword = "";
 	
-	try {
+	    try {
             SecretKeySpec secretKeySpec = new SecretKeySpec(PRIVATE_KEY.getBytes(), ENCRYPTION_TECHNIQUE);
             
             Cipher cipher = Cipher.getInstance(ENCRYPTION_TECHNIQUE);
-            
             cipher.init(Cipher.DECRYPT_MODE, secretKeySpec);
             
             byte[] decrypted = cipher.doFinal(Base64.getDecoder().decode(encryptedPassword));
             
             decryptedPassword = new String(decrypted);		
-	}
+	    }
         catch (InvalidKeyException | NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException | NoSuchPaddingException e) {
             throw new Exception(e);
-	}
-        
-	return decryptedPassword;
+        }
+
+        return decryptedPassword;
     }
 }

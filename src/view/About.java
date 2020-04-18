@@ -84,6 +84,7 @@ public class About extends javax.swing.JFrame {
         aboutScroll.setName("aboutScroll"); // NOI18N
 
         txtAbout.setName("txtAbout"); // NOI18N
+        txtAbout.setEditable(false);
         aboutScroll.setViewportView(txtAbout);
 
         aboutPanel.add(aboutScroll, java.awt.BorderLayout.CENTER);
@@ -99,6 +100,7 @@ public class About extends javax.swing.JFrame {
         creditsScroll.setName("creditsScroll"); // NOI18N
 
         txtCredits.setName("txtCredits"); // NOI18N
+        txtCredits.setEditable(false);
         creditsScroll.setViewportView(txtCredits);
 
         creditsPanel.add(creditsScroll, java.awt.BorderLayout.CENTER);

@@ -56,7 +56,7 @@ public class DBConnection {
             connection = null;
         }
         catch(SQLException e) {            
-        }        
+        }
     }
     
     public synchronized boolean executeCommand(String command) throws Exception {

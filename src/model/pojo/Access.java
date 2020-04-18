@@ -1,6 +1,7 @@
 package model.pojo;
 
 public class Access {
+
     private int id;
     private String name;
     private Product product;

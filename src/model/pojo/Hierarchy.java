@@ -1,6 +1,7 @@
 package model.pojo;
 
 public class Hierarchy {
+
     private int id;
     private String name;
 

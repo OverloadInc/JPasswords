@@ -1,7 +1,6 @@
 package view;
 
 import controller.BackgroundImage;
-import controller.Controller;
 import controller.LoginController;
 import model.pojo.User;
 
@@ -15,7 +14,7 @@ public class Login extends JFrame {
     private static boolean flag;
     private final Image backgroundImage;
     private List<Component> componentList;
-    private Controller controller;
+    private LoginController controller;
     
     public Login() {                
         backgroundImage = BackgroundImage.request();
