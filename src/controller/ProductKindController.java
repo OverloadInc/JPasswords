@@ -1,19 +1,24 @@
 package controller;
 
+import model.pojo.KindOfProduct;
+
 import javax.swing.*;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.List;
 
-public class ProductKindController extends Controller {
+public class ProductKindController implements Controller {
 
     private JTextField txtProduct;
     private JButton btnAddProduct;
 
     public ProductKindController(List components) {
-        super(components);
-
         txtProduct = (JTextField)components.get(0);
         btnAddProduct = (JButton)components.get(1);
+    }
+
+    public ArrayList<KindOfProduct> getAllKindOfProduct() {
+        return new KindOfProduct().getAllKindOfProduct();
     }
 
     @Override
