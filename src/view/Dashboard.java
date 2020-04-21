@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import controller.*;
-import model.pojo.KindOfProduct;
 
 import javax.swing.*;
 
@@ -809,16 +808,10 @@ public class Dashboard extends javax.swing.JFrame {
         componentList = new ArrayList<>();
         componentList.add(txtProduct);
         componentList.add(btnAddProduct);
+        componentList.add(existingProductsList);
 
         productKindController = new ProductKindController(componentList);
-
-        DefaultListModel nameListModel = new DefaultListModel();
-
-        for(KindOfProduct current : productKindController.getAllKindOfProduct()) {
-            nameListModel.addElement(current);
-        }
-
-        existingProductsList.setModel(nameListModel);
+        productKindController.refreshExistingProductsList();
 
         cardLayout.show(this.mainPanel, "kindProductsPanel");
     }//GEN-LAST:event_lblKindProductLogoMouseClicked
