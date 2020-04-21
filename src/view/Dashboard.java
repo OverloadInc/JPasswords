@@ -353,9 +353,9 @@ public class Dashboard extends javax.swing.JFrame {
 
         btnAddProduct.setText("Agregar");
         btnAddProduct.setName("btnAddProduct"); // NOI18N
-        btnAddProduct.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddProductActionPerformed(evt);
+        btnAddProduct.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAddProductMouseClicked(evt);
             }
         });
         btnAddProduct.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -404,9 +404,9 @@ public class Dashboard extends javax.swing.JFrame {
 
         btnModifyProduct.setText("Modificar");
         btnModifyProduct.setName("btnModifyProduct"); // NOI18N
-        btnModifyProduct.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModifyProductActionPerformed(evt);
+        btnModifyProduct.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModifyProductMouseClicked(evt);
             }
         });
         btnModifyProduct.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -423,9 +423,9 @@ public class Dashboard extends javax.swing.JFrame {
 
         btnDeleteProduct.setText("Eliminar");
         btnDeleteProduct.setName("btnDeleteProduct"); // NOI18N
-        btnDeleteProduct.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteProductActionPerformed(evt);
+        btnDeleteProduct.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDeleteProductMouseClicked(evt);
             }
         });
         btnDeleteProduct.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -907,17 +907,17 @@ public class Dashboard extends javax.swing.JFrame {
         productKindController.setFocus(evt);
     }//GEN-LAST:event_btnDeleteProductKeyPressed
 
-    private void btnAddProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProductActionPerformed
-        productKindController.addKindOfProduct();
-    }//GEN-LAST:event_btnAddProductActionPerformed
-
-    private void btnModifyProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyProductActionPerformed
+    private void btnAddProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddProductMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnModifyProductActionPerformed
+    }//GEN-LAST:event_btnAddProductMouseClicked
 
-    private void btnDeleteProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteProductActionPerformed
+    private void btnModifyProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifyProductMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnDeleteProductActionPerformed
+    }//GEN-LAST:event_btnModifyProductMouseClicked
+
+    private void btnDeleteProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteProductMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteProductMouseClicked
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutItem;
