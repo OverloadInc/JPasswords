@@ -908,7 +908,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteProductKeyPressed
 
     private void btnAddProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProductActionPerformed
-        // TODO add your handling code here:
+        productKindController.addKindOfProduct();
     }//GEN-LAST:event_btnAddProductActionPerformed
 
     private void btnModifyProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyProductActionPerformed
