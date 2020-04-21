@@ -353,6 +353,11 @@ public class Dashboard extends javax.swing.JFrame {
 
         btnAddProduct.setText("Agregar");
         btnAddProduct.setName("btnAddProduct"); // NOI18N
+        btnAddProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddProductActionPerformed(evt);
+            }
+        });
         btnAddProduct.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnAddProductKeyPressed(evt);
@@ -399,6 +404,11 @@ public class Dashboard extends javax.swing.JFrame {
 
         btnModifyProduct.setText("Modificar");
         btnModifyProduct.setName("btnModifyProduct"); // NOI18N
+        btnModifyProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModifyProductActionPerformed(evt);
+            }
+        });
         btnModifyProduct.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 btnModifyProductKeyReleased(evt);
@@ -413,6 +423,11 @@ public class Dashboard extends javax.swing.JFrame {
 
         btnDeleteProduct.setText("Eliminar");
         btnDeleteProduct.setName("btnDeleteProduct"); // NOI18N
+        btnDeleteProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteProductActionPerformed(evt);
+            }
+        });
         btnDeleteProduct.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnDeleteProductKeyPressed(evt);
@@ -891,6 +906,18 @@ public class Dashboard extends javax.swing.JFrame {
     private void btnDeleteProductKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDeleteProductKeyPressed
         productKindController.setFocus(evt);
     }//GEN-LAST:event_btnDeleteProductKeyPressed
+
+    private void btnAddProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProductActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddProductActionPerformed
+
+    private void btnModifyProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyProductActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModifyProductActionPerformed
+
+    private void btnDeleteProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteProductActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteProductActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutItem;
