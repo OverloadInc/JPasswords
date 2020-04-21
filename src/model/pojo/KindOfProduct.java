@@ -57,6 +57,30 @@ public class KindOfProduct {
         return kindOfProducts;
     }
 
+    public boolean addKindOfProduct() {
+        boolean result = false;
+        String command = "INSERT INTO tipo_productos VALUES (" + this.name + ");";
+
+        try {
+            DBConnection dbConnection = new DBConnection();
+            dbConnection.connect();
+
+            result = dbConnection.executeCommand(command);
+        }
+        catch(Exception e) {
+        }
+
+        return result;
+    }
+
+    public void updateKindOfProduct() {
+        //TODO Add UPDATE SQL Command
+    }
+
+    public void deleteKindOfProduct() {
+        //TODO Add DELETE SQL Command
+    }
+
     public String toString() {
         return this.name;
     }
