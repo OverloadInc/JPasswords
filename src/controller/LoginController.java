@@ -44,7 +44,7 @@ public class LoginController implements Controller {
         String keySource = getKeySource(evt);
         int keyCode = evt.getKeyCode();
 
-        if(keyCode == 10 || keyCode == 40)
+        if(keyCode == 40)
             switch(keySource){
                 case "txtUser": txtPassword.requestFocusInWindow(); selectText("txtPassword"); break;
                 case "txtPassword": btnLogin.requestFocusInWindow(); break;
@@ -56,5 +56,10 @@ public class LoginController implements Controller {
                 case "txtPassword": txtUser.requestFocusInWindow(); selectText("txtUser"); break;
                 case "btnLogin": txtPassword.requestFocusInWindow(); selectText("txtPassword"); break;
             }
+        else if(keyCode == 10) {
+            switch(keySource){
+                case "btnLogin": txtPassword.requestFocusInWindow(); selectText("txtPassword"); break;
+            }
+        }
     }
 }

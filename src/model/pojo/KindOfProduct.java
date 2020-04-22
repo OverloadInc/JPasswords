@@ -26,10 +26,6 @@ public class KindOfProduct {
         return name;
     }
 
-    public boolean addKindOfProduct(KindOfProduct kindOfProduct) {
-        return false;
-    }
-
     public ArrayList<KindOfProduct> getAllKindOfProduct() {
         ArrayList<KindOfProduct> kindOfProducts = new ArrayList<>();
 
@@ -59,14 +55,15 @@ public class KindOfProduct {
 
     public boolean addKindOfProduct() {
         boolean result = false;
-        String command = "INSERT INTO tipo_productos VALUES ('" + this.name + "');";
+        String command = "INSERT INTO tipo_productos (nombre) VALUES ('" + this.name + "');";
 
         try {
             DBConnection dbConnection = new DBConnection();
             dbConnection.connect();
-
-            //result = dbConnection.executeCommand(command);
             System.out.println(command);
+
+            result = dbConnection.executeCommand(command);
+
             dbConnection.disconnect();
         }
         catch(Exception e) {

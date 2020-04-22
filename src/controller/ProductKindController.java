@@ -4,7 +4,6 @@ import model.pojo.KindOfProduct;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProductKindController implements Controller {
@@ -19,21 +18,18 @@ public class ProductKindController implements Controller {
         existingProductsList = (JList)components.get(2);
     }
 
-    public ArrayList<KindOfProduct> getAllKindOfProduct() {
-        return new KindOfProduct().getAllKindOfProduct();
-    }
-
     public void addKindOfProduct() {
         KindOfProduct kindOfProduct = new KindOfProduct();
         kindOfProduct.setId(0);
         kindOfProduct.setName(txtProduct.getText().trim());
+
         kindOfProduct.addKindOfProduct();
     }
 
     public void refreshExistingProductsList() {
         DefaultListModel nameListModel = new DefaultListModel();
 
-        for(KindOfProduct current : getAllKindOfProduct())
+        for(KindOfProduct current : new KindOfProduct().getAllKindOfProduct())
             nameListModel.addElement(current);
 
         existingProductsList.setModel(nameListModel);
@@ -58,10 +54,10 @@ public class ProductKindController implements Controller {
             }
         else if(keyCode == 10) {
             switch(keySource){
-                case "txtProduct": btnAddProduct.requestFocusInWindow(); break;
                 case "btnAddProduct":
                     addKindOfProduct();
                     refreshExistingProductsList();
+                    txtProduct.setText("");
                     txtProduct.requestFocusInWindow();
                     break;
             }

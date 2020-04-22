@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -908,7 +909,9 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteProductKeyPressed
 
     private void btnAddProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddProductMouseClicked
-        // TODO add your handling code here:
+        productKindController.addKindOfProduct();
+        productKindController.refreshExistingProductsList();
+        txtProduct.setText("");
     }//GEN-LAST:event_btnAddProductMouseClicked
 
     private void btnModifyProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifyProductMouseClicked
