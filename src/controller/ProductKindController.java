@@ -19,11 +19,42 @@ public class ProductKindController implements Controller {
     }
 
     public void addKindOfProduct() {
-        KindOfProduct kindOfProduct = new KindOfProduct();
-        kindOfProduct.setId(0);
-        kindOfProduct.setName(txtProduct.getText().trim());
+        String productName = txtProduct.getText().trim();
 
-        kindOfProduct.addKindOfProduct();
+        if(!productName.isEmpty()) {
+            KindOfProduct kindOfProduct = new KindOfProduct();
+            kindOfProduct.setId(0);
+            kindOfProduct.setName(productName);
+
+            kindOfProduct.addKindOfProduct();
+        }
+        else
+            JOptionPane.showMessageDialog(null, "Introduce un nombre válido");
+    }
+
+    public void modifyKindOfProduct() {
+        KindOfProduct kindOfProduct = (KindOfProduct)existingProductsList.getSelectedValue();
+
+        if(kindOfProduct != null) {
+            String newProductName = JOptionPane.showInputDialog("Introduce el tipo de producto deseado");
+
+            if(!newProductName.isEmpty()) {
+                kindOfProduct.setName(newProductName);
+
+                kindOfProduct.updateKindOfProduct();
+            }
+        }
+        else
+            JOptionPane.showMessageDialog(null, "Selecciona un tipo de producto");
+    }
+
+    public void deleteKindOfProduct() {
+        KindOfProduct kindOfProduct = (KindOfProduct)existingProductsList.getSelectedValue();
+
+        if(kindOfProduct != null)
+            kindOfProduct.deleteKindOfProduct();
+        else
+            JOptionPane.showMessageDialog(null, "Selecciona un tipo de producto");
     }
 
     public void refreshExistingProductsList() {
@@ -38,7 +69,10 @@ public class ProductKindController implements Controller {
     @Override
     public void selectText(String name) {
         switch(name) {
-            case "txtProduct" : txtProduct.setSelectionStart(0); txtProduct.setSelectionEnd(txtProduct.getText().length()); break;
+            case "txtProduct" :
+                txtProduct.setSelectionStart(0);
+                txtProduct.setSelectionEnd(txtProduct.getText().length());
+                break;
         }
     }
 
@@ -49,8 +83,13 @@ public class ProductKindController implements Controller {
 
         if(keyCode == 37 || keyCode == 39)
             switch(keySource){
-                case "txtProduct": btnAddProduct.requestFocusInWindow(); break;
-                case "btnAddProduct": txtProduct.requestFocusInWindow(); selectText("txtProduct"); break;
+                case "txtProduct":
+                    btnAddProduct.requestFocusInWindow();
+                    break;
+                case "btnAddProduct":
+                    txtProduct.requestFocusInWindow();
+                    selectText("txtProduct");
+                    break;
             }
         else if(keyCode == 10) {
             switch(keySource){

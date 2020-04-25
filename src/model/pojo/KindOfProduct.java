@@ -60,7 +60,6 @@ public class KindOfProduct {
         try {
             DBConnection dbConnection = new DBConnection();
             dbConnection.connect();
-            System.out.println(command);
 
             result = dbConnection.executeCommand(command);
 
@@ -72,12 +71,40 @@ public class KindOfProduct {
         return result;
     }
 
-    public void updateKindOfProduct() {
-        //TODO Add UPDATE SQL Command
+    public boolean updateKindOfProduct() {
+        boolean result = false;
+        String command = "UPDATE tipo_productos SET nombre = '" + this.name + "' WHERE id_tipoproducto = " + this.id + ";";
+
+        try {
+            DBConnection dbConnection = new DBConnection();
+            dbConnection.connect();
+
+            result = dbConnection.executeCommand(command);
+
+            dbConnection.disconnect();
+        }
+        catch (Exception e) {
+        }
+
+        return result;
     }
 
-    public void deleteKindOfProduct() {
-        //TODO Add DELETE SQL Command
+    public boolean deleteKindOfProduct() {
+        boolean result = false;
+        String command = "DELETE FROM tipo_productos WHERE id_tipoproducto = " + this.id + ";";
+
+        try {
+            DBConnection dbConnection = new DBConnection();
+            dbConnection.connect();
+
+            result = dbConnection.executeCommand(command);
+
+            dbConnection.disconnect();
+        }
+        catch (Exception e) {
+        }
+
+        return result;
     }
 
     public String toString() {
