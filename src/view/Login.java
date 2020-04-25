@@ -14,7 +14,7 @@ public class Login extends JFrame {
     private static boolean flag;
     private final Image backgroundImage;
     private List<Component> componentList;
-    private LoginController controller;
+    private LoginController loginController;
     
     public Login() {                
         backgroundImage = BackgroundImage.request();
@@ -26,7 +26,7 @@ public class Login extends JFrame {
         componentList.add(txtPassword);
         componentList.add(btnLogin);
 
-        controller = new LoginController(componentList);
+        loginController = new LoginController(componentList);
     }
 
     /**
@@ -179,29 +179,30 @@ public class Login extends JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         try {
             String userName = txtUser.getText();
-            String userPassword = controller.encryptPassword(txtPassword.getPassword());
-            
-            login(new User(userName, userPassword));
+            String userPassword = loginController.encryptPassword(txtPassword.getPassword());
+
+            if (loginController.login(new User(userName, userPassword))) {
+                new Dashboard().setVisible(true);
+                this.setVisible(flag);
+            }
+            else
+                JOptionPane.showMessageDialog(null, "Usuario o clave incorrecta");
         }
         catch(Exception e) {            
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyPressed
-        controller.setFocus(evt);
+        loginController.setFocus(evt);
     }//GEN-LAST:event_txtUserKeyPressed
 
     private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
-        controller.setFocus(evt);
+        loginController.setFocus(evt);
     }//GEN-LAST:event_txtPasswordKeyPressed
 
     private void btnLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLoginKeyPressed
-        controller.setFocus(evt);
+        loginController.setFocus(evt);
     }//GEN-LAST:event_btnLoginKeyPressed
-
-    private void login(User user) {
-        this.setVisible(flag);
-    }
 
     public static void main(String args[]) {
         EventQueue.invokeLater(() -> {

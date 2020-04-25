@@ -911,15 +911,19 @@ public class Dashboard extends javax.swing.JFrame {
     private void btnAddProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddProductMouseClicked
         productKindController.addKindOfProduct();
         productKindController.refreshExistingProductsList();
+
         txtProduct.setText("");
+        txtProduct.requestFocusInWindow();
     }//GEN-LAST:event_btnAddProductMouseClicked
 
     private void btnModifyProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifyProductMouseClicked
-        // TODO add your handling code here:
+        productKindController.modifyKindOfProduct();
+        productKindController.refreshExistingProductsList();
     }//GEN-LAST:event_btnModifyProductMouseClicked
 
     private void btnDeleteProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteProductMouseClicked
-        // TODO add your handling code here:
+        productKindController.deleteKindOfProduct();
+        productKindController.refreshExistingProductsList();
     }//GEN-LAST:event_btnDeleteProductMouseClicked
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
