@@ -1,6 +1,8 @@
 package controller;
 
+import model.pojo.User;
 import model.sql.security.Encryption;
+import view.Dashboard;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -16,6 +18,19 @@ public class LoginController implements Controller {
         txtUser = (JTextField)components.get(0);
         txtPassword = (JPasswordField)components.get(1);
         btnLogin = (JButton)components.get(2);
+    }
+
+    public boolean login(User user) {
+        boolean result = false;
+
+        try{
+            if(user.find())
+                result = true;
+        }
+        catch (Exception e) {
+        }
+
+        return result;
     }
 
     public String getPassword(char[] userPassword) {
