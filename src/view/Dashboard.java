@@ -411,8 +411,8 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
         btnModifyProduct.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                btnModifyProductKeyReleased(evt);
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnModifyProductKeyPressed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -502,10 +502,25 @@ public class Dashboard extends javax.swing.JFrame {
 
         txtHierarchy.setName("txtHierarchy"); // NOI18N
         txtHierarchy.setPreferredSize(new java.awt.Dimension(300, 30));
+        txtHierarchy.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtHierarchyKeyPressed(evt);
+            }
+        });
         hierarchyPanel.add(txtHierarchy);
 
         btnHierarchy.setText("Agregar");
         btnHierarchy.setName("btnHierarchy"); // NOI18N
+        btnHierarchy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnHierarchyMouseClicked(evt);
+            }
+        });
+        btnHierarchy.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnHierarchyKeyPressed(evt);
+            }
+        });
         hierarchyPanel.add(btnHierarchy);
 
         hierarchiesPanel.add(hierarchyPanel);
@@ -563,6 +578,16 @@ public class Dashboard extends javax.swing.JFrame {
 
         btnModifyHierarchy.setText("Modificar");
         btnModifyHierarchy.setName("btnModifyHierarchy"); // NOI18N
+        btnModifyHierarchy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModifyHierarchyMouseClicked(evt);
+            }
+        });
+        btnModifyHierarchy.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnModifyHierarchyKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
@@ -572,6 +597,16 @@ public class Dashboard extends javax.swing.JFrame {
 
         btnDeleteHierarchy.setText("Eliminar");
         btnDeleteHierarchy.setName("btnDeleteHierarchy"); // NOI18N
+        btnDeleteHierarchy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDeleteHierarchyMouseClicked(evt);
+            }
+        });
+        btnDeleteHierarchy.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnDeleteHierarchyKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 4;
@@ -900,10 +935,6 @@ public class Dashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_existingProductsListKeyPressed
 
-    private void btnModifyProductKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnModifyProductKeyReleased
-        productKindController.setFocus(evt);
-    }//GEN-LAST:event_btnModifyProductKeyReleased
-
     private void btnDeleteProductKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDeleteProductKeyPressed
         productKindController.setFocus(evt);
     }//GEN-LAST:event_btnDeleteProductKeyPressed
@@ -925,6 +956,38 @@ public class Dashboard extends javax.swing.JFrame {
         productKindController.deleteKindOfProduct();
         productKindController.refreshExistingProductsList();
     }//GEN-LAST:event_btnDeleteProductMouseClicked
+
+    private void btnModifyProductKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnModifyProductKeyPressed
+        productKindController.setFocus(evt);
+    }//GEN-LAST:event_btnModifyProductKeyPressed
+
+    private void txtHierarchyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHierarchyKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHierarchyKeyPressed
+
+    private void btnHierarchyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnHierarchyKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHierarchyKeyPressed
+
+    private void btnHierarchyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHierarchyMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHierarchyMouseClicked
+
+    private void btnModifyHierarchyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnModifyHierarchyKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModifyHierarchyKeyPressed
+
+    private void btnModifyHierarchyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifyHierarchyMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModifyHierarchyMouseClicked
+
+    private void btnDeleteHierarchyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDeleteHierarchyKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteHierarchyKeyPressed
+
+    private void btnDeleteHierarchyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteHierarchyMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteHierarchyMouseClicked
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutItem;
