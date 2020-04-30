@@ -643,10 +643,25 @@ public class Dashboard extends javax.swing.JFrame {
         txtPrivilege.setMinimumSize(new java.awt.Dimension(300, 30));
         txtPrivilege.setName("txtPrivilege"); // NOI18N
         txtPrivilege.setPreferredSize(new java.awt.Dimension(300, 30));
+        txtPrivilege.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPrivilegeKeyPressed(evt);
+            }
+        });
         privilegePanel.add(txtPrivilege);
 
         btnAddPrivilege.setText("Agregar");
         btnAddPrivilege.setName("btnAddPrivilege"); // NOI18N
+        btnAddPrivilege.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAddPrivilegeMouseClicked(evt);
+            }
+        });
+        btnAddPrivilege.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnAddPrivilegeKeyPressed(evt);
+            }
+        });
         privilegePanel.add(btnAddPrivilege);
 
         privilegesPanel.add(privilegePanel);
@@ -674,6 +689,16 @@ public class Dashboard extends javax.swing.JFrame {
 
         btnModifyPrivilege.setText("Modificar");
         btnModifyPrivilege.setName("btnModifyPrivilege"); // NOI18N
+        btnModifyPrivilege.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModifyPrivilegeMouseClicked(evt);
+            }
+        });
+        btnModifyPrivilege.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnModifyPrivilegeKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
@@ -683,6 +708,16 @@ public class Dashboard extends javax.swing.JFrame {
 
         btnDeletePrivilege.setText("Eliminar");
         btnDeletePrivilege.setName("btnDeletePrivilege"); // NOI18N
+        btnDeletePrivilege.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDeletePrivilegeMouseClicked(evt);
+            }
+        });
+        btnDeletePrivilege.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnDeletePrivilegeKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
@@ -1004,6 +1039,34 @@ public class Dashboard extends javax.swing.JFrame {
         hierarchyController.deleteHierarchy();
         hierarchyController.refreshExistingHierarchiesTable();
     }//GEN-LAST:event_btnDeleteHierarchyMouseClicked
+
+    private void txtPrivilegeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrivilegeKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrivilegeKeyPressed
+
+    private void btnAddPrivilegeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAddPrivilegeKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddPrivilegeKeyPressed
+
+    private void btnAddPrivilegeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddPrivilegeMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddPrivilegeMouseClicked
+
+    private void btnModifyPrivilegeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnModifyPrivilegeKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModifyPrivilegeKeyPressed
+
+    private void btnModifyPrivilegeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifyPrivilegeMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModifyPrivilegeMouseClicked
+
+    private void btnDeletePrivilegeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDeletePrivilegeKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeletePrivilegeKeyPressed
+
+    private void btnDeletePrivilegeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeletePrivilegeMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeletePrivilegeMouseClicked
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutItem;
