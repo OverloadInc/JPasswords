@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +13,7 @@ public class Dashboard extends javax.swing.JFrame {
     private final Image backgroundImage;
     private List<Component> componentList;
     private ProductKindController productKindController;
+    private HierarchyController hierarchyController;
 
     public Dashboard() {
         BackgroundImage.setName("dashboard_white_blue01.jpg"); //aspecto
@@ -884,6 +884,16 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_lblDepartmentsLogoMouseClicked
 
     private void lblHierarchyLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHierarchyLogoMouseClicked
+        componentList = new ArrayList<>();
+        componentList.add(txtHierarchy);
+        componentList.add(btnHierarchy);
+        componentList.add(btnModifyHierarchy);
+        componentList.add(btnDeleteHierarchy);
+        componentList.add(existingHierarchiesTable);
+
+        hierarchyController = new HierarchyController(componentList);
+        hierarchyController.refreshExistingHierarchiesTable();
+
         cardLayout.show(this.mainPanel, "hierarchiesPanel");
     }//GEN-LAST:event_lblHierarchyLogoMouseClicked
 
@@ -948,7 +958,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddProductMouseClicked
 
     private void btnModifyProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifyProductMouseClicked
-        productKindController.modifyKindOfProduct();
+        productKindController.updateKindOfProduct();
         productKindController.refreshExistingProductsList();
     }//GEN-LAST:event_btnModifyProductMouseClicked
 
@@ -962,31 +972,37 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnModifyProductKeyPressed
 
     private void txtHierarchyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHierarchyKeyPressed
-        // TODO add your handling code here:
+        hierarchyController.setFocus(evt);
     }//GEN-LAST:event_txtHierarchyKeyPressed
 
     private void btnHierarchyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnHierarchyKeyPressed
-        // TODO add your handling code here:
+        hierarchyController.setFocus(evt);
     }//GEN-LAST:event_btnHierarchyKeyPressed
 
     private void btnHierarchyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHierarchyMouseClicked
-        // TODO add your handling code here:
+        hierarchyController.addHierarchy();
+        hierarchyController.refreshExistingHierarchiesTable();
+
+        txtHierarchy.setText("");
+        txtHierarchy.requestFocusInWindow();
     }//GEN-LAST:event_btnHierarchyMouseClicked
 
     private void btnModifyHierarchyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnModifyHierarchyKeyPressed
-        // TODO add your handling code here:
+        hierarchyController.setFocus(evt);
     }//GEN-LAST:event_btnModifyHierarchyKeyPressed
 
     private void btnModifyHierarchyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifyHierarchyMouseClicked
-        // TODO add your handling code here:
+        hierarchyController.updateHierarchy();
+        hierarchyController.refreshExistingHierarchiesTable();
     }//GEN-LAST:event_btnModifyHierarchyMouseClicked
 
     private void btnDeleteHierarchyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDeleteHierarchyKeyPressed
-        // TODO add your handling code here:
+        hierarchyController.setFocus(evt);
     }//GEN-LAST:event_btnDeleteHierarchyKeyPressed
 
     private void btnDeleteHierarchyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteHierarchyMouseClicked
-        // TODO add your handling code here:
+        hierarchyController.deleteHierarchy();
+        hierarchyController.refreshExistingHierarchiesTable();
     }//GEN-LAST:event_btnDeleteHierarchyMouseClicked
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
