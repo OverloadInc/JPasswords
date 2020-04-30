@@ -32,7 +32,7 @@ public class ProductKindController implements Controller {
             JOptionPane.showMessageDialog(null, "Introduce un nombre válido");
     }
 
-    public void modifyKindOfProduct() {
+    public void updateKindOfProduct() {
         KindOfProduct kindOfProduct = (KindOfProduct)existingProductsList.getSelectedValue();
 
         if(kindOfProduct != null) {
