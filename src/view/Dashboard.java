@@ -12,11 +12,10 @@ public class Dashboard extends javax.swing.JFrame {
     private final CardLayout cardLayout;    
     private final Image backgroundImage;
     private List<Component> componentList;
-    private ProductKindController productKindController;
-    private HierarchyController hierarchyController;
+    private Controller controller;
 
     public Dashboard() {
-        BackgroundImage.setName("dashboard_white_blue01.jpg"); //aspecto
+        BackgroundImage.setName("dashboard_white_blue01.jpg");
         backgroundImage = BackgroundImage.request();
         
         initComponents();
@@ -896,8 +895,8 @@ public class Dashboard extends javax.swing.JFrame {
         componentList.add(btnAddProduct);
         componentList.add(existingProductsList);
 
-        productKindController = new ProductKindController(componentList);
-        productKindController.refreshExistingProductsList();
+        controller = new ProductKindController(componentList);
+        ((ProductKindController)controller).refreshExistingProductsList();
 
         cardLayout.show(this.mainPanel, "kindProductsPanel");
     }//GEN-LAST:event_lblKindProductLogoMouseClicked
@@ -926,13 +925,23 @@ public class Dashboard extends javax.swing.JFrame {
         componentList.add(btnDeleteHierarchy);
         componentList.add(existingHierarchiesTable);
 
-        hierarchyController = new HierarchyController(componentList);
-        hierarchyController.refreshExistingHierarchiesTable();
+        controller = new HierarchyController(componentList);
+        ((HierarchyController)controller).refreshExistingHierarchiesTable();
 
         cardLayout.show(this.mainPanel, "hierarchiesPanel");
     }//GEN-LAST:event_lblHierarchyLogoMouseClicked
 
     private void lblPrivilegesLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPrivilegesLogoMouseClicked
+        componentList = new ArrayList<>();
+        componentList.add(txtPrivilege);
+        componentList.add(btnAddPrivilege);
+        componentList.add(btnModifyPrivilege);
+        componentList.add(btnDeletePrivilege);
+        componentList.add(existingPrivilegesList);
+
+        controller = new PrivilegeController(componentList);
+        ((PrivilegeController)controller).refreshExistingPrivilegeList();
+
         cardLayout.show(this.mainPanel, "privilegesPanel");
     }//GEN-LAST:event_lblPrivilegesLogoMouseClicked
 
@@ -969,11 +978,11 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void txtProductKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProductKeyPressed
-        productKindController.setFocus(evt);
+        controller.setFocus(evt);
     }//GEN-LAST:event_txtProductKeyPressed
 
     private void btnAddProductKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAddProductKeyPressed
-        productKindController.setFocus(evt);
+        controller.setFocus(evt);
     }//GEN-LAST:event_btnAddProductKeyPressed
 
     private void existingProductsListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_existingProductsListKeyPressed
@@ -981,91 +990,97 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_existingProductsListKeyPressed
 
     private void btnDeleteProductKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDeleteProductKeyPressed
-        productKindController.setFocus(evt);
+        controller.setFocus(evt);
     }//GEN-LAST:event_btnDeleteProductKeyPressed
 
     private void btnAddProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddProductMouseClicked
-        productKindController.addKindOfProduct();
-        productKindController.refreshExistingProductsList();
+        ((ProductKindController)controller).addKindOfProduct();
+        ((ProductKindController)controller).refreshExistingProductsList();
 
         txtProduct.setText("");
         txtProduct.requestFocusInWindow();
     }//GEN-LAST:event_btnAddProductMouseClicked
 
     private void btnModifyProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifyProductMouseClicked
-        productKindController.updateKindOfProduct();
-        productKindController.refreshExistingProductsList();
+        ((ProductKindController)controller).updateKindOfProduct();
+        ((ProductKindController)controller).refreshExistingProductsList();
     }//GEN-LAST:event_btnModifyProductMouseClicked
 
     private void btnDeleteProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteProductMouseClicked
-        productKindController.deleteKindOfProduct();
-        productKindController.refreshExistingProductsList();
+        ((ProductKindController)controller).deleteKindOfProduct();
+        ((ProductKindController)controller).refreshExistingProductsList();
     }//GEN-LAST:event_btnDeleteProductMouseClicked
 
     private void btnModifyProductKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnModifyProductKeyPressed
-        productKindController.setFocus(evt);
+        controller.setFocus(evt);
     }//GEN-LAST:event_btnModifyProductKeyPressed
 
     private void txtHierarchyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHierarchyKeyPressed
-        hierarchyController.setFocus(evt);
+        controller.setFocus(evt);
     }//GEN-LAST:event_txtHierarchyKeyPressed
 
     private void btnHierarchyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnHierarchyKeyPressed
-        hierarchyController.setFocus(evt);
+        controller.setFocus(evt);
     }//GEN-LAST:event_btnHierarchyKeyPressed
 
     private void btnHierarchyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHierarchyMouseClicked
-        hierarchyController.addHierarchy();
-        hierarchyController.refreshExistingHierarchiesTable();
+        ((HierarchyController)controller).addHierarchy();
+        ((HierarchyController)controller).refreshExistingHierarchiesTable();
 
         txtHierarchy.setText("");
         txtHierarchy.requestFocusInWindow();
     }//GEN-LAST:event_btnHierarchyMouseClicked
 
     private void btnModifyHierarchyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnModifyHierarchyKeyPressed
-        hierarchyController.setFocus(evt);
+        controller.setFocus(evt);
     }//GEN-LAST:event_btnModifyHierarchyKeyPressed
 
     private void btnModifyHierarchyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifyHierarchyMouseClicked
-        hierarchyController.updateHierarchy();
-        hierarchyController.refreshExistingHierarchiesTable();
+        ((HierarchyController)controller).updateHierarchy();
+        ((HierarchyController)controller).refreshExistingHierarchiesTable();
     }//GEN-LAST:event_btnModifyHierarchyMouseClicked
 
     private void btnDeleteHierarchyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDeleteHierarchyKeyPressed
-        hierarchyController.setFocus(evt);
+        controller.setFocus(evt);
     }//GEN-LAST:event_btnDeleteHierarchyKeyPressed
 
     private void btnDeleteHierarchyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteHierarchyMouseClicked
-        hierarchyController.deleteHierarchy();
-        hierarchyController.refreshExistingHierarchiesTable();
+        ((HierarchyController)controller).deleteHierarchy();
+        ((HierarchyController)controller).refreshExistingHierarchiesTable();
     }//GEN-LAST:event_btnDeleteHierarchyMouseClicked
 
     private void txtPrivilegeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrivilegeKeyPressed
-        // TODO add your handling code here:
+        controller.setFocus(evt);
     }//GEN-LAST:event_txtPrivilegeKeyPressed
 
     private void btnAddPrivilegeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAddPrivilegeKeyPressed
-        // TODO add your handling code here:
+        controller.setFocus(evt);
     }//GEN-LAST:event_btnAddPrivilegeKeyPressed
 
     private void btnAddPrivilegeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddPrivilegeMouseClicked
-        // TODO add your handling code here:
+        ((PrivilegeController)controller).addPrivilege();
+        ((PrivilegeController)controller).refreshExistingPrivilegeList();
+
+        txtPrivilege.setText("");
+        txtPrivilege.requestFocusInWindow();
     }//GEN-LAST:event_btnAddPrivilegeMouseClicked
 
     private void btnModifyPrivilegeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnModifyPrivilegeKeyPressed
-        // TODO add your handling code here:
+        controller.setFocus(evt);
     }//GEN-LAST:event_btnModifyPrivilegeKeyPressed
 
     private void btnModifyPrivilegeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifyPrivilegeMouseClicked
-        // TODO add your handling code here:
+        ((PrivilegeController)controller).updatePrivilege();
+        ((PrivilegeController)controller).refreshExistingPrivilegeList();
     }//GEN-LAST:event_btnModifyPrivilegeMouseClicked
 
     private void btnDeletePrivilegeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDeletePrivilegeKeyPressed
-        // TODO add your handling code here:
+        controller.setFocus(evt);
     }//GEN-LAST:event_btnDeletePrivilegeKeyPressed
 
     private void btnDeletePrivilegeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeletePrivilegeMouseClicked
-        // TODO add your handling code here:
+        ((PrivilegeController)controller).deletePrivilege();
+        ((PrivilegeController)controller).refreshExistingPrivilegeList();
     }//GEN-LAST:event_btnDeletePrivilegeMouseClicked
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
