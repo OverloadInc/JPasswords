@@ -10,9 +10,7 @@ import java.util.List;
 public class HierarchyController implements Controller {
 
     private JTextField txtHierarchy;
-    private JButton btnHierarchy;
-    private JButton btnModifyHierarchy;
-    private JButton btnDeleteHierarchy;
+    private JButton btnHierarchy, btnModifyHierarchy, btnDeleteHierarchy;
     private JTable existingHierarchiesTable;
 
     public HierarchyController(List components) {
