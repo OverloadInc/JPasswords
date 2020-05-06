@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import controller.*;
+import model.pojo.Privilege;
+import model.pojo.User;
 
 import javax.swing.*;
 
@@ -13,14 +15,48 @@ public class Dashboard extends javax.swing.JFrame {
     private final Image backgroundImage;
     private List<Component> componentList;
     private Controller controller;
+    private User user;
 
-    public Dashboard() {
+    public Dashboard(User user) {
+        this.user = user;
         BackgroundImage.setName("dashboard_white_blue01.jpg");
         backgroundImage = BackgroundImage.request();
         
         initComponents();
+        setDashboard();
         
         cardLayout = (CardLayout)(mainPanel.getLayout());
+    }
+
+    public void setDashboard() {
+        switch (new Privilege().getPrivilege(user)) {
+            case "Supervisor": break;
+            case "Administrador": administratorUser(); break;
+            case "Estándar": standardUser(); break;
+            default: break;
+        }
+    }
+
+    public void administratorUser() {
+        /*lblCredentialsLogo.setVisible(true);
+        lblAccessLogo.setVisible(true);
+        lblDepartmentsLogo.setVisible(true);
+        lblEmployees.setVisible(true);*/
+        lblHierarchyLogo.setVisible(false);
+        /*lblKindProductLogo.setVisible(true);
+        lblPrivilegesLogo.setVisible(true);
+        lblProductLogo.setVisible(true);*/
+    }
+
+    public void standardUser() {
+        /*lblCredentialsLogo.setVisible(true);
+        lblAccessLogo.setVisible(true);*/
+        lblDepartmentsLogo.setVisible(false);
+        lblEmployees.setVisible(false);
+        lblHierarchyLogo.setVisible(false);
+        lblKindProductLogo.setVisible(false);
+        lblPrivilegesLogo.setVisible(false);
+        lblProductLogo.setVisible(false);
     }
        
     /**

@@ -11,7 +11,6 @@ import java.util.List;
 
 public class Login extends JFrame {
 
-    private static boolean flag;
     private final Image backgroundImage;
     private List<Component> componentList;
     private LoginController loginController;
@@ -21,7 +20,7 @@ public class Login extends JFrame {
         
         initComponents();
 
-        componentList = new ArrayList<Component>();
+        componentList = new ArrayList<>();
         componentList.add(txtUser);
         componentList.add(txtPassword);
         componentList.add(btnLogin);
@@ -181,9 +180,11 @@ public class Login extends JFrame {
             String userName = txtUser.getText();
             String userPassword = loginController.encryptPassword(txtPassword.getPassword());
 
-            if (loginController.login(new User(userName, userPassword))) {
-                new Dashboard().setVisible(true);
-                this.setVisible(flag);
+            User user = new User(userName, userPassword);
+
+            if (loginController.login(user)) {
+                new Dashboard(user).setVisible(true);
+                this.setVisible(false);
             }
             else
                 JOptionPane.showMessageDialog(null, "Usuario o clave incorrecta");
