@@ -2,7 +2,6 @@ package controller;
 
 import model.pojo.User;
 import model.sql.security.Encryption;
-import view.Dashboard;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
