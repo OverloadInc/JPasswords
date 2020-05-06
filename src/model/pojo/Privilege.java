@@ -53,6 +53,31 @@ public class Privilege {
         return privileges;
     }
 
+    public String getPrivilege(User user) {
+        String privilege = null;
+        String query = "SELECT e.nombre AS \"empleado\", u.nombre AS \"usuario\", p.nombre AS \"privilegio\"\n" +
+                "FROM empleados e, usuarios u, privilegios p, empleado_privilegio ep\n" +
+                "WHERE e.id_empleado = ep.id_empleado AND ep.id_privilegio = p.id_privilegio AND e.id_empleado = u.id_empleado\n" +
+                "AND u.nombre = '" + user.getName() + "'";
+
+        try {
+            DBConnection dbConnection = new DBConnection();
+            dbConnection.connect();
+
+            ResultSet resultSet = dbConnection.executeQuery(query);
+
+            while(resultSet.next()) {
+                privilege = resultSet.getString("privilegio");
+            }
+
+            dbConnection.disconnect();
+        }
+        catch (Exception e) {
+        }
+
+        return privilege;
+    }
+
     public boolean addPrivilege() {
         boolean result = false;
         String command = "INSERT INTO privilegios (nombre) VALUES ('" + this.name + "');";
