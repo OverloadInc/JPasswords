@@ -1,11 +1,7 @@
 package over.view;
 
-import over.controller.BackgroundImage;
-import over.controller.ProductKindController;
-import over.controller.Controller;
-import over.controller.Carousel;
-import over.controller.PrivilegeController;
-import over.controller.HierarchyController;
+import over.controller.*;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -112,6 +108,18 @@ public class Dashboard extends javax.swing.JFrame {
         credentialsPanel = new javax.swing.JPanel();
         exployeesPanel = new javax.swing.JPanel();
         departmentsPanel = new javax.swing.JPanel();
+        departmentsFiller1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
+        departmentPanel = new javax.swing.JPanel();
+        lblDepartment = new javax.swing.JLabel();
+        txtDepartment = new javax.swing.JTextField();
+        btnAddDepartment = new javax.swing.JButton();
+        departmentsFiller2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
+        existingDepartmentsPanel = new javax.swing.JPanel();
+        existingDepartmentsScroll = new javax.swing.JScrollPane();
+        existingDepartmentsList = new javax.swing.JList<>();
+        btnModifyDepartment = new javax.swing.JButton();
+        btnDeleteDepartment = new javax.swing.JButton();
+        departmentsFiller3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
         hierarchiesPanel = new javax.swing.JPanel();
         hierarchiesFiller1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
         hierarchyPanel = new javax.swing.JPanel();
@@ -164,7 +172,7 @@ public class Dashboard extends javax.swing.JFrame {
         toolBar.setRollover(true);
         toolBar.setName("toolBar"); // NOI18N
 
-        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/toolbar/home.png"))); // NOI18N
+        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/toolbar/home.png"))); // NOI18N
         btnHome.setToolTipText("Inicio");
         btnHome.setFocusable(false);
         btnHome.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -180,7 +188,7 @@ public class Dashboard extends javax.swing.JFrame {
         separator.setName("separator"); // NOI18N
         toolBar.add(separator);
 
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/toolbar/back.png"))); // NOI18N
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/toolbar/back.png"))); // NOI18N
         btnBack.setToolTipText("Atras");
         btnBack.setFocusable(false);
         btnBack.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -193,7 +201,7 @@ public class Dashboard extends javax.swing.JFrame {
         });
         toolBar.add(btnBack);
 
-        btnNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/toolbar/next.png"))); // NOI18N
+        btnNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/toolbar/next.png"))); // NOI18N
         btnNext.setToolTipText("Adelante");
         btnNext.setFocusable(false);
         btnNext.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -221,7 +229,7 @@ public class Dashboard extends javax.swing.JFrame {
         dashboardPanel.setPreferredSize(new java.awt.Dimension(800, 600));
         dashboardPanel.setLayout(new java.awt.GridBagLayout());
 
-        lblKindProductLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/dashboard/kind_of_product.png"))); // NOI18N
+        lblKindProductLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/dashboard/kind_of_product.png"))); // NOI18N
         lblKindProductLogo.setText("Tipo de productos");
         lblKindProductLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblKindProductLogo.setName("lblKindProductLogo"); // NOI18N
@@ -238,7 +246,7 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         dashboardPanel.add(lblKindProductLogo, gridBagConstraints);
 
-        lblProductLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/dashboard/products.png"))); // NOI18N
+        lblProductLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/dashboard/products.png"))); // NOI18N
         lblProductLogo.setText("Productos");
         lblProductLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblProductLogo.setName("lblProductLogo"); // NOI18N
@@ -255,7 +263,7 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         dashboardPanel.add(lblProductLogo, gridBagConstraints);
 
-        lblCredentialsLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/dashboard/credentials.png"))); // NOI18N
+        lblCredentialsLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/dashboard/credentials.png"))); // NOI18N
         lblCredentialsLogo.setText("Credenciales");
         lblCredentialsLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblCredentialsLogo.setName("lblCredentialsLogo"); // NOI18N
@@ -272,7 +280,7 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         dashboardPanel.add(lblCredentialsLogo, gridBagConstraints);
 
-        lblEmployees.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/dashboard/users.png"))); // NOI18N
+        lblEmployees.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/dashboard/users.png"))); // NOI18N
         lblEmployees.setText("Empleados");
         lblEmployees.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblEmployees.setName("lblEmployees"); // NOI18N
@@ -289,7 +297,7 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         dashboardPanel.add(lblEmployees, gridBagConstraints);
 
-        lblDepartmentsLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/dashboard/departments.png"))); // NOI18N
+        lblDepartmentsLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/dashboard/departments.png"))); // NOI18N
         lblDepartmentsLogo.setText("Departamentos");
         lblDepartmentsLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblDepartmentsLogo.setName("lblDepartmentsLogo"); // NOI18N
@@ -306,7 +314,7 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         dashboardPanel.add(lblDepartmentsLogo, gridBagConstraints);
 
-        lblHierarchyLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/dashboard/hierarchy.png"))); // NOI18N
+        lblHierarchyLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/dashboard/hierarchy.png"))); // NOI18N
         lblHierarchyLogo.setText("Jerarquías");
         lblHierarchyLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblHierarchyLogo.setName("lblHierarchyLogo"); // NOI18N
@@ -323,7 +331,7 @@ public class Dashboard extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         dashboardPanel.add(lblHierarchyLogo, gridBagConstraints);
 
-        lblPrivilegesLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/dashboard/privileges.png"))); // NOI18N
+        lblPrivilegesLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/dashboard/privileges.png"))); // NOI18N
         lblPrivilegesLogo.setText("Privilegios");
         lblPrivilegesLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblPrivilegesLogo.setName("lblPrivilegesLogo"); // NOI18N
@@ -341,7 +349,7 @@ public class Dashboard extends javax.swing.JFrame {
         dashboardPanel.add(lblPrivilegesLogo, gridBagConstraints);
 
         lblAccessLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAccessLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/dashboard/access.png"))); // NOI18N
+        lblAccessLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/dashboard/access.png"))); // NOI18N
         lblAccessLogo.setText("Accesos");
         lblAccessLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblAccessLogo.setName("lblAccessLogo"); // NOI18N
@@ -517,6 +525,114 @@ public class Dashboard extends javax.swing.JFrame {
         departmentsPanel.setName("departmentsPanel"); // NOI18N
         departmentsPanel.setOpaque(false);
         departmentsPanel.setPreferredSize(new java.awt.Dimension(800, 600));
+        departmentsPanel.setLayout(new javax.swing.BoxLayout(departmentsPanel, javax.swing.BoxLayout.Y_AXIS));
+
+        departmentsFiller1.setName("departmentsFiller1"); // NOI18N
+        departmentsPanel.add(departmentsFiller1);
+
+        departmentPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Agregar departamento"));
+        departmentPanel.setMinimumSize(new java.awt.Dimension(300, 60));
+        departmentPanel.setName("departmentPanel"); // NOI18N
+        departmentPanel.setOpaque(false);
+        departmentPanel.setPreferredSize(new java.awt.Dimension(300, 60));
+
+        lblDepartment.setText("Nombre");
+        lblDepartment.setName("lblDepartment"); // NOI18N
+        departmentPanel.add(lblDepartment);
+
+        txtDepartment.setMinimumSize(new java.awt.Dimension(200, 30));
+        txtDepartment.setName("txtDepartment"); // NOI18N
+        txtDepartment.setPreferredSize(new java.awt.Dimension(200, 30));
+        departmentPanel.add(txtDepartment);
+
+        btnAddDepartment.setText("Agregar");
+        btnAddDepartment.setName("btnAddDepartment"); // NOI18N
+        btnAddDepartment.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAddDepartmentMouseClicked(evt);
+            }
+        });
+        btnAddDepartment.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnAddDepartmentKeyPressed(evt);
+            }
+        });
+        departmentPanel.add(btnAddDepartment);
+
+        departmentsPanel.add(departmentPanel);
+
+        departmentsFiller2.setName("departmentsFiller2"); // NOI18N
+        departmentsPanel.add(departmentsFiller2);
+
+        existingDepartmentsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Departamentos existentes"));
+        existingDepartmentsPanel.setName("existingDepartmentsPanel"); // NOI18N
+        existingDepartmentsPanel.setOpaque(false);
+        existingDepartmentsPanel.setPreferredSize(new java.awt.Dimension(300, 180));
+        existingDepartmentsPanel.setLayout(new java.awt.GridBagLayout());
+
+        existingDepartmentsScroll.setName("existingDepartmentsScroll"); // NOI18N
+
+        existingDepartmentsList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        existingDepartmentsList.setMaximumSize(new java.awt.Dimension(300, 300));
+        existingDepartmentsList.setMinimumSize(new java.awt.Dimension(300, 300));
+        existingDepartmentsList.setName("existingDepartmentsList"); // NOI18N
+        existingDepartmentsList.setPreferredSize(new java.awt.Dimension(300, 300));
+        existingDepartmentsList.setVisibleRowCount(10);
+        existingDepartmentsScroll.setViewportView(existingDepartmentsList);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridheight = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        existingDepartmentsPanel.add(existingDepartmentsScroll, gridBagConstraints);
+
+        btnModifyDepartment.setText("Modificar");
+        btnModifyDepartment.setName("btnModifyDepartment"); // NOI18N
+        btnModifyDepartment.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModifyDepartmentMouseClicked(evt);
+            }
+        });
+        btnModifyDepartment.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnModifyDepartmentKeyPressed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        existingDepartmentsPanel.add(btnModifyDepartment, gridBagConstraints);
+
+        btnDeleteDepartment.setText("Eliminar");
+        btnDeleteDepartment.setName("btnDeleteDepartment"); // NOI18N
+        btnDeleteDepartment.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDeleteDepartmentMouseClicked(evt);
+            }
+        });
+        btnDeleteDepartment.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnDeleteDepartmentKeyPressed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        existingDepartmentsPanel.add(btnDeleteDepartment, gridBagConstraints);
+
+        departmentsPanel.add(existingDepartmentsPanel);
+
+        departmentsFiller3.setName("departmentsFiller3"); // NOI18N
+        departmentsPanel.add(departmentsFiller3);
+
         mainPanel.add(departmentsPanel, "departmentsPanel");
 
         hierarchiesPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -875,7 +991,7 @@ public class Dashboard extends javax.swing.JFrame {
         fileMenu.setText("Archivo");
         fileMenu.setName("fileMenu"); // NOI18N
 
-        exportItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/menubar/export.png"))); // NOI18N
+        exportItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/menubar/export.png"))); // NOI18N
         exportItem.setText("Exportar");
         exportItem.setName("exportItem"); // NOI18N
         exportItem.addActionListener(new java.awt.event.ActionListener() {
@@ -885,7 +1001,7 @@ public class Dashboard extends javax.swing.JFrame {
         });
         fileMenu.add(exportItem);
 
-        printItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/menubar/print.png"))); // NOI18N
+        printItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/menubar/print.png"))); // NOI18N
         printItem.setText("Imprimir");
         printItem.setName("printItem"); // NOI18N
         printItem.addActionListener(new java.awt.event.ActionListener() {
@@ -895,7 +1011,7 @@ public class Dashboard extends javax.swing.JFrame {
         });
         fileMenu.add(printItem);
 
-        exitItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/menubar/logout.png"))); // NOI18N
+        exitItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/menubar/logout.png"))); // NOI18N
         exitItem.setText("Salir");
         exitItem.setName("exitItem"); // NOI18N
         exitItem.addActionListener(new java.awt.event.ActionListener() {
@@ -911,7 +1027,7 @@ public class Dashboard extends javax.swing.JFrame {
         helpMenu.setText("Ayuda");
         helpMenu.setName("helpMenu"); // NOI18N
 
-        aboutItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/menubar/about.png"))); // NOI18N
+        aboutItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/menubar/about.png"))); // NOI18N
         aboutItem.setText("Acerca de...");
         aboutItem.setName("aboutItem"); // NOI18N
         aboutItem.addActionListener(new java.awt.event.ActionListener() {
@@ -954,6 +1070,16 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_lblEmployeesMouseClicked
 
     private void lblDepartmentsLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDepartmentsLogoMouseClicked
+        componentList = new ArrayList<>();
+        componentList.add(txtDepartment);
+        componentList.add(btnAddDepartment);
+        componentList.add(btnModifyDepartment);
+        componentList.add(btnDeleteDepartment);
+        componentList.add(existingDepartmentsList);
+
+        controller = new DepartmentController(componentList);
+        ((DepartmentController)controller).refreshExistingDepartmentList();
+
         cardLayout.show(this.mainPanel, "departmentsPanel");
     }//GEN-LAST:event_lblDepartmentsLogoMouseClicked
 
@@ -1122,19 +1248,52 @@ public class Dashboard extends javax.swing.JFrame {
         ((PrivilegeController)controller).deletePrivilege();
         ((PrivilegeController)controller).refreshExistingPrivilegeList();
     }//GEN-LAST:event_btnDeletePrivilegeMouseClicked
-    
+
+    private void btnAddDepartmentKeyPressed(java.awt.event.KeyEvent evt) {
+        controller.setFocus(evt);
+    }
+
+    private void btnAddDepartmentMouseClicked(java.awt.event.MouseEvent evt) {
+        ((DepartmentController)controller).addDepartment();
+        ((DepartmentController)controller).refreshExistingDepartmentList();
+
+        txtDepartment.setText("");
+        txtDepartment.requestFocusInWindow();
+    }
+
+    private void btnModifyDepartmentKeyPressed(java.awt.event.KeyEvent evt) {
+        controller.setFocus(evt);
+    }
+
+    private void btnModifyDepartmentMouseClicked(java.awt.event.MouseEvent evt) {
+        ((DepartmentController)controller).updateDepartment();
+        ((DepartmentController)controller).refreshExistingDepartmentList();
+    }
+
+    private void btnDeleteDepartmentKeyPressed(java.awt.event.KeyEvent evt) {
+        controller.setFocus(evt);
+    }
+
+    private void btnDeleteDepartmentMouseClicked(java.awt.event.MouseEvent evt) {
+        ((DepartmentController)controller).deleteDepartment();
+        ((DepartmentController)controller).refreshExistingDepartmentList();
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutItem;
     private javax.swing.JCheckBox accessesCheck;
     private javax.swing.JPanel accessesPanel;
+    private javax.swing.JButton btnAddDepartment;
     private javax.swing.JButton btnAddPrivilege;
     private javax.swing.JButton btnAddProduct;
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnDeleteDepartment;
     private javax.swing.JButton btnDeleteHierarchy;
     private javax.swing.JButton btnDeletePrivilege;
     private javax.swing.JButton btnDeleteProduct;
     private javax.swing.JButton btnHierarchy;
     private javax.swing.JButton btnHome;
+    private javax.swing.JButton btnModifyDepartment;
     private javax.swing.JButton btnModifyHierarchy;
     private javax.swing.JButton btnModifyPrivilege;
     private javax.swing.JButton btnModifyProduct;
@@ -1142,9 +1301,16 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JCheckBox credentialsCheck;
     private javax.swing.JPanel credentialsPanel;
     private javax.swing.JPanel dashboardPanel;
+    private javax.swing.JPanel departmentPanel;
     private javax.swing.JCheckBox departmentsCheck;
+    private javax.swing.Box.Filler departmentsFiller1;
+    private javax.swing.Box.Filler departmentsFiller2;
+    private javax.swing.Box.Filler departmentsFiller3;
     private javax.swing.JPanel departmentsPanel;
     private javax.swing.JCheckBox employeesCheck;
+    private javax.swing.JList<String> existingDepartmentsList;
+    private javax.swing.JPanel existingDepartmentsPanel;
+    private javax.swing.JScrollPane existingDepartmentsScroll;
     private javax.swing.JPanel existingHierarchiesPanel;
     private javax.swing.JScrollPane existingHierarchiesScroll;
     private javax.swing.JTable existingHierarchiesTable;
@@ -1169,6 +1335,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel kindProductsPanel;
     private javax.swing.JLabel lblAccessLogo;
     private javax.swing.JLabel lblCredentialsLogo;
+    private javax.swing.JLabel lblDepartment;
     private javax.swing.JLabel lblDepartmentsLogo;
     private javax.swing.JLabel lblEmployees;
     private javax.swing.JLabel lblHierarchy;
@@ -1195,6 +1362,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel productsPanel;
     private javax.swing.JToolBar.Separator separator;
     private javax.swing.JToolBar toolBar;
+    private javax.swing.JTextField txtDepartment;
     private javax.swing.JTextField txtHierarchy;
     private javax.swing.JTextField txtPrivilege;
     private javax.swing.JTextField txtProduct;
