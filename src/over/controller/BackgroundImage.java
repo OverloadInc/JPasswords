@@ -20,7 +20,7 @@ public class BackgroundImage {
     public static Image request() {
         Image targetImage = null;
         
-        String workingDirectory = "src" + File.separator + "resources" + File.separator + "img" + File.separator + "wallpaper" + File.separator + name;        
+        String workingDirectory = "src" + File.separator + "over" + File.separator + "resources" + File.separator + "img" + File.separator + "wallpaper" + File.separator + name;
         
         try {
             targetImage = ImageIO.read(new File(workingDirectory));            

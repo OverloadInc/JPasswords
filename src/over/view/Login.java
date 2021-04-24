@@ -76,7 +76,7 @@ public class Login extends JFrame {
         loginPanel.add(northFiller, gridBagConstraints);
 
         lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/login/holiday_shield.png"))); // NOI18N
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/login/holiday_shield.png"))); // NOI18N
         lblLogo.setName("lblLogo"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -138,7 +138,7 @@ public class Login extends JFrame {
         gridBagConstraints.weighty = 1.0;
         loginPanel.add(txtPassword, gridBagConstraints);
 
-        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/login/login.png"))); // NOI18N
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/login/login.png"))); // NOI18N
         btnLogin.setText("Entrar");
         btnLogin.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         btnLogin.setName("btnLogin"); // NOI18N
