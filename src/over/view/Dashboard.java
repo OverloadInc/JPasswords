@@ -165,7 +165,6 @@ public class Dashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Holiwallet v0.1 - Dashboard");
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setMinimumSize(new java.awt.Dimension(800, 600));
         setName("frmDashboard"); // NOI18N
 
