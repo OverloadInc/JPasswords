@@ -9,8 +9,6 @@ import java.util.List;
 import over.model.pojo.Privilege;
 import over.model.pojo.User;
 
-import javax.swing.*;
-
 public class Dashboard extends javax.swing.JFrame {
     private final CardLayout cardLayout;    
     private final Image backgroundImage;
@@ -93,18 +91,32 @@ public class Dashboard extends javax.swing.JFrame {
         lblAccessLogo = new javax.swing.JLabel();
         kindProductsPanel = new javax.swing.JPanel();
         productsFiller1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
+        kindProductPanel = new javax.swing.JPanel();
+        lblKindProduct = new javax.swing.JLabel();
+        txtKindProduct = new javax.swing.JTextField();
+        btnAddKindProduct = new javax.swing.JButton();
+        productsFiller2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
+        existingKindProductsPanel = new javax.swing.JPanel();
+        existingKindProductsScroll = new javax.swing.JScrollPane();
+        existingKindProductsList = new javax.swing.JList<>();
+        btnModifyKindProduct = new javax.swing.JButton();
+        btnDeleteKindProduct = new javax.swing.JButton();
+        productsFiller3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
+        productsPanel = new javax.swing.JPanel();
+        productFiller1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
         productPanel = new javax.swing.JPanel();
         lblProduct = new javax.swing.JLabel();
         txtProduct = new javax.swing.JTextField();
+        lblKind = new javax.swing.JLabel();
+        cmbKindProduct = new javax.swing.JComboBox<>();
         btnAddProduct = new javax.swing.JButton();
-        productsFiller2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
+        productFiller2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
         existingProductsPanel = new javax.swing.JPanel();
         existingProductsScroll = new javax.swing.JScrollPane();
-        existingProductsList = new javax.swing.JList<>();
+        existingProductsTable = new javax.swing.JTable();
         btnModifyProduct = new javax.swing.JButton();
         btnDeleteProduct = new javax.swing.JButton();
-        productsFiller3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
-        productsPanel = new javax.swing.JPanel();
+        productFiller3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
         credentialsPanel = new javax.swing.JPanel();
         exployeesPanel = new javax.swing.JPanel();
         departmentsPanel = new javax.swing.JPanel();
@@ -378,11 +390,135 @@ public class Dashboard extends javax.swing.JFrame {
         productsFiller1.setName("productsFiller1"); // NOI18N
         kindProductsPanel.add(productsFiller1);
 
-        productPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Agregar tipo de producto"));
-        productPanel.setMinimumSize(new java.awt.Dimension(300, 60));
+        kindProductPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Agregar tipo de producto"));
+        kindProductPanel.setMinimumSize(new java.awt.Dimension(300, 60));
+        kindProductPanel.setName("kindProductPanel"); // NOI18N
+        kindProductPanel.setOpaque(false);
+        kindProductPanel.setPreferredSize(new java.awt.Dimension(300, 60));
+
+        lblKindProduct.setText("Nombre");
+        lblKindProduct.setName("lblKindProduct"); // NOI18N
+        kindProductPanel.add(lblKindProduct);
+
+        txtKindProduct.setMinimumSize(new java.awt.Dimension(200, 30));
+        txtKindProduct.setName("txtKindProduct"); // NOI18N
+        txtKindProduct.setPreferredSize(new java.awt.Dimension(200, 30));
+        txtKindProduct.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtKindProductKeyPressed(evt);
+            }
+        });
+        kindProductPanel.add(txtKindProduct);
+
+        btnAddKindProduct.setText("Agregar");
+        btnAddKindProduct.setName("btnAddKindProduct"); // NOI18N
+        btnAddKindProduct.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAddKindProductMouseClicked(evt);
+            }
+        });
+        btnAddKindProduct.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnAddKindProductKeyPressed(evt);
+            }
+        });
+        kindProductPanel.add(btnAddKindProduct);
+
+        kindProductsPanel.add(kindProductPanel);
+
+        productsFiller2.setName("productsFiller2"); // NOI18N
+        kindProductsPanel.add(productsFiller2);
+
+        existingKindProductsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de productos existentes"));
+        existingKindProductsPanel.setName("existingKindProductsPanel"); // NOI18N
+        existingKindProductsPanel.setOpaque(false);
+        existingKindProductsPanel.setPreferredSize(new java.awt.Dimension(300, 180));
+        existingKindProductsPanel.setLayout(new java.awt.GridBagLayout());
+
+        existingKindProductsScroll.setMinimumSize(new java.awt.Dimension(319, 162));
+        existingKindProductsScroll.setName("existingKindProductsScroll"); // NOI18N
+
+        existingKindProductsList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        existingKindProductsList.setMaximumSize(new java.awt.Dimension(300, 300));
+        existingKindProductsList.setMinimumSize(new java.awt.Dimension(300, 300));
+        existingKindProductsList.setName("existingKindProductsList"); // NOI18N
+        existingKindProductsList.setPreferredSize(new java.awt.Dimension(300, 300));
+        existingKindProductsList.setVisibleRowCount(10);
+        existingKindProductsList.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                existingKindProductsListKeyPressed(evt);
+            }
+        });
+        existingKindProductsScroll.setViewportView(existingKindProductsList);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridheight = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        existingKindProductsPanel.add(existingKindProductsScroll, gridBagConstraints);
+
+        btnModifyKindProduct.setText("Modificar");
+        btnModifyKindProduct.setName("btnModifyKindProduct"); // NOI18N
+        btnModifyKindProduct.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModifyKindProductMouseClicked(evt);
+            }
+        });
+        btnModifyKindProduct.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnModifyKindProductKeyPressed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        existingKindProductsPanel.add(btnModifyKindProduct, gridBagConstraints);
+
+        btnDeleteKindProduct.setText("Eliminar");
+        btnDeleteKindProduct.setName("btnDeleteKindProduct"); // NOI18N
+        btnDeleteKindProduct.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDeleteKindProductMouseClicked(evt);
+            }
+        });
+        btnDeleteKindProduct.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnDeleteKindProductKeyPressed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        existingKindProductsPanel.add(btnDeleteKindProduct, gridBagConstraints);
+
+        kindProductsPanel.add(existingKindProductsPanel);
+
+        productsFiller3.setName("productsFiller3"); // NOI18N
+        kindProductsPanel.add(productsFiller3);
+
+        mainPanel.add(kindProductsPanel, "kindProductsPanel");
+
+        productsPanel.setBackground(new java.awt.Color(255, 255, 255));
+        productsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Productos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        productsPanel.setMinimumSize(new java.awt.Dimension(800, 600));
+        productsPanel.setName("productsPanel"); // NOI18N
+        productsPanel.setOpaque(false);
+        productsPanel.setPreferredSize(new java.awt.Dimension(800, 600));
+        productsPanel.setLayout(new javax.swing.BoxLayout(productsPanel, javax.swing.BoxLayout.Y_AXIS));
+
+        productFiller1.setName("productFiller1"); // NOI18N
+        productsPanel.add(productFiller1);
+
+        productPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Agregar producto"));
         productPanel.setName("productPanel"); // NOI18N
-        productPanel.setOpaque(false);
-        productPanel.setPreferredSize(new java.awt.Dimension(300, 60));
 
         lblProduct.setText("Nombre");
         lblProduct.setName("lblProduct"); // NOI18N
@@ -391,12 +527,14 @@ public class Dashboard extends javax.swing.JFrame {
         txtProduct.setMinimumSize(new java.awt.Dimension(200, 30));
         txtProduct.setName("txtProduct"); // NOI18N
         txtProduct.setPreferredSize(new java.awt.Dimension(200, 30));
-        txtProduct.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtProductKeyPressed(evt);
-            }
-        });
         productPanel.add(txtProduct);
+
+        lblKind.setText("Tipo de producto");
+        lblKind.setName("lblKind"); // NOI18N
+        productPanel.add(lblKind);
+
+        cmbKindProduct.setName("cmbKindProduct"); // NOI18N
+        productPanel.add(cmbKindProduct);
 
         btnAddProduct.setText("Agregar");
         btnAddProduct.setName("btnAddProduct"); // NOI18N
@@ -412,57 +550,64 @@ public class Dashboard extends javax.swing.JFrame {
         });
         productPanel.add(btnAddProduct);
 
-        kindProductsPanel.add(productPanel);
+        productsPanel.add(productPanel);
 
-        productsFiller2.setName("productsFiller2"); // NOI18N
-        kindProductsPanel.add(productsFiller2);
+        productFiller2.setName("productFiller2"); // NOI18N
+        productsPanel.add(productFiller2);
 
-        existingProductsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de productos existentes"));
+        existingProductsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Productos existentes"));
         existingProductsPanel.setName("existingProductsPanel"); // NOI18N
-        existingProductsPanel.setOpaque(false);
-        existingProductsPanel.setPreferredSize(new java.awt.Dimension(300, 180));
         existingProductsPanel.setLayout(new java.awt.GridBagLayout());
 
-        existingProductsScroll.setMinimumSize(new java.awt.Dimension(319, 162));
         existingProductsScroll.setName("existingProductsScroll"); // NOI18N
 
-        existingProductsList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        existingProductsList.setMaximumSize(new java.awt.Dimension(300, 300));
-        existingProductsList.setMinimumSize(new java.awt.Dimension(300, 300));
-        existingProductsList.setName("existingProductsList"); // NOI18N
-        existingProductsList.setPreferredSize(new java.awt.Dimension(300, 300));
-        existingProductsList.setVisibleRowCount(10);
-        existingProductsList.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                existingProductsListKeyPressed(evt);
+        existingProductsTable.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [][] {
+                        {null, null, null},
+                        {null, null, null},
+                        {null, null, null},
+                        {null, null, null}
+                },
+                new String [] {
+                        "Id", "Nombre", "Tipo"
+                }
+        ) {
+            Class[] types = new Class [] {
+                    java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                    false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        existingProductsScroll.setViewportView(existingProductsList);
+        existingProductsTable.setFillsViewportHeight(true);
+        existingProductsTable.setMaximumSize(new java.awt.Dimension(300, 300));
+        existingProductsTable.setMinimumSize(new java.awt.Dimension(300, 300));
+        existingProductsTable.setName("existingProductsTable"); // NOI18N
+        existingProductsTable.setPreferredSize(new java.awt.Dimension(300, 300));
+        existingProductsScroll.setViewportView(existingProductsTable);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.gridheight = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         existingProductsPanel.add(existingProductsScroll, gridBagConstraints);
 
         btnModifyProduct.setText("Modificar");
         btnModifyProduct.setName("btnModifyProduct"); // NOI18N
-        btnModifyProduct.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnModifyProductMouseClicked(evt);
-            }
-        });
-        btnModifyProduct.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnModifyProductKeyPressed(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -470,36 +615,18 @@ public class Dashboard extends javax.swing.JFrame {
 
         btnDeleteProduct.setText("Eliminar");
         btnDeleteProduct.setName("btnDeleteProduct"); // NOI18N
-        btnDeleteProduct.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnDeleteProductMouseClicked(evt);
-            }
-        });
-        btnDeleteProduct.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnDeleteProductKeyPressed(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         existingProductsPanel.add(btnDeleteProduct, gridBagConstraints);
 
-        kindProductsPanel.add(existingProductsPanel);
+        productsPanel.add(existingProductsPanel);
 
-        productsFiller3.setName("productsFiller3"); // NOI18N
-        kindProductsPanel.add(productsFiller3);
+        productFiller3.setName("productFiller3"); // NOI18N
+        productsPanel.add(productFiller3);
 
-        mainPanel.add(kindProductsPanel, "kindProductsPanel");
-
-        productsPanel.setBackground(new java.awt.Color(255, 255, 255));
-        productsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Productos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        productsPanel.setMinimumSize(new java.awt.Dimension(800, 600));
-        productsPanel.setName("productsPanel"); // NOI18N
-        productsPanel.setOpaque(false);
-        productsPanel.setPreferredSize(new java.awt.Dimension(800, 600));
         mainPanel.add(productsPanel, "productsPanel");
 
         credentialsPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -1046,9 +1173,9 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void lblKindProductLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKindProductLogoMouseClicked
         componentList = new ArrayList<>();
-        componentList.add(txtProduct);
-        componentList.add(btnAddProduct);
-        componentList.add(existingProductsList);
+        componentList.add(txtKindProduct);
+        componentList.add(btnAddKindProduct);
+        componentList.add(existingKindProductsList);
 
         controller = new ProductKindController(componentList);
         ((ProductKindController)controller).refreshExistingProductsList();
@@ -1142,43 +1269,43 @@ public class Dashboard extends javax.swing.JFrame {
         cardLayout.show(this.mainPanel, Carousel.next(Carousel.getActivePanel(mainPanel))); 
     }//GEN-LAST:event_btnNextActionPerformed
 
-    private void txtProductKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProductKeyPressed
+    private void txtKindProductKeyPressed(java.awt.event.KeyEvent evt) {
         controller.setFocus(evt);
-    }//GEN-LAST:event_txtProductKeyPressed
+    }
 
-    private void btnAddProductKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAddProductKeyPressed
+    private void btnAddKindProductKeyPressed(java.awt.event.KeyEvent evt) {
         controller.setFocus(evt);
-    }//GEN-LAST:event_btnAddProductKeyPressed
+    }
 
-    private void existingProductsListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_existingProductsListKeyPressed
+    private void existingKindProductsListKeyPressed(java.awt.event.KeyEvent evt) {
         // TODO add your handling code here:
-    }//GEN-LAST:event_existingProductsListKeyPressed
+    }
 
-    private void btnDeleteProductKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDeleteProductKeyPressed
+    private void btnDeleteKindProductKeyPressed(java.awt.event.KeyEvent evt) {
         controller.setFocus(evt);
-    }//GEN-LAST:event_btnDeleteProductKeyPressed
+    }
 
-    private void btnAddProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddProductMouseClicked
+    private void btnAddKindProductMouseClicked(java.awt.event.MouseEvent evt) {
         ((ProductKindController)controller).addKindOfProduct();
         ((ProductKindController)controller).refreshExistingProductsList();
 
-        txtProduct.setText("");
-        txtProduct.requestFocusInWindow();
-    }//GEN-LAST:event_btnAddProductMouseClicked
+        txtKindProduct.setText("");
+        txtKindProduct.requestFocusInWindow();
+    }
 
-    private void btnModifyProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifyProductMouseClicked
+    private void btnModifyKindProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifyProductMouseClicked
         ((ProductKindController)controller).updateKindOfProduct();
         ((ProductKindController)controller).refreshExistingProductsList();
-    }//GEN-LAST:event_btnModifyProductMouseClicked
+    }
 
-    private void btnDeleteProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteProductMouseClicked
+    private void btnDeleteKindProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteProductMouseClicked
         ((ProductKindController)controller).deleteKindOfProduct();
         ((ProductKindController)controller).refreshExistingProductsList();
-    }//GEN-LAST:event_btnDeleteProductMouseClicked
+    }
 
-    private void btnModifyProductKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnModifyProductKeyPressed
+    private void btnModifyKindProductKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnModifyProductKeyPressed
         controller.setFocus(evt);
-    }//GEN-LAST:event_btnModifyProductKeyPressed
+    }
 
     private void txtHierarchyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHierarchyKeyPressed
         controller.setFocus(evt);
@@ -1278,25 +1405,37 @@ public class Dashboard extends javax.swing.JFrame {
         ((DepartmentController)controller).refreshExistingDepartmentList();
     }
 
+    private void btnAddProductKeyPressed(java.awt.event.KeyEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void btnAddProductMouseClicked(java.awt.event.MouseEvent evt) {
+        // TODO add your handling code here:
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutItem;
     private javax.swing.JCheckBox accessesCheck;
     private javax.swing.JPanel accessesPanel;
     private javax.swing.JButton btnAddDepartment;
+    private javax.swing.JButton btnAddKindProduct;
     private javax.swing.JButton btnAddPrivilege;
     private javax.swing.JButton btnAddProduct;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDeleteDepartment;
     private javax.swing.JButton btnDeleteHierarchy;
+    private javax.swing.JButton btnDeleteKindProduct;
     private javax.swing.JButton btnDeletePrivilege;
     private javax.swing.JButton btnDeleteProduct;
     private javax.swing.JButton btnHierarchy;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnModifyDepartment;
     private javax.swing.JButton btnModifyHierarchy;
+    private javax.swing.JButton btnModifyKindProduct;
     private javax.swing.JButton btnModifyPrivilege;
     private javax.swing.JButton btnModifyProduct;
     private javax.swing.JButton btnNext;
+    private javax.swing.JComboBox<String> cmbKindProduct;
     private javax.swing.JCheckBox credentialsCheck;
     private javax.swing.JPanel credentialsPanel;
     private javax.swing.JPanel dashboardPanel;
@@ -1313,12 +1452,15 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel existingHierarchiesPanel;
     private javax.swing.JScrollPane existingHierarchiesScroll;
     private javax.swing.JTable existingHierarchiesTable;
+    private javax.swing.JList<String> existingKindProductsList;
+    private javax.swing.JPanel existingKindProductsPanel;
+    private javax.swing.JScrollPane existingKindProductsScroll;
     private javax.swing.JList<String> existingPrivilegesList;
     private javax.swing.JPanel existingPrivilegesPanel;
     private javax.swing.JScrollPane existingPrivilegesScroll;
-    private javax.swing.JList<String> existingProductsList;
     private javax.swing.JPanel existingProductsPanel;
     private javax.swing.JScrollPane existingProductsScroll;
+    private javax.swing.JTable existingProductsTable;
     private javax.swing.JMenuItem exitItem;
     private javax.swing.JPanel exployeesPanel;
     private javax.swing.JMenuItem exportItem;
@@ -1330,6 +1472,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.Box.Filler hierarchiesFiller3;
     private javax.swing.JPanel hierarchiesPanel;
     private javax.swing.JPanel hierarchyPanel;
+    private javax.swing.JPanel kindProductPanel;
     private javax.swing.JCheckBox kindProductsCheck;
     private javax.swing.JPanel kindProductsPanel;
     private javax.swing.JLabel lblAccessLogo;
@@ -1339,6 +1482,8 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel lblEmployees;
     private javax.swing.JLabel lblHierarchy;
     private javax.swing.JLabel lblHierarchyLogo;
+    private javax.swing.JLabel lblKind;
+    private javax.swing.JLabel lblKindProduct;
     private javax.swing.JLabel lblKindProductLogo;
     private javax.swing.JLabel lblPrivilege;
     private javax.swing.JLabel lblPrivilegesLogo;
@@ -1353,6 +1498,9 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.Box.Filler privilegesFiller2;
     private javax.swing.Box.Filler privilegesFiller3;
     private javax.swing.JPanel privilegesPanel;
+    private javax.swing.Box.Filler productFiller1;
+    private javax.swing.Box.Filler productFiller2;
+    private javax.swing.Box.Filler productFiller3;
     private javax.swing.JPanel productPanel;
     private javax.swing.JCheckBox productsCheck;
     private javax.swing.Box.Filler productsFiller1;
@@ -1363,6 +1511,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JToolBar toolBar;
     private javax.swing.JTextField txtDepartment;
     private javax.swing.JTextField txtHierarchy;
+    private javax.swing.JTextField txtKindProduct;
     private javax.swing.JTextField txtPrivilege;
     private javax.swing.JTextField txtProduct;
     // End of variables declaration//GEN-END:variables
