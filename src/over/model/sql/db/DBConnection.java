@@ -5,7 +5,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DBConnection {
-
     private String host;
     private String user;
     private String password;

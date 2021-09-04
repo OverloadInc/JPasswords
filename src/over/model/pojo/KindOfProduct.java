@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class KindOfProduct {
-
     private int id;
     private String name;
 
@@ -51,6 +50,16 @@ public class KindOfProduct {
         }
 
         return kindOfProducts;
+    }
+
+    public KindOfProduct getKindOfProduct(ArrayList<KindOfProduct> kindOfProducts, int id) {
+        for(KindOfProduct kindOfProduct : kindOfProducts) {
+            if(kindOfProduct.getId() == id) {
+                return kindOfProduct;
+            }
+        }
+
+        return null;
     }
 
     public boolean addKindOfProduct() {

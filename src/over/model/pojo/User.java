@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import over.model.sql.db.DBConnection;
 
 public class User {
-    
     private String name;
     private String password;
     

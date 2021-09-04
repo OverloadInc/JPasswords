@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class Hierarchy {
-
     private int id;
     private String name;
 

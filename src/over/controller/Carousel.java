@@ -5,7 +5,6 @@ import javax.swing.*;
 import java.util.*;
 
 public class Carousel {
-    
     private static Vector<String> queue = new Vector<String>();
     
     static {

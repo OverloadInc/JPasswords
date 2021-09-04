@@ -7,7 +7,6 @@ import java.awt.event.KeyEvent;
 import java.util.List;
 
 public class PrivilegeController implements Controller {
-
     JTextField txtPrivilege;
     JButton btnAddPrivilege, btnModifyPrivilege, btnDeletePrivilege;
     JList existingPrivilegesList;

@@ -6,7 +6,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class BackgroundImage {
-
     private static String name = null;
     
     public static void setName(String name) {

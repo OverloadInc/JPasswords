@@ -8,7 +8,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class FontEditor {
-
     private SimpleAttributeSet attributeSet;
 
     public FontEditor() {
@@ -16,7 +15,6 @@ public class FontEditor {
     }
 
     public void setBold(JTextPane editor, String text){
-
 		StyleConstants.setBold(attributeSet, true);
 
 		try {
@@ -30,7 +28,6 @@ public class FontEditor {
     }
 
     public void setSimple(JTextPane editor, String text){
-
         StyleConstants.setBold(attributeSet, false);
 
         try {

@@ -3,7 +3,6 @@ package over.model.pojo;
 import java.util.*;
 
 public class Email {
-
     private int id;
     private String email;
     private String password;

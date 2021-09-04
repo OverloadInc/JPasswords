@@ -8,7 +8,6 @@ import java.awt.event.KeyEvent;
 import java.util.List;
 
 public class HierarchyController implements Controller {
-
     private JTextField txtHierarchy;
     private JButton btnHierarchy, btnModifyHierarchy, btnDeleteHierarchy;
     private JTable existingHierarchiesTable;

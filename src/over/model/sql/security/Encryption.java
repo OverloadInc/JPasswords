@@ -10,7 +10,6 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 
 public class Encryption {
-    
     private static final String PRIVATE_KEY = "9186";
     private static final String ENCRYPTION_TECHNIQUE = "Blowfish";
     
@@ -18,14 +17,14 @@ public class Encryption {
         String encryptedPassword = "";
 
         try {
-                SecretKeySpec secretKeySpec = new SecretKeySpec(PRIVATE_KEY.getBytes(), ENCRYPTION_TECHNIQUE);
+            SecretKeySpec secretKeySpec = new SecretKeySpec(PRIVATE_KEY.getBytes(), ENCRYPTION_TECHNIQUE);
 
-                Cipher cipher = Cipher.getInstance(ENCRYPTION_TECHNIQUE);
-                cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);
+            Cipher cipher = Cipher.getInstance(ENCRYPTION_TECHNIQUE);
+            cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);
 
-                byte[] encrypted = cipher.doFinal(clearPassword.getBytes());
+            byte[] encrypted = cipher.doFinal(clearPassword.getBytes());
 
-                encryptedPassword = new String(Base64.getEncoder().encode(encrypted));
+            encryptedPassword = new String(Base64.getEncoder().encode(encrypted));
         }
         catch (InvalidKeyException | NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException | NoSuchPaddingException e) {
             throw new Exception(e);

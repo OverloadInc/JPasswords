@@ -7,7 +7,6 @@ import java.awt.event.KeyEvent;
 import java.util.List;
 
 public class DepartmentController implements Controller {
-
     JTextField txtDepartment;
     JButton btnAddDepartment, btnModifyDepartment, btnDeleteDepartment;
     JList existingDepartmentsList;

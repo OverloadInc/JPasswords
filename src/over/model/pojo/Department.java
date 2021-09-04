@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class Department {
-
     private int id;
     private String name;
 

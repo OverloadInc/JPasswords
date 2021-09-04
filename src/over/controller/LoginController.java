@@ -8,7 +8,6 @@ import java.awt.event.KeyEvent;
 import java.util.List;
 
 public class LoginController implements Controller {
-
     private JTextField txtUser;
     private JPasswordField txtPassword;
     private JButton btnLogin;

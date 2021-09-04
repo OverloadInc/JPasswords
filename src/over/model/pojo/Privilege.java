@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class Privilege {
-
     private int id;
     private String name;
 
