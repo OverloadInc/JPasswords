@@ -1,16 +1,119 @@
 package over.view;
 
 import over.controller.*;
-
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
-
 import over.model.pojo.Privilege;
 import over.model.pojo.User;
 
-public class Dashboard extends javax.swing.JFrame {
-    private final CardLayout cardLayout;    
+import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.*;
+import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
+
+public class Dashboard extends JFrame {
+    private JMenuItem aboutItem;
+    private JCheckBox accessesCheck;
+    private JPanel accessesPanel;
+    private JButton btnAddDepartment;
+    private JButton btnAddKindProduct;
+    private JButton btnAddPrivilege;
+    private JButton btnAddProduct;
+    private JButton btnBack;
+    private JButton btnDeleteDepartment;
+    private JButton btnDeleteHierarchy;
+    private JButton btnDeleteKindProduct;
+    private JButton btnDeletePrivilege;
+    private JButton btnDeleteProduct;
+    private JButton btnHierarchy;
+    private JButton btnHome;
+    private JButton btnModifyDepartment;
+    private JButton btnModifyHierarchy;
+    private JButton btnModifyKindProduct;
+    private JButton btnModifyPrivilege;
+    private JButton btnModifyProduct;
+    private JButton btnNext;
+    private JComboBox<String> cmbKindProduct;
+    private JCheckBox credentialsCheck;
+    private JPanel credentialsPanel;
+    private JPanel dashboardPanel;
+    private JPanel departmentPanel;
+    private JCheckBox departmentsCheck;
+    private Box.Filler departmentsFiller1;
+    private Box.Filler departmentsFiller2;
+    private Box.Filler departmentsFiller3;
+    private JPanel departmentsPanel;
+    private JCheckBox employeesCheck;
+    private JList<String> existingDepartmentsList;
+    private JPanel existingDepartmentsPanel;
+    private JScrollPane existingDepartmentsScroll;
+    private JPanel existingHierarchiesPanel;
+    private JScrollPane existingHierarchiesScroll;
+    private JTable existingHierarchiesTable;
+    private JList<String> existingKindProductsList;
+    private JPanel existingKindProductsPanel;
+    private JScrollPane existingKindProductsScroll;
+    private JList<String> existingPrivilegesList;
+    private JPanel existingPrivilegesPanel;
+    private JScrollPane existingPrivilegesScroll;
+    private JPanel existingProductsPanel;
+    private JScrollPane existingProductsScroll;
+    private JTable existingProductsTable;
+    private JMenuItem exitItem;
+    private JPanel exployeesPanel;
+    private JMenuItem exportItem;
+    private JMenu fileMenu;
+    private JMenu helpMenu;
+    private JCheckBox hierarchiesCheck;
+    private Box.Filler hierarchiesFiller1;
+    private Box.Filler hierarchiesFiller2;
+    private Box.Filler hierarchiesFiller3;
+    private JPanel hierarchiesPanel;
+    private JPanel hierarchyPanel;
+    private JPanel kindProductPanel;
+    private JCheckBox kindProductsCheck;
+    private JPanel kindProductsPanel;
+    private JLabel lblAccessLogo;
+    private JLabel lblCredentialsLogo;
+    private JLabel lblDepartment;
+    private JLabel lblDepartmentsLogo;
+    private JLabel lblEmployees;
+    private JLabel lblHierarchy;
+    private JLabel lblHierarchyLogo;
+    private JLabel lblKind;
+    private JLabel lblKindProduct;
+    private JLabel lblKindProductLogo;
+    private JLabel lblPrivilege;
+    private JLabel lblPrivilegesLogo;
+    private JLabel lblProduct;
+    private JLabel lblProductLogo;
+    private JPanel mainPanel;
+    private JMenuBar menuBar;
+    private JMenuItem printItem;
+    private JPanel privilegePanel;
+    private JCheckBox privilegesCheck;
+    private Box.Filler privilegesFiller1;
+    private Box.Filler privilegesFiller2;
+    private Box.Filler privilegesFiller3;
+    private JPanel privilegesPanel;
+    private Box.Filler productFiller1;
+    private Box.Filler productFiller2;
+    private Box.Filler productFiller3;
+    private JPanel productPanel;
+    private JCheckBox productsCheck;
+    private Box.Filler productsFiller1;
+    private Box.Filler productsFiller2;
+    private Box.Filler productsFiller3;
+    private JPanel productsPanel;
+    private JToolBar.Separator separator;
+    private JToolBar toolBar;
+    private JTextField txtDepartment;
+    private JTextField txtHierarchy;
+    private JTextField txtKindProduct;
+    private JTextField txtPrivilege;
+    private JTextField txtProduct;
+    private final CardLayout cardLayout;
     private final Image backgroundImage;
     private List<Component> componentList;
     private Controller controller;
@@ -20,10 +123,10 @@ public class Dashboard extends javax.swing.JFrame {
         this.user = user;
         BackgroundImage.setName("dashboard_white_blue01.jpg");
         backgroundImage = BackgroundImage.request();
-        
+
         initComponents();
         setDashboard();
-        
+
         cardLayout = (CardLayout)(mainPanel.getLayout());
     }
 
@@ -57,320 +160,316 @@ public class Dashboard extends javax.swing.JFrame {
         lblPrivilegesLogo.setVisible(false);
         lblProductLogo.setVisible(false);
     }
-       
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
-        toolBar = new javax.swing.JToolBar();
-        btnHome = new javax.swing.JButton();
-        separator = new javax.swing.JToolBar.Separator();
-        btnBack = new javax.swing.JButton();
-        btnNext = new javax.swing.JButton();
-        mainPanel = new javax.swing.JPanel() {
+    @SuppressWarnings("unchecked")
+    private void initComponents() {
+        GridBagConstraints gridBagConstraints;
+
+        toolBar = new JToolBar();
+        btnHome = new JButton();
+        separator = new JToolBar.Separator();
+        btnBack = new JButton();
+        btnNext = new JButton();
+        mainPanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 g.drawImage(backgroundImage, 0, 0, null);
             }
         };
-        dashboardPanel = new javax.swing.JPanel();
-        lblKindProductLogo = new javax.swing.JLabel();
-        lblProductLogo = new javax.swing.JLabel();
-        lblCredentialsLogo = new javax.swing.JLabel();
-        lblEmployees = new javax.swing.JLabel();
-        lblDepartmentsLogo = new javax.swing.JLabel();
-        lblHierarchyLogo = new javax.swing.JLabel();
-        lblPrivilegesLogo = new javax.swing.JLabel();
-        lblAccessLogo = new javax.swing.JLabel();
-        kindProductsPanel = new javax.swing.JPanel();
-        productsFiller1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
-        kindProductPanel = new javax.swing.JPanel();
-        lblKindProduct = new javax.swing.JLabel();
-        txtKindProduct = new javax.swing.JTextField();
-        btnAddKindProduct = new javax.swing.JButton();
-        productsFiller2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
-        existingKindProductsPanel = new javax.swing.JPanel();
-        existingKindProductsScroll = new javax.swing.JScrollPane();
-        existingKindProductsList = new javax.swing.JList<>();
-        btnModifyKindProduct = new javax.swing.JButton();
-        btnDeleteKindProduct = new javax.swing.JButton();
-        productsFiller3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
-        productsPanel = new javax.swing.JPanel();
-        productFiller1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
-        productPanel = new javax.swing.JPanel();
-        lblProduct = new javax.swing.JLabel();
-        txtProduct = new javax.swing.JTextField();
-        lblKind = new javax.swing.JLabel();
-        cmbKindProduct = new javax.swing.JComboBox<>();
-        btnAddProduct = new javax.swing.JButton();
-        productFiller2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
-        existingProductsPanel = new javax.swing.JPanel();
-        existingProductsScroll = new javax.swing.JScrollPane();
-        existingProductsTable = new javax.swing.JTable();
-        btnModifyProduct = new javax.swing.JButton();
-        btnDeleteProduct = new javax.swing.JButton();
-        productFiller3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
-        credentialsPanel = new javax.swing.JPanel();
-        exployeesPanel = new javax.swing.JPanel();
-        departmentsPanel = new javax.swing.JPanel();
-        departmentsFiller1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
-        departmentPanel = new javax.swing.JPanel();
-        lblDepartment = new javax.swing.JLabel();
-        txtDepartment = new javax.swing.JTextField();
-        btnAddDepartment = new javax.swing.JButton();
-        departmentsFiller2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
-        existingDepartmentsPanel = new javax.swing.JPanel();
-        existingDepartmentsScroll = new javax.swing.JScrollPane();
-        existingDepartmentsList = new javax.swing.JList<>();
-        btnModifyDepartment = new javax.swing.JButton();
-        btnDeleteDepartment = new javax.swing.JButton();
-        departmentsFiller3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
-        hierarchiesPanel = new javax.swing.JPanel();
-        hierarchiesFiller1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
-        hierarchyPanel = new javax.swing.JPanel();
-        lblHierarchy = new javax.swing.JLabel();
-        txtHierarchy = new javax.swing.JTextField();
-        btnHierarchy = new javax.swing.JButton();
-        hierarchiesFiller2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
-        existingHierarchiesPanel = new javax.swing.JPanel();
-        existingHierarchiesScroll = new javax.swing.JScrollPane();
-        existingHierarchiesTable = new javax.swing.JTable();
-        btnModifyHierarchy = new javax.swing.JButton();
-        btnDeleteHierarchy = new javax.swing.JButton();
-        hierarchiesFiller3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
-        privilegesPanel = new javax.swing.JPanel();
-        privilegesFiller1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
-        privilegePanel = new javax.swing.JPanel();
-        lblPrivilege = new javax.swing.JLabel();
-        txtPrivilege = new javax.swing.JTextField();
-        btnAddPrivilege = new javax.swing.JButton();
-        privilegesFiller2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
-        existingPrivilegesPanel = new javax.swing.JPanel();
-        existingPrivilegesScroll = new javax.swing.JScrollPane();
-        existingPrivilegesList = new javax.swing.JList<>();
-        btnModifyPrivilege = new javax.swing.JButton();
-        btnDeletePrivilege = new javax.swing.JButton();
-        kindProductsCheck = new javax.swing.JCheckBox();
-        departmentsCheck = new javax.swing.JCheckBox();
-        productsCheck = new javax.swing.JCheckBox();
-        employeesCheck = new javax.swing.JCheckBox();
-        hierarchiesCheck = new javax.swing.JCheckBox();
-        privilegesCheck = new javax.swing.JCheckBox();
-        credentialsCheck = new javax.swing.JCheckBox();
-        accessesCheck = new javax.swing.JCheckBox();
-        privilegesFiller3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 32767));
-        accessesPanel = new javax.swing.JPanel();
-        menuBar = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
-        exportItem = new javax.swing.JMenuItem();
-        printItem = new javax.swing.JMenuItem();
-        exitItem = new javax.swing.JMenuItem();
-        helpMenu = new javax.swing.JMenu();
-        aboutItem = new javax.swing.JMenuItem();
+        dashboardPanel = new JPanel();
+        lblKindProductLogo = new JLabel();
+        lblProductLogo = new JLabel();
+        lblCredentialsLogo = new JLabel();
+        lblEmployees = new JLabel();
+        lblDepartmentsLogo = new JLabel();
+        lblHierarchyLogo = new JLabel();
+        lblPrivilegesLogo = new JLabel();
+        lblAccessLogo = new JLabel();
+        kindProductsPanel = new JPanel();
+        productsFiller1 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 50), new Dimension(0, 32767));
+        kindProductPanel = new JPanel();
+        lblKindProduct = new JLabel();
+        txtKindProduct = new JTextField();
+        btnAddKindProduct = new JButton();
+        productsFiller2 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 50), new Dimension(0, 32767));
+        existingKindProductsPanel = new JPanel();
+        existingKindProductsScroll = new JScrollPane();
+        existingKindProductsList = new JList<>();
+        btnModifyKindProduct = new JButton();
+        btnDeleteKindProduct = new JButton();
+        productsFiller3 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 50), new Dimension(0, 32767));
+        productsPanel = new JPanel();
+        productFiller1 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 50), new Dimension(0, 32767));
+        productPanel = new JPanel();
+        lblProduct = new JLabel();
+        txtProduct = new JTextField();
+        lblKind = new JLabel();
+        cmbKindProduct = new JComboBox<>();
+        btnAddProduct = new JButton();
+        productFiller2 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 50), new Dimension(0, 32767));
+        existingProductsPanel = new JPanel();
+        existingProductsScroll = new JScrollPane();
+        existingProductsTable = new JTable();
+        btnModifyProduct = new JButton();
+        btnDeleteProduct = new JButton();
+        productFiller3 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 50), new Dimension(0, 32767));
+        credentialsPanel = new JPanel();
+        exployeesPanel = new JPanel();
+        departmentsPanel = new JPanel();
+        departmentsFiller1 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 50), new Dimension(0, 32767));
+        departmentPanel = new JPanel();
+        lblDepartment = new JLabel();
+        txtDepartment = new JTextField();
+        btnAddDepartment = new JButton();
+        departmentsFiller2 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 50), new Dimension(0, 32767));
+        existingDepartmentsPanel = new JPanel();
+        existingDepartmentsScroll = new JScrollPane();
+        existingDepartmentsList = new JList<>();
+        btnModifyDepartment = new JButton();
+        btnDeleteDepartment = new JButton();
+        departmentsFiller3 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 50), new Dimension(0, 32767));
+        hierarchiesPanel = new JPanel();
+        hierarchiesFiller1 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 50), new Dimension(0, 32767));
+        hierarchyPanel = new JPanel();
+        lblHierarchy = new JLabel();
+        txtHierarchy = new JTextField();
+        btnHierarchy = new JButton();
+        hierarchiesFiller2 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 50), new Dimension(0, 32767));
+        existingHierarchiesPanel = new JPanel();
+        existingHierarchiesScroll = new JScrollPane();
+        existingHierarchiesTable = new JTable();
+        btnModifyHierarchy = new JButton();
+        btnDeleteHierarchy = new JButton();
+        hierarchiesFiller3 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 50), new Dimension(0, 32767));
+        privilegesPanel = new JPanel();
+        privilegesFiller1 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 50), new Dimension(0, 32767));
+        privilegePanel = new JPanel();
+        lblPrivilege = new JLabel();
+        txtPrivilege = new JTextField();
+        btnAddPrivilege = new JButton();
+        privilegesFiller2 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 50), new Dimension(0, 32767));
+        existingPrivilegesPanel = new JPanel();
+        existingPrivilegesScroll = new JScrollPane();
+        existingPrivilegesList = new JList<>();
+        btnModifyPrivilege = new JButton();
+        btnDeletePrivilege = new JButton();
+        kindProductsCheck = new JCheckBox();
+        departmentsCheck = new JCheckBox();
+        productsCheck = new JCheckBox();
+        employeesCheck = new JCheckBox();
+        hierarchiesCheck = new JCheckBox();
+        privilegesCheck = new JCheckBox();
+        credentialsCheck = new JCheckBox();
+        accessesCheck = new JCheckBox();
+        privilegesFiller3 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 50), new Dimension(0, 32767));
+        accessesPanel = new JPanel();
+        menuBar = new JMenuBar();
+        fileMenu = new JMenu();
+        exportItem = new JMenuItem();
+        printItem = new JMenuItem();
+        exitItem = new JMenuItem();
+        helpMenu = new JMenu();
+        aboutItem = new JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Holiwallet v0.1 - Dashboard");
-        setMinimumSize(new java.awt.Dimension(800, 600));
-        setName("frmDashboard"); // NOI18N
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setMinimumSize(new Dimension(800, 600));
+        setName("frmDashboard"); 
+        setPreferredSize(new Dimension(800, 600));
 
         toolBar.setRollover(true);
-        toolBar.setName("toolBar"); // NOI18N
+        toolBar.setName("toolBar"); 
 
-        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/toolbar/home.png"))); // NOI18N
+        btnHome.setIcon(new ImageIcon(getClass().getResource("/over/resources/img/toolbar/home.png")));
         btnHome.setToolTipText("Inicio");
         btnHome.setFocusable(false);
-        btnHome.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnHome.setName("btnHome"); // NOI18N
-        btnHome.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnHome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnHome.setHorizontalTextPosition(SwingConstants.CENTER);
+        btnHome.setName("btnHome"); 
+        btnHome.setVerticalTextPosition(SwingConstants.BOTTOM);
+        btnHome.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnHomeActionPerformed(evt);
             }
         });
         toolBar.add(btnHome);
 
-        separator.setName("separator"); // NOI18N
+        separator.setName("separator"); 
         toolBar.add(separator);
 
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/toolbar/back.png"))); // NOI18N
+        btnBack.setIcon(new ImageIcon(getClass().getResource("/over/resources/img/toolbar/back.png"))); 
         btnBack.setToolTipText("Atras");
         btnBack.setFocusable(false);
-        btnBack.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnBack.setName("btnBack"); // NOI18N
-        btnBack.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnBack.setHorizontalTextPosition(SwingConstants.CENTER);
+        btnBack.setName("btnBack"); 
+        btnBack.setVerticalTextPosition(SwingConstants.BOTTOM);
+        btnBack.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
         toolBar.add(btnBack);
 
-        btnNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/toolbar/next.png"))); // NOI18N
+        btnNext.setIcon(new ImageIcon(getClass().getResource("/over/resources/img/toolbar/next.png"))); 
         btnNext.setToolTipText("Adelante");
         btnNext.setFocusable(false);
-        btnNext.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnNext.setName("btnNext"); // NOI18N
-        btnNext.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnNext.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnNext.setHorizontalTextPosition(SwingConstants.CENTER);
+        btnNext.setName("btnNext"); 
+        btnNext.setVerticalTextPosition(SwingConstants.BOTTOM);
+        btnNext.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnNextActionPerformed(evt);
             }
         });
         toolBar.add(btnNext);
 
-        getContentPane().add(toolBar, java.awt.BorderLayout.NORTH);
+        getContentPane().add(toolBar, BorderLayout.NORTH);
 
-        mainPanel.setBackground(new java.awt.Color(255, 255, 255));
-        mainPanel.setMinimumSize(new java.awt.Dimension(800, 600));
-        mainPanel.setName("mainPanel"); // NOI18N
-        mainPanel.setPreferredSize(new java.awt.Dimension(800, 600));
-        mainPanel.setLayout(new java.awt.CardLayout());
+        mainPanel.setBackground(new Color(255, 255, 255));
+        mainPanel.setMinimumSize(new Dimension(800, 600));
+        mainPanel.setName("mainPanel"); 
+        mainPanel.setPreferredSize(new Dimension(800, 600));
+        mainPanel.setLayout(new CardLayout());
 
-        dashboardPanel.setBackground(new java.awt.Color(255, 255, 255));
-        dashboardPanel.setMinimumSize(new java.awt.Dimension(800, 600));
-        dashboardPanel.setName("dashboardPanel"); // NOI18N
+        dashboardPanel.setBackground(new Color(255, 255, 255));
+        dashboardPanel.setMinimumSize(new Dimension(800, 600));
+        dashboardPanel.setName("dashboardPanel"); 
         dashboardPanel.setOpaque(false);
-        dashboardPanel.setPreferredSize(new java.awt.Dimension(800, 600));
-        dashboardPanel.setLayout(new java.awt.GridBagLayout());
+        dashboardPanel.setPreferredSize(new Dimension(800, 600));
+        dashboardPanel.setLayout(new GridBagLayout());
 
-        lblKindProductLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/dashboard/kind_of_product.png"))); // NOI18N
+        lblKindProductLogo.setIcon(new ImageIcon(getClass().getResource("/over/resources/img/dashboard/kind_of_product.png"))); 
         lblKindProductLogo.setText("Tipo de productos");
-        lblKindProductLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lblKindProductLogo.setName("lblKindProductLogo"); // NOI18N
-        lblKindProductLogo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        lblKindProductLogo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        lblKindProductLogo.setHorizontalTextPosition(SwingConstants.CENTER);
+        lblKindProductLogo.setName("lblKindProductLogo"); 
+        lblKindProductLogo.setVerticalTextPosition(SwingConstants.BOTTOM);
+        lblKindProductLogo.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
                 lblKindProductLogoMouseClicked(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.ipady = 30;
         gridBagConstraints.weightx = 1.0;
         dashboardPanel.add(lblKindProductLogo, gridBagConstraints);
 
-        lblProductLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/dashboard/products.png"))); // NOI18N
+        lblProductLogo.setIcon(new ImageIcon(getClass().getResource("/over/resources/img/dashboard/products.png"))); 
         lblProductLogo.setText("Productos");
-        lblProductLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lblProductLogo.setName("lblProductLogo"); // NOI18N
-        lblProductLogo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        lblProductLogo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        lblProductLogo.setHorizontalTextPosition(SwingConstants.CENTER);
+        lblProductLogo.setName("lblProductLogo"); 
+        lblProductLogo.setVerticalTextPosition(SwingConstants.BOTTOM);
+        lblProductLogo.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
                 lblProductLogoMouseClicked(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.ipady = 30;
         gridBagConstraints.weightx = 1.0;
         dashboardPanel.add(lblProductLogo, gridBagConstraints);
 
-        lblCredentialsLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/dashboard/credentials.png"))); // NOI18N
+        lblCredentialsLogo.setIcon(new ImageIcon(getClass().getResource("/over/resources/img/dashboard/credentials.png"))); 
         lblCredentialsLogo.setText("Credenciales");
-        lblCredentialsLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lblCredentialsLogo.setName("lblCredentialsLogo"); // NOI18N
-        lblCredentialsLogo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        lblCredentialsLogo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        lblCredentialsLogo.setHorizontalTextPosition(SwingConstants.CENTER);
+        lblCredentialsLogo.setName("lblCredentialsLogo"); 
+        lblCredentialsLogo.setVerticalTextPosition(SwingConstants.BOTTOM);
+        lblCredentialsLogo.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
                 lblCredentialsLogoMouseClicked(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.ipady = 30;
         gridBagConstraints.weightx = 1.0;
         dashboardPanel.add(lblCredentialsLogo, gridBagConstraints);
 
-        lblEmployees.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/dashboard/users.png"))); // NOI18N
+        lblEmployees.setIcon(new ImageIcon(getClass().getResource("/over/resources/img/dashboard/users.png"))); 
         lblEmployees.setText("Empleados");
-        lblEmployees.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lblEmployees.setName("lblEmployees"); // NOI18N
-        lblEmployees.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        lblEmployees.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        lblEmployees.setHorizontalTextPosition(SwingConstants.CENTER);
+        lblEmployees.setName("lblEmployees"); 
+        lblEmployees.setVerticalTextPosition(SwingConstants.BOTTOM);
+        lblEmployees.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
                 lblEmployeesMouseClicked(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipady = 30;
         gridBagConstraints.weightx = 1.0;
         dashboardPanel.add(lblEmployees, gridBagConstraints);
 
-        lblDepartmentsLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/dashboard/departments.png"))); // NOI18N
+        lblDepartmentsLogo.setIcon(new ImageIcon(getClass().getResource("/over/resources/img/dashboard/departments.png"))); 
         lblDepartmentsLogo.setText("Departamentos");
-        lblDepartmentsLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lblDepartmentsLogo.setName("lblDepartmentsLogo"); // NOI18N
-        lblDepartmentsLogo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        lblDepartmentsLogo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        lblDepartmentsLogo.setHorizontalTextPosition(SwingConstants.CENTER);
+        lblDepartmentsLogo.setName("lblDepartmentsLogo"); 
+        lblDepartmentsLogo.setVerticalTextPosition(SwingConstants.BOTTOM);
+        lblDepartmentsLogo.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
                 lblDepartmentsLogoMouseClicked(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipady = 30;
         gridBagConstraints.weightx = 1.0;
         dashboardPanel.add(lblDepartmentsLogo, gridBagConstraints);
 
-        lblHierarchyLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/dashboard/hierarchy.png"))); // NOI18N
+        lblHierarchyLogo.setIcon(new ImageIcon(getClass().getResource("/over/resources/img/dashboard/hierarchy.png"))); 
         lblHierarchyLogo.setText("Jerarquías");
-        lblHierarchyLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lblHierarchyLogo.setName("lblHierarchyLogo"); // NOI18N
-        lblHierarchyLogo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        lblHierarchyLogo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        lblHierarchyLogo.setHorizontalTextPosition(SwingConstants.CENTER);
+        lblHierarchyLogo.setName("lblHierarchyLogo"); 
+        lblHierarchyLogo.setVerticalTextPosition(SwingConstants.BOTTOM);
+        lblHierarchyLogo.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
                 lblHierarchyLogoMouseClicked(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipady = 30;
         gridBagConstraints.weightx = 1.0;
         dashboardPanel.add(lblHierarchyLogo, gridBagConstraints);
 
-        lblPrivilegesLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/dashboard/privileges.png"))); // NOI18N
+        lblPrivilegesLogo.setIcon(new ImageIcon(getClass().getResource("/over/resources/img/dashboard/privileges.png"))); 
         lblPrivilegesLogo.setText("Privilegios");
-        lblPrivilegesLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lblPrivilegesLogo.setName("lblPrivilegesLogo"); // NOI18N
-        lblPrivilegesLogo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        lblPrivilegesLogo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        lblPrivilegesLogo.setHorizontalTextPosition(SwingConstants.CENTER);
+        lblPrivilegesLogo.setName("lblPrivilegesLogo"); 
+        lblPrivilegesLogo.setVerticalTextPosition(SwingConstants.BOTTOM);
+        lblPrivilegesLogo.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
                 lblPrivilegesLogoMouseClicked(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.ipady = 30;
         gridBagConstraints.weightx = 1.0;
         dashboardPanel.add(lblPrivilegesLogo, gridBagConstraints);
 
-        lblAccessLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAccessLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/dashboard/access.png"))); // NOI18N
+        lblAccessLogo.setHorizontalAlignment(SwingConstants.CENTER);
+        lblAccessLogo.setIcon(new ImageIcon(getClass().getResource("/over/resources/img/dashboard/access.png"))); 
         lblAccessLogo.setText("Accesos");
-        lblAccessLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lblAccessLogo.setName("lblAccessLogo"); // NOI18N
-        lblAccessLogo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        lblAccessLogo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        lblAccessLogo.setHorizontalTextPosition(SwingConstants.CENTER);
+        lblAccessLogo.setName("lblAccessLogo"); 
+        lblAccessLogo.setVerticalTextPosition(SwingConstants.BOTTOM);
+        lblAccessLogo.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
                 lblAccessLogoMouseClicked(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.ipady = 30;
@@ -379,46 +478,46 @@ public class Dashboard extends javax.swing.JFrame {
 
         mainPanel.add(dashboardPanel, "dashboardPanel");
 
-        kindProductsPanel.setBackground(new java.awt.Color(255, 255, 255));
-        kindProductsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipos de productos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        kindProductsPanel.setMinimumSize(new java.awt.Dimension(800, 600));
-        kindProductsPanel.setName("kindProductsPanel"); // NOI18N
+        kindProductsPanel.setBackground(new Color(255, 255, 255));
+        kindProductsPanel.setBorder(BorderFactory.createTitledBorder(null, "Tipos de productos", TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION));
+        kindProductsPanel.setMinimumSize(new Dimension(800, 600));
+        kindProductsPanel.setName("kindProductsPanel"); 
         kindProductsPanel.setOpaque(false);
-        kindProductsPanel.setPreferredSize(new java.awt.Dimension(800, 600));
-        kindProductsPanel.setLayout(new javax.swing.BoxLayout(kindProductsPanel, javax.swing.BoxLayout.Y_AXIS));
+        kindProductsPanel.setPreferredSize(new Dimension(800, 600));
+        kindProductsPanel.setLayout(new BoxLayout(kindProductsPanel, BoxLayout.Y_AXIS));
 
-        productsFiller1.setName("productsFiller1"); // NOI18N
+        productsFiller1.setName("productsFiller1"); 
         kindProductsPanel.add(productsFiller1);
 
-        kindProductPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Agregar tipo de producto"));
-        kindProductPanel.setMinimumSize(new java.awt.Dimension(300, 60));
-        kindProductPanel.setName("kindProductPanel"); // NOI18N
+        kindProductPanel.setBorder(BorderFactory.createTitledBorder("Agregar tipo de producto"));
+        kindProductPanel.setMinimumSize(new Dimension(300, 60));
+        kindProductPanel.setName("kindProductPanel"); 
         kindProductPanel.setOpaque(false);
-        kindProductPanel.setPreferredSize(new java.awt.Dimension(300, 60));
+        kindProductPanel.setPreferredSize(new Dimension(300, 60));
 
         lblKindProduct.setText("Nombre");
-        lblKindProduct.setName("lblKindProduct"); // NOI18N
+        lblKindProduct.setName("lblKindProduct"); 
         kindProductPanel.add(lblKindProduct);
 
-        txtKindProduct.setMinimumSize(new java.awt.Dimension(200, 30));
-        txtKindProduct.setName("txtKindProduct"); // NOI18N
-        txtKindProduct.setPreferredSize(new java.awt.Dimension(200, 30));
-        txtKindProduct.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtKindProduct.setMinimumSize(new Dimension(200, 30));
+        txtKindProduct.setName("txtKindProduct"); 
+        txtKindProduct.setPreferredSize(new Dimension(200, 30));
+        txtKindProduct.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent evt) {
                 txtKindProductKeyPressed(evt);
             }
         });
         kindProductPanel.add(txtKindProduct);
 
         btnAddKindProduct.setText("Agregar");
-        btnAddKindProduct.setName("btnAddKindProduct"); // NOI18N
-        btnAddKindProduct.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnAddKindProduct.setName("btnAddKindProduct"); 
+        btnAddKindProduct.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
                 btnAddKindProductMouseClicked(evt);
             }
         });
-        btnAddKindProduct.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        btnAddKindProduct.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent evt) {
                 btnAddKindProductKeyPressed(evt);
             }
         });
@@ -426,54 +525,54 @@ public class Dashboard extends javax.swing.JFrame {
 
         kindProductsPanel.add(kindProductPanel);
 
-        productsFiller2.setName("productsFiller2"); // NOI18N
+        productsFiller2.setName("productsFiller2"); 
         kindProductsPanel.add(productsFiller2);
 
-        existingKindProductsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de productos existentes"));
-        existingKindProductsPanel.setName("existingKindProductsPanel"); // NOI18N
+        existingKindProductsPanel.setBorder(BorderFactory.createTitledBorder("Tipos de productos existentes"));
+        existingKindProductsPanel.setName("existingKindProductsPanel"); 
         existingKindProductsPanel.setOpaque(false);
-        existingKindProductsPanel.setPreferredSize(new java.awt.Dimension(300, 180));
-        existingKindProductsPanel.setLayout(new java.awt.GridBagLayout());
+        existingKindProductsPanel.setPreferredSize(new Dimension(300, 180));
+        existingKindProductsPanel.setLayout(new GridBagLayout());
 
-        existingKindProductsScroll.setMinimumSize(new java.awt.Dimension(319, 162));
-        existingKindProductsScroll.setName("existingKindProductsScroll"); // NOI18N
+        existingKindProductsScroll.setMinimumSize(new Dimension(319, 162));
+        existingKindProductsScroll.setName("existingKindProductsScroll"); 
 
-        existingKindProductsList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        existingKindProductsList.setMaximumSize(new java.awt.Dimension(300, 300));
-        existingKindProductsList.setMinimumSize(new java.awt.Dimension(300, 300));
-        existingKindProductsList.setName("existingKindProductsList"); // NOI18N
-        existingKindProductsList.setPreferredSize(new java.awt.Dimension(300, 300));
+        existingKindProductsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        existingKindProductsList.setMaximumSize(new Dimension(300, 300));
+        existingKindProductsList.setMinimumSize(new Dimension(300, 300));
+        existingKindProductsList.setName("existingKindProductsList"); 
+        existingKindProductsList.setPreferredSize(new Dimension(300, 300));
         existingKindProductsList.setVisibleRowCount(10);
-        existingKindProductsList.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        existingKindProductsList.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent evt) {
                 existingKindProductsListKeyPressed(evt);
             }
         });
         existingKindProductsScroll.setViewportView(existingKindProductsList);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.gridheight = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.anchor = GridBagConstraints.EAST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         existingKindProductsPanel.add(existingKindProductsScroll, gridBagConstraints);
 
         btnModifyKindProduct.setText("Modificar");
-        btnModifyKindProduct.setName("btnModifyKindProduct"); // NOI18N
-        btnModifyKindProduct.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnModifyKindProduct.setName("btnModifyKindProduct"); 
+        btnModifyKindProduct.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
                 btnModifyKindProductMouseClicked(evt);
             }
         });
-        btnModifyKindProduct.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        btnModifyKindProduct.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent evt) {
                 btnModifyKindProductKeyPressed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.weightx = 1.0;
@@ -481,18 +580,18 @@ public class Dashboard extends javax.swing.JFrame {
         existingKindProductsPanel.add(btnModifyKindProduct, gridBagConstraints);
 
         btnDeleteKindProduct.setText("Eliminar");
-        btnDeleteKindProduct.setName("btnDeleteKindProduct"); // NOI18N
-        btnDeleteKindProduct.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnDeleteKindProduct.setName("btnDeleteKindProduct"); 
+        btnDeleteKindProduct.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
                 btnDeleteKindProductMouseClicked(evt);
             }
         });
-        btnDeleteKindProduct.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        btnDeleteKindProduct.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent evt) {
                 btnDeleteKindProductKeyPressed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.weightx = 1.0;
@@ -501,50 +600,51 @@ public class Dashboard extends javax.swing.JFrame {
 
         kindProductsPanel.add(existingKindProductsPanel);
 
-        productsFiller3.setName("productsFiller3"); // NOI18N
+        productsFiller3.setName("productsFiller3"); 
         kindProductsPanel.add(productsFiller3);
 
         mainPanel.add(kindProductsPanel, "kindProductsPanel");
 
-        productsPanel.setBackground(new java.awt.Color(255, 255, 255));
-        productsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Productos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        productsPanel.setMinimumSize(new java.awt.Dimension(800, 600));
-        productsPanel.setName("productsPanel"); // NOI18N
+        productsPanel.setBackground(new Color(255, 255, 255));
+        productsPanel.setBorder(BorderFactory.createTitledBorder(null, "Productos", TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION));
+        productsPanel.setMinimumSize(new Dimension(800, 600));
+        productsPanel.setName("productsPanel"); 
         productsPanel.setOpaque(false);
-        productsPanel.setPreferredSize(new java.awt.Dimension(800, 600));
-        productsPanel.setLayout(new javax.swing.BoxLayout(productsPanel, javax.swing.BoxLayout.Y_AXIS));
+        productsPanel.setPreferredSize(new Dimension(800, 600));
+        productsPanel.setLayout(new BoxLayout(productsPanel, BoxLayout.Y_AXIS));
 
-        productFiller1.setName("productFiller1"); // NOI18N
+        productFiller1.setName("productFiller1"); 
         productsPanel.add(productFiller1);
 
-        productPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Agregar producto"));
-        productPanel.setName("productPanel"); // NOI18N
+        productPanel.setBorder(BorderFactory.createTitledBorder("Agregar producto"));
+        productPanel.setName("productPanel"); 
+        productPanel.setOpaque(false);
 
         lblProduct.setText("Nombre");
-        lblProduct.setName("lblProduct"); // NOI18N
+        lblProduct.setName("lblProduct"); 
         productPanel.add(lblProduct);
 
-        txtProduct.setMinimumSize(new java.awt.Dimension(200, 30));
-        txtProduct.setName("txtProduct"); // NOI18N
-        txtProduct.setPreferredSize(new java.awt.Dimension(200, 30));
+        txtProduct.setMinimumSize(new Dimension(200, 30));
+        txtProduct.setName("txtProduct"); 
+        txtProduct.setPreferredSize(new Dimension(200, 30));
         productPanel.add(txtProduct);
 
         lblKind.setText("Tipo de producto");
-        lblKind.setName("lblKind"); // NOI18N
+        lblKind.setName("lblKind"); 
         productPanel.add(lblKind);
 
-        cmbKindProduct.setName("cmbKindProduct"); // NOI18N
+        cmbKindProduct.setName("cmbKindProduct"); 
         productPanel.add(cmbKindProduct);
 
         btnAddProduct.setText("Agregar");
-        btnAddProduct.setName("btnAddProduct"); // NOI18N
-        btnAddProduct.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnAddProduct.setName("btnAddProduct"); 
+        btnAddProduct.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
                 btnAddProductMouseClicked(evt);
             }
         });
-        btnAddProduct.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        btnAddProduct.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent evt) {
                 btnAddProductKeyPressed(evt);
             }
         });
@@ -552,28 +652,19 @@ public class Dashboard extends javax.swing.JFrame {
 
         productsPanel.add(productPanel);
 
-        productFiller2.setName("productFiller2"); // NOI18N
+        productFiller2.setName("productFiller2"); 
         productsPanel.add(productFiller2);
 
-        existingProductsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Productos existentes"));
-        existingProductsPanel.setName("existingProductsPanel"); // NOI18N
-        existingProductsPanel.setLayout(new java.awt.GridBagLayout());
+        existingProductsPanel.setBorder(BorderFactory.createTitledBorder("Productos existentes"));
+        existingProductsPanel.setName("existingProductsPanel"); 
+        existingProductsPanel.setOpaque(false);
+        existingProductsPanel.setLayout(new GridBagLayout());
 
-        existingProductsScroll.setName("existingProductsScroll"); // NOI18N
+        existingProductsScroll.setName("existingProductsScroll"); 
 
-        existingProductsTable.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
-                        {null, null, null},
-                        {null, null, null},
-                        {null, null, null},
-                        {null, null, null}
-                },
-                new String [] {
-                        "Id", "Nombre", "Tipo"
-                }
-        ) {
+        existingProductsTable.setModel(new DefaultTableModel(new Object [][] {}, new String [] {"Id", "Nombre", "Tipo"}) {
             Class[] types = new Class [] {
-                    java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+                    Integer.class, String.class, Integer.class
             };
             boolean[] canEdit = new boolean [] {
                     false, false, false
@@ -588,25 +679,35 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
         existingProductsTable.setFillsViewportHeight(true);
-        existingProductsTable.setMaximumSize(new java.awt.Dimension(300, 300));
-        existingProductsTable.setMinimumSize(new java.awt.Dimension(300, 300));
-        existingProductsTable.setName("existingProductsTable"); // NOI18N
-        existingProductsTable.setPreferredSize(new java.awt.Dimension(300, 300));
+        existingProductsTable.setMaximumSize(new Dimension(300, 300));
+        existingProductsTable.setMinimumSize(new Dimension(300, 300));
+        existingProductsTable.setName("existingProductsTable"); 
+        existingProductsTable.setPreferredSize(new Dimension(300, 300));
         existingProductsScroll.setViewportView(existingProductsTable);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.gridheight = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         existingProductsPanel.add(existingProductsScroll, gridBagConstraints);
 
         btnModifyProduct.setText("Modificar");
-        btnModifyProduct.setName("btnModifyProduct"); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        btnModifyProduct.setName("btnModifyProduct"); 
+        btnModifyProduct.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                btnModifyProductMouseClicked(evt);
+            }
+        });
+        btnModifyProduct.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent evt) {
+                btnModifyProductKeyPressed(evt);
+            }
+        });
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.weightx = 1.0;
@@ -614,8 +715,18 @@ public class Dashboard extends javax.swing.JFrame {
         existingProductsPanel.add(btnModifyProduct, gridBagConstraints);
 
         btnDeleteProduct.setText("Eliminar");
-        btnDeleteProduct.setName("btnDeleteProduct"); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        btnDeleteProduct.setName("btnDeleteProduct"); 
+        btnDeleteProduct.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                btnDeleteProductMouseClicked(evt);
+            }
+        });
+        btnDeleteProduct.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent evt) {
+                btnDeleteProductKeyPressed(evt);
+            }
+        });
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.weightx = 1.0;
@@ -624,62 +735,62 @@ public class Dashboard extends javax.swing.JFrame {
 
         productsPanel.add(existingProductsPanel);
 
-        productFiller3.setName("productFiller3"); // NOI18N
+        productFiller3.setName("productFiller3"); 
         productsPanel.add(productFiller3);
 
         mainPanel.add(productsPanel, "productsPanel");
 
-        credentialsPanel.setBackground(new java.awt.Color(255, 255, 255));
-        credentialsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Credenciales", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        credentialsPanel.setMinimumSize(new java.awt.Dimension(800, 600));
-        credentialsPanel.setName("credentialsPanel"); // NOI18N
+        credentialsPanel.setBackground(new Color(255, 255, 255));
+        credentialsPanel.setBorder(BorderFactory.createTitledBorder(null, "Credenciales", TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION));
+        credentialsPanel.setMinimumSize(new Dimension(800, 600));
+        credentialsPanel.setName("credentialsPanel"); 
         credentialsPanel.setOpaque(false);
-        credentialsPanel.setPreferredSize(new java.awt.Dimension(800, 600));
+        credentialsPanel.setPreferredSize(new Dimension(800, 600));
         mainPanel.add(credentialsPanel, "credentialsPanel");
 
-        exployeesPanel.setBackground(new java.awt.Color(255, 255, 255));
-        exployeesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Empleados", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        exployeesPanel.setMinimumSize(new java.awt.Dimension(800, 600));
-        exployeesPanel.setName("employeesPanel"); // NOI18N
+        exployeesPanel.setBackground(new Color(255, 255, 255));
+        exployeesPanel.setBorder(BorderFactory.createTitledBorder(null, "Empleados", TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION));
+        exployeesPanel.setMinimumSize(new Dimension(800, 600));
+        exployeesPanel.setName("employeesPanel"); 
         exployeesPanel.setOpaque(false);
-        exployeesPanel.setPreferredSize(new java.awt.Dimension(800, 600));
+        exployeesPanel.setPreferredSize(new Dimension(800, 600));
         mainPanel.add(exployeesPanel, "employeesPanel");
 
-        departmentsPanel.setBackground(new java.awt.Color(255, 255, 255));
-        departmentsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Departamentos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        departmentsPanel.setMinimumSize(new java.awt.Dimension(800, 600));
-        departmentsPanel.setName("departmentsPanel"); // NOI18N
+        departmentsPanel.setBackground(new Color(255, 255, 255));
+        departmentsPanel.setBorder(BorderFactory.createTitledBorder(null, "Departamentos", TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION));
+        departmentsPanel.setMinimumSize(new Dimension(800, 600));
+        departmentsPanel.setName("departmentsPanel"); 
         departmentsPanel.setOpaque(false);
-        departmentsPanel.setPreferredSize(new java.awt.Dimension(800, 600));
-        departmentsPanel.setLayout(new javax.swing.BoxLayout(departmentsPanel, javax.swing.BoxLayout.Y_AXIS));
+        departmentsPanel.setPreferredSize(new Dimension(800, 600));
+        departmentsPanel.setLayout(new BoxLayout(departmentsPanel, BoxLayout.Y_AXIS));
 
-        departmentsFiller1.setName("departmentsFiller1"); // NOI18N
+        departmentsFiller1.setName("departmentsFiller1"); 
         departmentsPanel.add(departmentsFiller1);
 
-        departmentPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Agregar departamento"));
-        departmentPanel.setMinimumSize(new java.awt.Dimension(300, 60));
-        departmentPanel.setName("departmentPanel"); // NOI18N
+        departmentPanel.setBorder(BorderFactory.createTitledBorder("Agregar departamento"));
+        departmentPanel.setMinimumSize(new Dimension(300, 60));
+        departmentPanel.setName("departmentPanel"); 
         departmentPanel.setOpaque(false);
-        departmentPanel.setPreferredSize(new java.awt.Dimension(300, 60));
+        departmentPanel.setPreferredSize(new Dimension(300, 60));
 
         lblDepartment.setText("Nombre");
-        lblDepartment.setName("lblDepartment"); // NOI18N
+        lblDepartment.setName("lblDepartment"); 
         departmentPanel.add(lblDepartment);
 
-        txtDepartment.setMinimumSize(new java.awt.Dimension(200, 30));
-        txtDepartment.setName("txtDepartment"); // NOI18N
-        txtDepartment.setPreferredSize(new java.awt.Dimension(200, 30));
+        txtDepartment.setMinimumSize(new Dimension(200, 30));
+        txtDepartment.setName("txtDepartment"); 
+        txtDepartment.setPreferredSize(new Dimension(200, 30));
         departmentPanel.add(txtDepartment);
 
         btnAddDepartment.setText("Agregar");
-        btnAddDepartment.setName("btnAddDepartment"); // NOI18N
-        btnAddDepartment.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnAddDepartment.setName("btnAddDepartment");
+        btnAddDepartment.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
                 btnAddDepartmentMouseClicked(evt);
             }
         });
-        btnAddDepartment.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        btnAddDepartment.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent evt) {
                 btnAddDepartmentKeyPressed(evt);
             }
         });
@@ -687,48 +798,48 @@ public class Dashboard extends javax.swing.JFrame {
 
         departmentsPanel.add(departmentPanel);
 
-        departmentsFiller2.setName("departmentsFiller2"); // NOI18N
+        departmentsFiller2.setName("departmentsFiller2"); 
         departmentsPanel.add(departmentsFiller2);
 
-        existingDepartmentsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Departamentos existentes"));
-        existingDepartmentsPanel.setName("existingDepartmentsPanel"); // NOI18N
+        existingDepartmentsPanel.setBorder(BorderFactory.createTitledBorder("Departamentos existentes"));
+        existingDepartmentsPanel.setName("existingDepartmentsPanel"); 
         existingDepartmentsPanel.setOpaque(false);
-        existingDepartmentsPanel.setPreferredSize(new java.awt.Dimension(300, 180));
-        existingDepartmentsPanel.setLayout(new java.awt.GridBagLayout());
+        existingDepartmentsPanel.setPreferredSize(new Dimension(300, 180));
+        existingDepartmentsPanel.setLayout(new GridBagLayout());
 
-        existingDepartmentsScroll.setName("existingDepartmentsScroll"); // NOI18N
+        existingDepartmentsScroll.setName("existingDepartmentsScroll"); 
 
-        existingDepartmentsList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        existingDepartmentsList.setMaximumSize(new java.awt.Dimension(300, 300));
-        existingDepartmentsList.setMinimumSize(new java.awt.Dimension(300, 300));
-        existingDepartmentsList.setName("existingDepartmentsList"); // NOI18N
-        existingDepartmentsList.setPreferredSize(new java.awt.Dimension(300, 300));
+        existingDepartmentsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        existingDepartmentsList.setMaximumSize(new Dimension(300, 300));
+        existingDepartmentsList.setMinimumSize(new Dimension(300, 300));
+        existingDepartmentsList.setName("existingDepartmentsList"); 
+        existingDepartmentsList.setPreferredSize(new Dimension(300, 300));
         existingDepartmentsList.setVisibleRowCount(10);
         existingDepartmentsScroll.setViewportView(existingDepartmentsList);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.gridheight = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.anchor = GridBagConstraints.EAST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         existingDepartmentsPanel.add(existingDepartmentsScroll, gridBagConstraints);
 
         btnModifyDepartment.setText("Modificar");
-        btnModifyDepartment.setName("btnModifyDepartment"); // NOI18N
-        btnModifyDepartment.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnModifyDepartment.setName("btnModifyDepartment");
+        btnModifyDepartment.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
                 btnModifyDepartmentMouseClicked(evt);
             }
         });
-        btnModifyDepartment.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        btnModifyDepartment.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent evt) {
                 btnModifyDepartmentKeyPressed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.weightx = 1.0;
@@ -736,18 +847,18 @@ public class Dashboard extends javax.swing.JFrame {
         existingDepartmentsPanel.add(btnModifyDepartment, gridBagConstraints);
 
         btnDeleteDepartment.setText("Eliminar");
-        btnDeleteDepartment.setName("btnDeleteDepartment"); // NOI18N
-        btnDeleteDepartment.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnDeleteDepartment.setName("btnDeleteDepartment");
+        btnDeleteDepartment.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
                 btnDeleteDepartmentMouseClicked(evt);
             }
         });
-        btnDeleteDepartment.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        btnDeleteDepartment.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent evt) {
                 btnDeleteDepartmentKeyPressed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.weightx = 1.0;
@@ -756,49 +867,49 @@ public class Dashboard extends javax.swing.JFrame {
 
         departmentsPanel.add(existingDepartmentsPanel);
 
-        departmentsFiller3.setName("departmentsFiller3"); // NOI18N
+        departmentsFiller3.setName("departmentsFiller3"); 
         departmentsPanel.add(departmentsFiller3);
 
         mainPanel.add(departmentsPanel, "departmentsPanel");
 
-        hierarchiesPanel.setBackground(new java.awt.Color(255, 255, 255));
-        hierarchiesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Jerarquías", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        hierarchiesPanel.setMinimumSize(new java.awt.Dimension(800, 600));
-        hierarchiesPanel.setName("hierarchiesPanel"); // NOI18N
+        hierarchiesPanel.setBackground(new Color(255, 255, 255));
+        hierarchiesPanel.setBorder(BorderFactory.createTitledBorder(null, "Jerarquías", TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION));
+        hierarchiesPanel.setMinimumSize(new Dimension(800, 600));
+        hierarchiesPanel.setName("hierarchiesPanel"); 
         hierarchiesPanel.setOpaque(false);
-        hierarchiesPanel.setPreferredSize(new java.awt.Dimension(800, 600));
-        hierarchiesPanel.setLayout(new javax.swing.BoxLayout(hierarchiesPanel, javax.swing.BoxLayout.Y_AXIS));
+        hierarchiesPanel.setPreferredSize(new Dimension(800, 600));
+        hierarchiesPanel.setLayout(new BoxLayout(hierarchiesPanel, BoxLayout.Y_AXIS));
 
-        hierarchiesFiller1.setName("hierarchiesFiller1"); // NOI18N
+        hierarchiesFiller1.setName("hierarchiesFiller1"); 
         hierarchiesPanel.add(hierarchiesFiller1);
 
-        hierarchyPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Agregar jerarquía", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        hierarchyPanel.setName("hierarchyPanel"); // NOI18N
+        hierarchyPanel.setBorder(BorderFactory.createTitledBorder(null, "Agregar jerarquía", TitledBorder.LEFT, TitledBorder.DEFAULT_POSITION));
+        hierarchyPanel.setName("hierarchyPanel"); 
         hierarchyPanel.setOpaque(false);
 
-        lblHierarchy.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHierarchy.setHorizontalAlignment(SwingConstants.CENTER);
         lblHierarchy.setText("Nombre");
-        lblHierarchy.setName("lblHierarchy"); // NOI18N
+        lblHierarchy.setName("lblHierarchy"); 
         hierarchyPanel.add(lblHierarchy);
 
-        txtHierarchy.setName("txtHierarchy"); // NOI18N
-        txtHierarchy.setPreferredSize(new java.awt.Dimension(300, 30));
-        txtHierarchy.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtHierarchy.setName("txtHierarchy"); 
+        txtHierarchy.setPreferredSize(new Dimension(300, 30));
+        txtHierarchy.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent evt) {
                 txtHierarchyKeyPressed(evt);
             }
         });
         hierarchyPanel.add(txtHierarchy);
 
         btnHierarchy.setText("Agregar");
-        btnHierarchy.setName("btnHierarchy"); // NOI18N
-        btnHierarchy.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnHierarchy.setName("btnHierarchy"); 
+        btnHierarchy.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
                 btnHierarchyMouseClicked(evt);
             }
         });
-        btnHierarchy.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        btnHierarchy.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent evt) {
                 btnHierarchyKeyPressed(evt);
             }
         });
@@ -806,31 +917,24 @@ public class Dashboard extends javax.swing.JFrame {
 
         hierarchiesPanel.add(hierarchyPanel);
 
-        hierarchiesFiller2.setName("hierarchiesFiller2"); // NOI18N
+        hierarchiesFiller2.setName("hierarchiesFiller2"); 
         hierarchiesPanel.add(hierarchiesFiller2);
 
-        existingHierarchiesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Jerarquías existentes", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        existingHierarchiesPanel.setName("existingHierarchiesPanel"); // NOI18N
+        existingHierarchiesPanel.setBorder(BorderFactory.createTitledBorder(null, "Jerarquías existentes", TitledBorder.LEFT, TitledBorder.DEFAULT_POSITION));
+        existingHierarchiesPanel.setName("existingHierarchiesPanel"); 
         existingHierarchiesPanel.setOpaque(false);
-        existingHierarchiesPanel.setLayout(new java.awt.GridBagLayout());
+        existingHierarchiesPanel.setLayout(new GridBagLayout());
 
-        existingHierarchiesScroll.setMinimumSize(new java.awt.Dimension(300, 200));
-        existingHierarchiesScroll.setName("existingHierarchiesScroll"); // NOI18N
-        existingHierarchiesScroll.setPreferredSize(new java.awt.Dimension(300, 200));
+        existingHierarchiesScroll.setMinimumSize(new Dimension(300, 200));
+        existingHierarchiesScroll.setName("existingHierarchiesScroll"); 
+        existingHierarchiesScroll.setPreferredSize(new Dimension(300, 200));
 
-        existingHierarchiesTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nombre", "Tipo"
-            }
-        ) {
+        existingHierarchiesTable.setModel(new DefaultTableModel(new Object [][] {}, new String [] {"Nombre", "Tipo"}) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class
+                    String.class, Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                    false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -842,34 +946,34 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
         existingHierarchiesTable.setFillsViewportHeight(true);
-        existingHierarchiesTable.setMinimumSize(new java.awt.Dimension(300, 200));
-        existingHierarchiesTable.setName("existingHierarchiesTable"); // NOI18N
-        existingHierarchiesTable.setPreferredSize(new java.awt.Dimension(300, 200));
+        existingHierarchiesTable.setMinimumSize(new Dimension(300, 200));
+        existingHierarchiesTable.setName("existingHierarchiesTable"); 
+        existingHierarchiesTable.setPreferredSize(new Dimension(300, 200));
         existingHierarchiesScroll.setViewportView(existingHierarchiesTable);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.gridheight = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         existingHierarchiesPanel.add(existingHierarchiesScroll, gridBagConstraints);
 
         btnModifyHierarchy.setText("Modificar");
-        btnModifyHierarchy.setName("btnModifyHierarchy"); // NOI18N
-        btnModifyHierarchy.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnModifyHierarchy.setName("btnModifyHierarchy"); 
+        btnModifyHierarchy.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
                 btnModifyHierarchyMouseClicked(evt);
             }
         });
-        btnModifyHierarchy.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        btnModifyHierarchy.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent evt) {
                 btnModifyHierarchyKeyPressed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.weightx = 1.0;
@@ -877,18 +981,18 @@ public class Dashboard extends javax.swing.JFrame {
         existingHierarchiesPanel.add(btnModifyHierarchy, gridBagConstraints);
 
         btnDeleteHierarchy.setText("Eliminar");
-        btnDeleteHierarchy.setName("btnDeleteHierarchy"); // NOI18N
-        btnDeleteHierarchy.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnDeleteHierarchy.setName("btnDeleteHierarchy"); 
+        btnDeleteHierarchy.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
                 btnDeleteHierarchyMouseClicked(evt);
             }
         });
-        btnDeleteHierarchy.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        btnDeleteHierarchy.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent evt) {
                 btnDeleteHierarchyKeyPressed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.weightx = 1.0;
@@ -897,49 +1001,49 @@ public class Dashboard extends javax.swing.JFrame {
 
         hierarchiesPanel.add(existingHierarchiesPanel);
 
-        hierarchiesFiller3.setName("hierarchiesFiller3"); // NOI18N
+        hierarchiesFiller3.setName("hierarchiesFiller3"); 
         hierarchiesPanel.add(hierarchiesFiller3);
 
         mainPanel.add(hierarchiesPanel, "hierarchiesPanel");
 
-        privilegesPanel.setBackground(new java.awt.Color(255, 255, 255));
-        privilegesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Privilegios", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        privilegesPanel.setMinimumSize(new java.awt.Dimension(800, 600));
-        privilegesPanel.setName("privilegesPanel"); // NOI18N
+        privilegesPanel.setBackground(new Color(255, 255, 255));
+        privilegesPanel.setBorder(BorderFactory.createTitledBorder(null, "Privilegios", TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION));
+        privilegesPanel.setMinimumSize(new Dimension(800, 600));
+        privilegesPanel.setName("privilegesPanel"); 
         privilegesPanel.setOpaque(false);
-        privilegesPanel.setPreferredSize(new java.awt.Dimension(800, 600));
-        privilegesPanel.setLayout(new javax.swing.BoxLayout(privilegesPanel, javax.swing.BoxLayout.Y_AXIS));
+        privilegesPanel.setPreferredSize(new Dimension(800, 600));
+        privilegesPanel.setLayout(new BoxLayout(privilegesPanel, BoxLayout.Y_AXIS));
 
-        privilegesFiller1.setName("privilegesFiller1"); // NOI18N
+        privilegesFiller1.setName("privilegesFiller1"); 
         privilegesPanel.add(privilegesFiller1);
 
-        privilegePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Agregar privilegio", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        privilegePanel.setName("privilegePanel"); // NOI18N
+        privilegePanel.setBorder(BorderFactory.createTitledBorder(null, "Agregar privilegio", TitledBorder.LEFT, TitledBorder.DEFAULT_POSITION));
+        privilegePanel.setName("privilegePanel"); 
         privilegePanel.setOpaque(false);
 
         lblPrivilege.setText("Nombre");
-        lblPrivilege.setName("lblPrivilege"); // NOI18N
+        lblPrivilege.setName("lblPrivilege"); 
         privilegePanel.add(lblPrivilege);
 
-        txtPrivilege.setMinimumSize(new java.awt.Dimension(300, 30));
-        txtPrivilege.setName("txtPrivilege"); // NOI18N
-        txtPrivilege.setPreferredSize(new java.awt.Dimension(300, 30));
-        txtPrivilege.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtPrivilege.setMinimumSize(new Dimension(300, 30));
+        txtPrivilege.setName("txtPrivilege"); 
+        txtPrivilege.setPreferredSize(new Dimension(300, 30));
+        txtPrivilege.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent evt) {
                 txtPrivilegeKeyPressed(evt);
             }
         });
         privilegePanel.add(txtPrivilege);
 
         btnAddPrivilege.setText("Agregar");
-        btnAddPrivilege.setName("btnAddPrivilege"); // NOI18N
-        btnAddPrivilege.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnAddPrivilege.setName("btnAddPrivilege"); 
+        btnAddPrivilege.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
                 btnAddPrivilegeMouseClicked(evt);
             }
         });
-        btnAddPrivilege.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        btnAddPrivilege.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent evt) {
                 btnAddPrivilegeKeyPressed(evt);
             }
         });
@@ -947,40 +1051,40 @@ public class Dashboard extends javax.swing.JFrame {
 
         privilegesPanel.add(privilegePanel);
 
-        privilegesFiller2.setName("privilegesFiller2"); // NOI18N
+        privilegesFiller2.setName("privilegesFiller2"); 
         privilegesPanel.add(privilegesFiller2);
 
-        existingPrivilegesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Privilegios existentes", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        existingPrivilegesPanel.setName("existingPrivilegesPanel"); // NOI18N
+        existingPrivilegesPanel.setBorder(BorderFactory.createTitledBorder(null, "Privilegios existentes", TitledBorder.LEFT, TitledBorder.DEFAULT_POSITION));
+        existingPrivilegesPanel.setName("existingPrivilegesPanel"); 
         existingPrivilegesPanel.setOpaque(false);
-        existingPrivilegesPanel.setLayout(new java.awt.GridBagLayout());
+        existingPrivilegesPanel.setLayout(new GridBagLayout());
 
-        existingPrivilegesScroll.setName("existingPrivilegesScroll"); // NOI18N
+        existingPrivilegesScroll.setName("existingPrivilegesScroll"); 
 
-        existingPrivilegesList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        existingPrivilegesList.setName("existingPrivilegesList"); // NOI18N
+        existingPrivilegesList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        existingPrivilegesList.setName("existingPrivilegesList"); 
         existingPrivilegesScroll.setViewportView(existingPrivilegesList);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridheight = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
         existingPrivilegesPanel.add(existingPrivilegesScroll, gridBagConstraints);
 
         btnModifyPrivilege.setText("Modificar");
-        btnModifyPrivilege.setName("btnModifyPrivilege"); // NOI18N
-        btnModifyPrivilege.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnModifyPrivilege.setName("btnModifyPrivilege"); 
+        btnModifyPrivilege.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
                 btnModifyPrivilegeMouseClicked(evt);
             }
         });
-        btnModifyPrivilege.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        btnModifyPrivilege.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent evt) {
                 btnModifyPrivilegeKeyPressed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.weightx = 1.0;
@@ -988,18 +1092,18 @@ public class Dashboard extends javax.swing.JFrame {
         existingPrivilegesPanel.add(btnModifyPrivilege, gridBagConstraints);
 
         btnDeletePrivilege.setText("Eliminar");
-        btnDeletePrivilege.setName("btnDeletePrivilege"); // NOI18N
-        btnDeletePrivilege.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btnDeletePrivilege.setName("btnDeletePrivilege"); 
+        btnDeletePrivilege.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
                 btnDeletePrivilegeMouseClicked(evt);
             }
         });
-        btnDeletePrivilege.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        btnDeletePrivilege.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent evt) {
                 btnDeletePrivilegeKeyPressed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.weightx = 1.0;
@@ -1007,141 +1111,141 @@ public class Dashboard extends javax.swing.JFrame {
         existingPrivilegesPanel.add(btnDeletePrivilege, gridBagConstraints);
 
         kindProductsCheck.setText("Tipos de productos");
-        kindProductsCheck.setName("kindProductsCheck"); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        kindProductsCheck.setName("kindProductsCheck"); 
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         existingPrivilegesPanel.add(kindProductsCheck, gridBagConstraints);
 
         departmentsCheck.setText("Departamentos");
-        departmentsCheck.setName("departmentsCheck"); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        departmentsCheck.setName("departmentsCheck"); 
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         existingPrivilegesPanel.add(departmentsCheck, gridBagConstraints);
 
         productsCheck.setText("Productos");
-        productsCheck.setName("productsCheck"); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        productsCheck.setName("productsCheck"); 
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         existingPrivilegesPanel.add(productsCheck, gridBagConstraints);
 
         employeesCheck.setText("Empleados");
-        employeesCheck.setName("employeesCheck"); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        employeesCheck.setName("employeesCheck"); 
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         existingPrivilegesPanel.add(employeesCheck, gridBagConstraints);
 
         hierarchiesCheck.setText("Jerarquías");
-        hierarchiesCheck.setName("hierarchiesCheck"); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        hierarchiesCheck.setName("hierarchiesCheck"); 
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         existingPrivilegesPanel.add(hierarchiesCheck, gridBagConstraints);
 
         privilegesCheck.setText("Privilegios");
-        privilegesCheck.setName("privilegesCheck"); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        privilegesCheck.setName("privilegesCheck"); 
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         existingPrivilegesPanel.add(privilegesCheck, gridBagConstraints);
 
         credentialsCheck.setText("Credenciales");
-        credentialsCheck.setName("credentialsCheck"); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        credentialsCheck.setName("credentialsCheck"); 
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         existingPrivilegesPanel.add(credentialsCheck, gridBagConstraints);
 
         accessesCheck.setText("Accesos");
-        accessesCheck.setName("accessesCheck"); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
+        accessesCheck.setName("accessesCheck"); 
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = GridBagConstraints.WEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         existingPrivilegesPanel.add(accessesCheck, gridBagConstraints);
 
         privilegesPanel.add(existingPrivilegesPanel);
 
-        privilegesFiller3.setName("privilegesFiller3"); // NOI18N
+        privilegesFiller3.setName("privilegesFiller3"); 
         privilegesPanel.add(privilegesFiller3);
 
         mainPanel.add(privilegesPanel, "privilegesPanel");
 
-        accessesPanel.setBackground(new java.awt.Color(255, 255, 255));
-        accessesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Accesos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        accessesPanel.setMinimumSize(new java.awt.Dimension(800, 600));
-        accessesPanel.setName("accessesPanel"); // NOI18N
+        accessesPanel.setBackground(new Color(255, 255, 255));
+        accessesPanel.setBorder(BorderFactory.createTitledBorder(null, "Accesos", TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION));
+        accessesPanel.setMinimumSize(new Dimension(800, 600));
+        accessesPanel.setName("accessesPanel"); 
         accessesPanel.setOpaque(false);
-        accessesPanel.setPreferredSize(new java.awt.Dimension(800, 600));
+        accessesPanel.setPreferredSize(new Dimension(800, 600));
         mainPanel.add(accessesPanel, "accessesPanel");
 
-        getContentPane().add(mainPanel, java.awt.BorderLayout.CENTER);
+        getContentPane().add(mainPanel, BorderLayout.CENTER);
 
-        menuBar.setName("menuBar"); // NOI18N
+        menuBar.setName("menuBar"); 
 
         fileMenu.setMnemonic('A');
         fileMenu.setText("Archivo");
-        fileMenu.setName("fileMenu"); // NOI18N
+        fileMenu.setName("fileMenu"); 
 
-        exportItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/menubar/export.png"))); // NOI18N
+        exportItem.setIcon(new ImageIcon(getClass().getResource("/over/resources/img/menubar/export.png"))); 
         exportItem.setText("Exportar");
-        exportItem.setName("exportItem"); // NOI18N
-        exportItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        exportItem.setName("exportItem"); 
+        exportItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 exportItemActionPerformed(evt);
             }
         });
         fileMenu.add(exportItem);
 
-        printItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/menubar/print.png"))); // NOI18N
+        printItem.setIcon(new ImageIcon(getClass().getResource("/over/resources/img/menubar/print.png"))); 
         printItem.setText("Imprimir");
-        printItem.setName("printItem"); // NOI18N
-        printItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        printItem.setName("printItem"); 
+        printItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 printItemActionPerformed(evt);
             }
         });
         fileMenu.add(printItem);
 
-        exitItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/menubar/logout.png"))); // NOI18N
+        exitItem.setIcon(new ImageIcon(getClass().getResource("/over/resources/img/menubar/logout.png"))); 
         exitItem.setText("Salir");
-        exitItem.setName("exitItem"); // NOI18N
-        exitItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        exitItem.setName("exitItem"); 
+        exitItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 exitItemActionPerformed(evt);
             }
         });
@@ -1151,13 +1255,13 @@ public class Dashboard extends javax.swing.JFrame {
 
         helpMenu.setMnemonic('y');
         helpMenu.setText("Ayuda");
-        helpMenu.setName("helpMenu"); // NOI18N
+        helpMenu.setName("helpMenu"); 
 
-        aboutItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/over/resources/img/menubar/about.png"))); // NOI18N
+        aboutItem.setIcon(new ImageIcon(getClass().getResource("/over/resources/img/menubar/about.png"))); 
         aboutItem.setText("Acerca de...");
-        aboutItem.setName("aboutItem"); // NOI18N
-        aboutItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        aboutItem.setName("aboutItem"); 
+        aboutItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 aboutItemActionPerformed(evt);
             }
         });
@@ -1169,9 +1273,9 @@ public class Dashboard extends javax.swing.JFrame {
 
         pack();
         setLocationRelativeTo(null);
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
-    private void lblKindProductLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKindProductLogoMouseClicked
+    private void lblKindProductLogoMouseClicked(MouseEvent evt) {
         componentList = new ArrayList<>();
         componentList.add(txtKindProduct);
         componentList.add(btnAddKindProduct);
@@ -1181,21 +1285,33 @@ public class Dashboard extends javax.swing.JFrame {
         ((ProductKindController)controller).refreshExistingProductsList();
 
         cardLayout.show(this.mainPanel, "kindProductsPanel");
-    }//GEN-LAST:event_lblKindProductLogoMouseClicked
+    }
 
-    private void lblProductLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblProductLogoMouseClicked
+    private void lblProductLogoMouseClicked(MouseEvent evt) {
+        componentList = new ArrayList<>();
+        componentList.add(txtProduct);
+        componentList.add(cmbKindProduct);
+        componentList.add(btnAddProduct);
+        componentList.add(existingProductsTable);
+        componentList.add(btnModifyProduct);
+        componentList.add(btnDeleteProduct);
+
+        controller = new ProductController(componentList);
+        ((ProductController)controller).refreshKindOfProductsList();
+        ((ProductController)controller).refreshExistingProductsTable();
+
         cardLayout.show(this.mainPanel, "productsPanel");
-    }//GEN-LAST:event_lblProductLogoMouseClicked
+    }
 
-    private void lblCredentialsLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCredentialsLogoMouseClicked
+    private void lblCredentialsLogoMouseClicked(MouseEvent evt) {
         cardLayout.show(this.mainPanel, "credentialsPanel");
-    }//GEN-LAST:event_lblCredentialsLogoMouseClicked
+    }
 
-    private void lblEmployeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEmployeesMouseClicked
+    private void lblEmployeesMouseClicked(MouseEvent evt) {
         cardLayout.show(this.mainPanel, "employeesPanel");
-    }//GEN-LAST:event_lblEmployeesMouseClicked
+    }
 
-    private void lblDepartmentsLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDepartmentsLogoMouseClicked
+    private void lblDepartmentsLogoMouseClicked(MouseEvent evt) {
         componentList = new ArrayList<>();
         componentList.add(txtDepartment);
         componentList.add(btnAddDepartment);
@@ -1207,9 +1323,9 @@ public class Dashboard extends javax.swing.JFrame {
         ((DepartmentController)controller).refreshExistingDepartmentList();
 
         cardLayout.show(this.mainPanel, "departmentsPanel");
-    }//GEN-LAST:event_lblDepartmentsLogoMouseClicked
+    }
 
-    private void lblHierarchyLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHierarchyLogoMouseClicked
+    private void lblHierarchyLogoMouseClicked(MouseEvent evt) {
         componentList = new ArrayList<>();
         componentList.add(txtHierarchy);
         componentList.add(btnHierarchy);
@@ -1221,9 +1337,9 @@ public class Dashboard extends javax.swing.JFrame {
         ((HierarchyController)controller).refreshExistingHierarchiesTable();
 
         cardLayout.show(this.mainPanel, "hierarchiesPanel");
-    }//GEN-LAST:event_lblHierarchyLogoMouseClicked
+    }
 
-    private void lblPrivilegesLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPrivilegesLogoMouseClicked
+    private void lblPrivilegesLogoMouseClicked(MouseEvent evt) {
         componentList = new ArrayList<>();
         componentList.add(txtPrivilege);
         componentList.add(btnAddPrivilege);
@@ -1235,57 +1351,61 @@ public class Dashboard extends javax.swing.JFrame {
         ((PrivilegeController)controller).refreshExistingPrivilegeList();
 
         cardLayout.show(this.mainPanel, "privilegesPanel");
-    }//GEN-LAST:event_lblPrivilegesLogoMouseClicked
+    }
 
-    private void lblAccessLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAccessLogoMouseClicked
+    private void lblAccessLogoMouseClicked(MouseEvent evt) {
         cardLayout.show(this.mainPanel, "accessesPanel");
-    }//GEN-LAST:event_lblAccessLogoMouseClicked
+    }
 
-    private void exportItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportItemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_exportItemActionPerformed
+    private void exportItemActionPerformed(ActionEvent evt) {
 
-    private void printItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printItemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_printItemActionPerformed
+    }
 
-    private void exitItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitItemActionPerformed
+    private void printItemActionPerformed(ActionEvent evt) {
+
+    }
+
+    private void exitItemActionPerformed(ActionEvent evt) {
         System.exit(0);
-    }//GEN-LAST:event_exitItemActionPerformed
+    }
 
-    private void aboutItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutItemActionPerformed
+    private void aboutItemActionPerformed(ActionEvent evt) {
         new About().setVisible(true);
-    }//GEN-LAST:event_aboutItemActionPerformed
+    }
 
-    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+    private void btnHomeActionPerformed(ActionEvent evt) {
         cardLayout.show(this.mainPanel, "dashboardPanel");
-    }//GEN-LAST:event_btnHomeActionPerformed
+    }
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        cardLayout.show(this.mainPanel, Carousel.back(Carousel.getActivePanel(mainPanel)));        
-    }//GEN-LAST:event_btnBackActionPerformed
+    private void btnBackActionPerformed(ActionEvent evt) {
+        cardLayout.show(this.mainPanel, Carousel.back(Carousel.getActivePanel(mainPanel)));
+    }
 
-    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        cardLayout.show(this.mainPanel, Carousel.next(Carousel.getActivePanel(mainPanel))); 
-    }//GEN-LAST:event_btnNextActionPerformed
+    private void btnNextActionPerformed(ActionEvent evt) {
+        cardLayout.show(this.mainPanel, Carousel.next(Carousel.getActivePanel(mainPanel)));
+    }
 
-    private void txtKindProductKeyPressed(java.awt.event.KeyEvent evt) {
+    private void txtKindProductKeyPressed(KeyEvent evt) {
         controller.setFocus(evt);
     }
 
-    private void btnAddKindProductKeyPressed(java.awt.event.KeyEvent evt) {
+    private void existingKindProductsListKeyPressed(KeyEvent evt) {
+
+    }
+
+    private void btnAddKindProductKeyPressed(KeyEvent evt) {
         controller.setFocus(evt);
     }
 
-    private void existingKindProductsListKeyPressed(java.awt.event.KeyEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void btnDeleteKindProductKeyPressed(java.awt.event.KeyEvent evt) {
+    private void btnDeleteKindProductKeyPressed(KeyEvent evt) {
         controller.setFocus(evt);
     }
 
-    private void btnAddKindProductMouseClicked(java.awt.event.MouseEvent evt) {
+    private void btnModifyKindProductKeyPressed(KeyEvent evt) {
+        controller.setFocus(evt);
+    }
+
+    private void btnAddKindProductMouseClicked(MouseEvent evt) {
         ((ProductKindController)controller).addKindOfProduct();
         ((ProductKindController)controller).refreshExistingProductsList();
 
@@ -1293,93 +1413,97 @@ public class Dashboard extends javax.swing.JFrame {
         txtKindProduct.requestFocusInWindow();
     }
 
-    private void btnModifyKindProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifyProductMouseClicked
+    private void btnModifyKindProductMouseClicked(MouseEvent evt) {
         ((ProductKindController)controller).updateKindOfProduct();
         ((ProductKindController)controller).refreshExistingProductsList();
     }
 
-    private void btnDeleteKindProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteProductMouseClicked
+    private void btnDeleteKindProductMouseClicked(MouseEvent evt) {
         ((ProductKindController)controller).deleteKindOfProduct();
         ((ProductKindController)controller).refreshExistingProductsList();
     }
 
-    private void btnModifyKindProductKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnModifyProductKeyPressed
+    private void txtHierarchyKeyPressed(KeyEvent evt) {
         controller.setFocus(evt);
     }
 
-    private void txtHierarchyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHierarchyKeyPressed
+    private void btnHierarchyKeyPressed(KeyEvent evt) {
         controller.setFocus(evt);
-    }//GEN-LAST:event_txtHierarchyKeyPressed
+    }
 
-    private void btnHierarchyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnHierarchyKeyPressed
+    private void btnModifyHierarchyKeyPressed(KeyEvent evt) {
         controller.setFocus(evt);
-    }//GEN-LAST:event_btnHierarchyKeyPressed
+    }
 
-    private void btnHierarchyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHierarchyMouseClicked
+    private void btnDeleteHierarchyKeyPressed(KeyEvent evt) {
+        controller.setFocus(evt);
+    }
+
+    private void btnHierarchyMouseClicked(MouseEvent evt) {
         ((HierarchyController)controller).addHierarchy();
         ((HierarchyController)controller).refreshExistingHierarchiesTable();
 
         txtHierarchy.setText("");
         txtHierarchy.requestFocusInWindow();
-    }//GEN-LAST:event_btnHierarchyMouseClicked
+    }
 
-    private void btnModifyHierarchyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnModifyHierarchyKeyPressed
-        controller.setFocus(evt);
-    }//GEN-LAST:event_btnModifyHierarchyKeyPressed
-
-    private void btnModifyHierarchyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifyHierarchyMouseClicked
+    private void btnModifyHierarchyMouseClicked(MouseEvent evt) {
         ((HierarchyController)controller).updateHierarchy();
         ((HierarchyController)controller).refreshExistingHierarchiesTable();
-    }//GEN-LAST:event_btnModifyHierarchyMouseClicked
+    }
 
-    private void btnDeleteHierarchyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDeleteHierarchyKeyPressed
-        controller.setFocus(evt);
-    }//GEN-LAST:event_btnDeleteHierarchyKeyPressed
-
-    private void btnDeleteHierarchyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteHierarchyMouseClicked
+    private void btnDeleteHierarchyMouseClicked(MouseEvent evt) {
         ((HierarchyController)controller).deleteHierarchy();
         ((HierarchyController)controller).refreshExistingHierarchiesTable();
-    }//GEN-LAST:event_btnDeleteHierarchyMouseClicked
+    }
 
-    private void txtPrivilegeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrivilegeKeyPressed
+    private void txtPrivilegeKeyPressed(KeyEvent evt) {
         controller.setFocus(evt);
-    }//GEN-LAST:event_txtPrivilegeKeyPressed
+    }
 
-    private void btnAddPrivilegeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAddPrivilegeKeyPressed
+    private void btnAddPrivilegeKeyPressed(KeyEvent evt) {
         controller.setFocus(evt);
-    }//GEN-LAST:event_btnAddPrivilegeKeyPressed
+    }
 
-    private void btnAddPrivilegeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddPrivilegeMouseClicked
+    private void btnModifyPrivilegeKeyPressed(KeyEvent evt) {
+        controller.setFocus(evt);
+    }
+
+    private void btnDeletePrivilegeKeyPressed(KeyEvent evt) {
+        controller.setFocus(evt);
+    }
+
+    private void btnAddPrivilegeMouseClicked(MouseEvent evt) {
         ((PrivilegeController)controller).addPrivilege();
         ((PrivilegeController)controller).refreshExistingPrivilegeList();
 
         txtPrivilege.setText("");
         txtPrivilege.requestFocusInWindow();
-    }//GEN-LAST:event_btnAddPrivilegeMouseClicked
+    }
 
-    private void btnModifyPrivilegeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnModifyPrivilegeKeyPressed
-        controller.setFocus(evt);
-    }//GEN-LAST:event_btnModifyPrivilegeKeyPressed
-
-    private void btnModifyPrivilegeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifyPrivilegeMouseClicked
+    private void btnModifyPrivilegeMouseClicked(MouseEvent evt) {
         ((PrivilegeController)controller).updatePrivilege();
         ((PrivilegeController)controller).refreshExistingPrivilegeList();
-    }//GEN-LAST:event_btnModifyPrivilegeMouseClicked
+    }
 
-    private void btnDeletePrivilegeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDeletePrivilegeKeyPressed
-        controller.setFocus(evt);
-    }//GEN-LAST:event_btnDeletePrivilegeKeyPressed
-
-    private void btnDeletePrivilegeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeletePrivilegeMouseClicked
+    private void btnDeletePrivilegeMouseClicked(MouseEvent evt) {
         ((PrivilegeController)controller).deletePrivilege();
         ((PrivilegeController)controller).refreshExistingPrivilegeList();
-    }//GEN-LAST:event_btnDeletePrivilegeMouseClicked
+    }
 
-    private void btnAddDepartmentKeyPressed(java.awt.event.KeyEvent evt) {
+    private void btnAddDepartmentKeyPressed(KeyEvent evt) {
         controller.setFocus(evt);
     }
 
-    private void btnAddDepartmentMouseClicked(java.awt.event.MouseEvent evt) {
+    private void btnModifyDepartmentKeyPressed(KeyEvent evt) {
+        controller.setFocus(evt);
+    }
+
+    private void btnDeleteDepartmentKeyPressed(KeyEvent evt) {
+        controller.setFocus(evt);
+    }
+
+    private void btnAddDepartmentMouseClicked(MouseEvent evt) {
         ((DepartmentController)controller).addDepartment();
         ((DepartmentController)controller).refreshExistingDepartmentList();
 
@@ -1387,132 +1511,61 @@ public class Dashboard extends javax.swing.JFrame {
         txtDepartment.requestFocusInWindow();
     }
 
-    private void btnModifyDepartmentKeyPressed(java.awt.event.KeyEvent evt) {
-        controller.setFocus(evt);
-    }
-
-    private void btnModifyDepartmentMouseClicked(java.awt.event.MouseEvent evt) {
+    private void btnModifyDepartmentMouseClicked(MouseEvent evt) {
         ((DepartmentController)controller).updateDepartment();
         ((DepartmentController)controller).refreshExistingDepartmentList();
     }
 
-    private void btnDeleteDepartmentKeyPressed(java.awt.event.KeyEvent evt) {
-        controller.setFocus(evt);
-    }
-
-    private void btnDeleteDepartmentMouseClicked(java.awt.event.MouseEvent evt) {
+    private void btnDeleteDepartmentMouseClicked(MouseEvent evt) {
         ((DepartmentController)controller).deleteDepartment();
         ((DepartmentController)controller).refreshExistingDepartmentList();
     }
 
-    private void btnAddProductKeyPressed(java.awt.event.KeyEvent evt) {
-        // TODO add your handling code here:
+    private void btnAddProductKeyPressed(KeyEvent evt) {
+        ((ProductController)controller).addProduct();
+        ((ProductController)controller).refreshExistingProductsTable();
+
+        txtProduct.setText("");
+        txtProduct.requestFocusInWindow();
     }
 
-    private void btnAddProductMouseClicked(java.awt.event.MouseEvent evt) {
-        // TODO add your handling code here:
+    private void btnModifyProductKeyPressed(KeyEvent evt) {
+        ((ProductController)controller).updateProduct();
+        ((ProductController)controller).refreshExistingProductsTable();
+
+        txtProduct.setText("");
+        txtProduct.requestFocusInWindow();
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem aboutItem;
-    private javax.swing.JCheckBox accessesCheck;
-    private javax.swing.JPanel accessesPanel;
-    private javax.swing.JButton btnAddDepartment;
-    private javax.swing.JButton btnAddKindProduct;
-    private javax.swing.JButton btnAddPrivilege;
-    private javax.swing.JButton btnAddProduct;
-    private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnDeleteDepartment;
-    private javax.swing.JButton btnDeleteHierarchy;
-    private javax.swing.JButton btnDeleteKindProduct;
-    private javax.swing.JButton btnDeletePrivilege;
-    private javax.swing.JButton btnDeleteProduct;
-    private javax.swing.JButton btnHierarchy;
-    private javax.swing.JButton btnHome;
-    private javax.swing.JButton btnModifyDepartment;
-    private javax.swing.JButton btnModifyHierarchy;
-    private javax.swing.JButton btnModifyKindProduct;
-    private javax.swing.JButton btnModifyPrivilege;
-    private javax.swing.JButton btnModifyProduct;
-    private javax.swing.JButton btnNext;
-    private javax.swing.JComboBox<String> cmbKindProduct;
-    private javax.swing.JCheckBox credentialsCheck;
-    private javax.swing.JPanel credentialsPanel;
-    private javax.swing.JPanel dashboardPanel;
-    private javax.swing.JPanel departmentPanel;
-    private javax.swing.JCheckBox departmentsCheck;
-    private javax.swing.Box.Filler departmentsFiller1;
-    private javax.swing.Box.Filler departmentsFiller2;
-    private javax.swing.Box.Filler departmentsFiller3;
-    private javax.swing.JPanel departmentsPanel;
-    private javax.swing.JCheckBox employeesCheck;
-    private javax.swing.JList<String> existingDepartmentsList;
-    private javax.swing.JPanel existingDepartmentsPanel;
-    private javax.swing.JScrollPane existingDepartmentsScroll;
-    private javax.swing.JPanel existingHierarchiesPanel;
-    private javax.swing.JScrollPane existingHierarchiesScroll;
-    private javax.swing.JTable existingHierarchiesTable;
-    private javax.swing.JList<String> existingKindProductsList;
-    private javax.swing.JPanel existingKindProductsPanel;
-    private javax.swing.JScrollPane existingKindProductsScroll;
-    private javax.swing.JList<String> existingPrivilegesList;
-    private javax.swing.JPanel existingPrivilegesPanel;
-    private javax.swing.JScrollPane existingPrivilegesScroll;
-    private javax.swing.JPanel existingProductsPanel;
-    private javax.swing.JScrollPane existingProductsScroll;
-    private javax.swing.JTable existingProductsTable;
-    private javax.swing.JMenuItem exitItem;
-    private javax.swing.JPanel exployeesPanel;
-    private javax.swing.JMenuItem exportItem;
-    private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenu helpMenu;
-    private javax.swing.JCheckBox hierarchiesCheck;
-    private javax.swing.Box.Filler hierarchiesFiller1;
-    private javax.swing.Box.Filler hierarchiesFiller2;
-    private javax.swing.Box.Filler hierarchiesFiller3;
-    private javax.swing.JPanel hierarchiesPanel;
-    private javax.swing.JPanel hierarchyPanel;
-    private javax.swing.JPanel kindProductPanel;
-    private javax.swing.JCheckBox kindProductsCheck;
-    private javax.swing.JPanel kindProductsPanel;
-    private javax.swing.JLabel lblAccessLogo;
-    private javax.swing.JLabel lblCredentialsLogo;
-    private javax.swing.JLabel lblDepartment;
-    private javax.swing.JLabel lblDepartmentsLogo;
-    private javax.swing.JLabel lblEmployees;
-    private javax.swing.JLabel lblHierarchy;
-    private javax.swing.JLabel lblHierarchyLogo;
-    private javax.swing.JLabel lblKind;
-    private javax.swing.JLabel lblKindProduct;
-    private javax.swing.JLabel lblKindProductLogo;
-    private javax.swing.JLabel lblPrivilege;
-    private javax.swing.JLabel lblPrivilegesLogo;
-    private javax.swing.JLabel lblProduct;
-    private javax.swing.JLabel lblProductLogo;
-    private javax.swing.JPanel mainPanel;
-    private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem printItem;
-    private javax.swing.JPanel privilegePanel;
-    private javax.swing.JCheckBox privilegesCheck;
-    private javax.swing.Box.Filler privilegesFiller1;
-    private javax.swing.Box.Filler privilegesFiller2;
-    private javax.swing.Box.Filler privilegesFiller3;
-    private javax.swing.JPanel privilegesPanel;
-    private javax.swing.Box.Filler productFiller1;
-    private javax.swing.Box.Filler productFiller2;
-    private javax.swing.Box.Filler productFiller3;
-    private javax.swing.JPanel productPanel;
-    private javax.swing.JCheckBox productsCheck;
-    private javax.swing.Box.Filler productsFiller1;
-    private javax.swing.Box.Filler productsFiller2;
-    private javax.swing.Box.Filler productsFiller3;
-    private javax.swing.JPanel productsPanel;
-    private javax.swing.JToolBar.Separator separator;
-    private javax.swing.JToolBar toolBar;
-    private javax.swing.JTextField txtDepartment;
-    private javax.swing.JTextField txtHierarchy;
-    private javax.swing.JTextField txtKindProduct;
-    private javax.swing.JTextField txtPrivilege;
-    private javax.swing.JTextField txtProduct;
-    // End of variables declaration//GEN-END:variables
+    private void btnDeleteProductKeyPressed(KeyEvent evt) {
+        ((ProductController)controller).deleteProduct();
+        ((ProductController)controller).refreshExistingProductsTable();
+
+        txtProduct.setText("");
+        txtProduct.requestFocusInWindow();
+    }
+
+    private void btnAddProductMouseClicked(MouseEvent evt) {
+        ((ProductController)controller).addProduct();
+        ((ProductController)controller).refreshExistingProductsTable();
+
+        txtProduct.setText("");
+        txtProduct.requestFocusInWindow();
+    }
+
+    private void btnModifyProductMouseClicked(MouseEvent evt) {
+        ((ProductController)controller).updateProduct();
+        ((ProductController)controller).refreshExistingProductsTable();
+
+        txtProduct.setText("");
+        txtProduct.requestFocusInWindow();
+    }
+
+    private void btnDeleteProductMouseClicked(MouseEvent evt) {
+        ((ProductController)controller).deleteProduct();
+        ((ProductController)controller).refreshExistingProductsTable();
+
+        txtProduct.setText("");
+        txtProduct.requestFocusInWindow();
+    }
 }
