@@ -7,7 +7,6 @@ import java.awt.event.KeyEvent;
 import java.util.List;
 
 public class ProductKindController implements Controller {
-
     private JTextField txtProduct;
     private JButton btnAddProduct;
     private JList existingProductsList;
