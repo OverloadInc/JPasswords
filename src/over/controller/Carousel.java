@@ -17,6 +17,7 @@ public class Carousel {
         Carousel.add("hierarchiesPanel");
         Carousel.add("privilegesPanel");
         Carousel.add("accessesPanel");
+        Carousel.add("positionsPanel");
     }
     
     public static void add(String element) {

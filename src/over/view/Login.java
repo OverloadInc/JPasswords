@@ -31,18 +31,18 @@ public class Login extends JFrame {
         backgroundImage = BackgroundImage.request();
         
         initComponents();
-
-        componentList = new ArrayList<>();
-        componentList.add(txtUser);
-        componentList.add(txtPassword);
-        componentList.add(btnLogin);
-
-        loginController = new LoginController(componentList);
+        initController();
     }
     
     @SuppressWarnings("unchecked")
     private void initComponents() {
         GridBagConstraints gridBagConstraints;
+
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Inicio de sesión");
+        setMinimumSize(new Dimension(300, 450));
+        setName("frmLogin");
+        setResizable(false);
 
         loginPanel = new JPanel() {
             @Override
@@ -51,28 +51,14 @@ public class Login extends JFrame {
                 g.drawImage(backgroundImage, 0, 0, null);
             }
         };
-        northFiller = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(0, 0));
-        lblLogo = new JLabel();
-        lblUser = new JLabel();
-        txtUser = new JTextField();
-        lblPassword = new JLabel();
-        txtPassword = new JPasswordField();
-        btnLogin = new JButton();
-        southFiller = new Box.Filler(new Dimension(0, 15), new Dimension(0, 15), new Dimension(0, 15));
-
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Holiwallet v0.1 - Inicio de sesión");
-        setMinimumSize(new Dimension(300, 450));
-        setName("frmLogin"); 
-        setResizable(false);
-
         loginPanel.setBackground(new Color(255, 255, 255));
         loginPanel.setMinimumSize(new Dimension(300, 450));
-        loginPanel.setName("loginPanel"); 
+        loginPanel.setName("loginPanel");
         loginPanel.setPreferredSize(new Dimension(300, 450));
         loginPanel.setLayout(new GridBagLayout());
 
-        northFiller.setName("northFiller"); 
+        northFiller = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(0, 0));
+        northFiller.setName("northFiller");
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -81,9 +67,10 @@ public class Login extends JFrame {
         gridBagConstraints.weightx = 1.0;
         loginPanel.add(northFiller, gridBagConstraints);
 
+        lblLogo = new JLabel();
         lblLogo.setHorizontalAlignment(SwingConstants.CENTER);
-        lblLogo.setIcon(new ImageIcon(getClass().getResource("/over/resources/img/login/holiday_shield.png"))); 
-        lblLogo.setName("lblLogo"); 
+        lblLogo.setIcon(new ImageIcon(getClass().getResource("/over/resources/img/login/holiday_shield.png")));
+        lblLogo.setName("lblLogo");
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -94,8 +81,9 @@ public class Login extends JFrame {
         gridBagConstraints.weighty = 1.0;
         loginPanel.add(lblLogo, gridBagConstraints);
 
+        lblUser = new JLabel();
         lblUser.setText("Usuario");
-        lblUser.setName("lblUser"); 
+        lblUser.setName("lblUser");
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
@@ -103,8 +91,9 @@ public class Login extends JFrame {
         gridBagConstraints.weightx = 1.0;
         loginPanel.add(lblUser, gridBagConstraints);
 
+        txtUser = new JTextField();
         txtUser.setMinimumSize(new Dimension(200, 30));
-        txtUser.setName("txtUser"); 
+        txtUser.setName("txtUser");
         txtUser.setPreferredSize(new Dimension(200, 30));
         txtUser.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent evt) {
@@ -119,8 +108,9 @@ public class Login extends JFrame {
         gridBagConstraints.weighty = 1.0;
         loginPanel.add(txtUser, gridBagConstraints);
 
+        lblPassword = new JLabel();
         lblPassword.setText("Clave");
-        lblPassword.setName("lblPassword"); 
+        lblPassword.setName("lblPassword");
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
@@ -128,8 +118,9 @@ public class Login extends JFrame {
         gridBagConstraints.weightx = 1.0;
         loginPanel.add(lblPassword, gridBagConstraints);
 
+        txtPassword = new JPasswordField();
         txtPassword.setMinimumSize(new Dimension(200, 30));
-        txtPassword.setName("txtPassword"); 
+        txtPassword.setName("txtPassword");
         txtPassword.setPreferredSize(new Dimension(200, 30));
         txtPassword.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent evt) {
@@ -144,10 +135,11 @@ public class Login extends JFrame {
         gridBagConstraints.weighty = 1.0;
         loginPanel.add(txtPassword, gridBagConstraints);
 
-        btnLogin.setIcon(new ImageIcon(getClass().getResource("/over/resources/img/login/login.png"))); 
+        btnLogin = new JButton();
+        btnLogin.setIcon(new ImageIcon(getClass().getResource("/over/resources/img/login/login.png")));
         btnLogin.setText("Entrar");
         btnLogin.setHorizontalTextPosition(SwingConstants.LEFT);
-        btnLogin.setName("btnLogin"); 
+        btnLogin.setName("btnLogin");
         btnLogin.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 btnLoginActionPerformed(evt);
@@ -166,6 +158,7 @@ public class Login extends JFrame {
         gridBagConstraints.weighty = 1.0;
         loginPanel.add(btnLogin, gridBagConstraints);
 
+        southFiller = new Box.Filler(new Dimension(0, 15), new Dimension(0, 15), new Dimension(0, 15));
         southFiller.setName("southFiller"); 
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -179,6 +172,15 @@ public class Login extends JFrame {
 
         pack();
         setLocationRelativeTo(null);
+    }
+
+    private void initController() {
+        componentList = new ArrayList<>();
+        componentList.add(txtUser);
+        componentList.add(txtPassword);
+        componentList.add(btnLogin);
+
+        loginController = new LoginController(componentList);
     }
 
     private void btnLoginActionPerformed(ActionEvent evt) {
@@ -195,7 +197,8 @@ public class Login extends JFrame {
             else
                 JOptionPane.showMessageDialog(null, "Usuario o clave incorrecta");
         }
-        catch(Exception e) {            
+        catch(Exception e) {
+            e.printStackTrace();
         }
     }
 

@@ -17,7 +17,6 @@ public class About extends JFrame {
 
     public About() {
         initComponents();
-        
         setAbout();
     }
     
@@ -31,6 +30,7 @@ public class About extends JFrame {
 
         try {
             FontEditor fontEditor = new FontEditor();
+
             fontEditor.setBold(txtAbout, application);
             fontEditor.setSimple(txtAbout, description);
             fontEditor.setBold(txtCredits, team);
@@ -44,67 +44,62 @@ public class About extends JFrame {
 
     @SuppressWarnings("unchecked")
     private void initComponents() {
-        softwarePanel = new JPanel();
-        lblLogo = new JLabel();
-        tabbedPane = new JTabbedPane();
-        aboutPanel = new JPanel();
-        aboutScroll = new JScrollPane();
-        txtAbout = new JTextPane();
-        creditsPanel = new JPanel();
-        creditsScroll = new JScrollPane();
-        txtCredits = new JTextPane();
-
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Acerca de");
         setMinimumSize(new Dimension(400, 400));
-        setName("frmAbout"); 
+        setName("frmAbout");
         setResizable(false);
 
-        softwarePanel.setMaximumSize(new Dimension(400, 300));
-        softwarePanel.setMinimumSize(new Dimension(400, 300));
-        softwarePanel.setName("softwarePanel"); 
-        softwarePanel.setPreferredSize(new Dimension(400, 300));
-        softwarePanel.setLayout(new BorderLayout());
-
+        lblLogo = new JLabel();
         lblLogo.setHorizontalAlignment(SwingConstants.CENTER);
         lblLogo.setMaximumSize(new Dimension(400, 300));
         lblLogo.setMinimumSize(new Dimension(400, 300));
-        lblLogo.setName("lblLogo"); 
+        lblLogo.setName("lblLogo");
         lblLogo.setPreferredSize(new Dimension(400, 300));
+
+        softwarePanel = new JPanel();
+        softwarePanel.setMaximumSize(new Dimension(400, 300));
+        softwarePanel.setMinimumSize(new Dimension(400, 300));
+        softwarePanel.setName("softwarePanel");
+        softwarePanel.setPreferredSize(new Dimension(400, 300));
+        softwarePanel.setLayout(new BorderLayout());
         softwarePanel.add(lblLogo, BorderLayout.CENTER);
 
         getContentPane().add(softwarePanel, BorderLayout.CENTER);
 
-        tabbedPane.setName("tabbedPane"); 
+        txtAbout = new JTextPane();
+        txtAbout.setName("txtAbout");
 
-        aboutPanel.setMaximumSize(new Dimension(400, 100));
-        aboutPanel.setMinimumSize(new Dimension(400, 100));
-        aboutPanel.setName("aboutPanel"); 
-        aboutPanel.setPreferredSize(new Dimension(400, 100));
-        aboutPanel.setLayout(new BorderLayout());
-
-        aboutScroll.setName("aboutScroll"); 
-
-        txtAbout.setName("txtAbout"); 
+        aboutScroll = new JScrollPane();
+        aboutScroll.setName("aboutScroll");
         aboutScroll.setViewportView(txtAbout);
 
+        aboutPanel = new JPanel();
+        aboutPanel.setMaximumSize(new Dimension(400, 100));
+        aboutPanel.setMinimumSize(new Dimension(400, 100));
+        aboutPanel.setName("aboutPanel");
+        aboutPanel.setPreferredSize(new Dimension(400, 100));
+        aboutPanel.setLayout(new BorderLayout());
         aboutPanel.add(aboutScroll, BorderLayout.CENTER);
 
-        tabbedPane.addTab("Acerca de", aboutPanel);
+        txtCredits = new JTextPane();
+        txtCredits.setName("txtCredits");
 
-        creditsPanel.setMaximumSize(new Dimension(400, 100));
-        creditsPanel.setMinimumSize(new Dimension(400, 100));
-        creditsPanel.setName("creditsPanel"); 
-        creditsPanel.setPreferredSize(new Dimension(400, 100));
-        creditsPanel.setLayout(new BorderLayout());
-
-        creditsScroll.setName("creditsScroll"); 
-
-        txtCredits.setName("txtCredits"); 
+        creditsScroll = new JScrollPane();
+        creditsScroll.setName("creditsScroll");
         creditsScroll.setViewportView(txtCredits);
 
+        creditsPanel = new JPanel();
+        creditsPanel.setMaximumSize(new Dimension(400, 100));
+        creditsPanel.setMinimumSize(new Dimension(400, 100));
+        creditsPanel.setName("creditsPanel");
+        creditsPanel.setPreferredSize(new Dimension(400, 100));
+        creditsPanel.setLayout(new BorderLayout());
         creditsPanel.add(creditsScroll, BorderLayout.CENTER);
 
+        tabbedPane = new JTabbedPane();
+        tabbedPane.setName("tabbedPane");
+        tabbedPane.addTab("Acerca de", aboutPanel);
         tabbedPane.addTab("Créditos", creditsPanel);
 
         getContentPane().add(tabbedPane, BorderLayout.SOUTH);
