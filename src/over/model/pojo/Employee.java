@@ -1,6 +1,10 @@
 package over.model.pojo;
 
+import over.model.sql.db.DBConnection;
+
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class Employee {
     private int id;
@@ -10,7 +14,6 @@ public class Employee {
     private Date birthdate;
     private Date register;
     private char gender;
-    private Department department;
     private Position position;
 
     public void setId(int id) {
@@ -39,10 +42,6 @@ public class Employee {
 
     public void setGender(char gender) {
         this.gender = gender;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
     }
 
     public void setPosition(Position position) {
@@ -77,11 +76,54 @@ public class Employee {
         return gender;
     }
 
-    public Department getDepartment() {
-        return department;
-    }
-
     public Position getPosition() {
         return position;
-    }  
+    }
+
+    public ArrayList<Employee> getAllEmployees() {
+        ArrayList<Employee> employeeList = new ArrayList<>();
+
+        String query = "SELECT * FROM empleados;";
+
+        try {
+            DBConnection dbConnection = new DBConnection();
+            dbConnection.connect();
+
+            ResultSet resultSet = dbConnection.executeQuery(query);
+
+            while(resultSet.next()) {
+                Employee employee = new Employee();
+                Position position = new Position();
+
+                employee.setName(resultSet.getString("nombre"));
+                employee.setAddress(resultSet.getString("direccion"));
+                employee.setTitle(resultSet.getString("titulo"));
+                employee.setBirthdate(resultSet.getDate("fecha_nacimiento"));
+                employee.setRegister(resultSet.getDate("fecha_registro"));
+                employee.setGender(resultSet.getString("sexo").charAt(0));
+                position.setId(resultSet.getInt("id_puesto"));
+                employee.setPosition(position);
+
+                employeeList.add(employee);
+            }
+
+            dbConnection.disconnect();
+        }
+        catch (Exception e) {
+        }
+
+        return employeeList;
+    }
+
+    public boolean addEmployee() {
+        return false;
+    }
+
+    public boolean deleteEmployee() {
+        return false;
+    }
+
+    public boolean updateEmployee() {
+        return false;
+    }
 }
