@@ -97,10 +97,19 @@ public class DepartmentController implements Controller {
                 case "btnAddDepartment":
                     addDepartment();
                     refreshExistingDepartmentList();
-                    txtDepartment.setText("");
-                    txtDepartment.requestFocusInWindow();
+                    break;
+                case "btnModifyDepartment":
+                    updateDepartment();
+                    refreshExistingDepartmentList();
+                    break;
+                case "btnDeleteDepartment":
+                    deleteDepartment();
+                    refreshExistingDepartmentList();
                     break;
             }
+
+            txtDepartment.setText("");
+            txtDepartment.requestFocusInWindow();
         }
     }
 }

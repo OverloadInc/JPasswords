@@ -1,5 +1,8 @@
 package over.view.cards;
 
+import over.controller.Controller;
+import over.controller.EmployeeController;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
@@ -8,6 +11,9 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EmployeesPanel extends JPanel {
     private JButton btnAddEmployee;
@@ -38,6 +44,8 @@ public class EmployeesPanel extends JPanel {
     private JTextField txtLastNameM;
     private JTextField txtPosition;
     private JFormattedTextField txtRegisterDate;
+    private List<Component> componentList;
+    private Controller controller;
 
     public EmployeesPanel() {
         initComponents();
@@ -109,6 +117,11 @@ public class EmployeesPanel extends JPanel {
         txtEmployee.setMaximumSize(new Dimension(150, 30));
         txtEmployee.setMinimumSize(new Dimension(150, 30));
         txtEmployee.setName("txtEmployee");
+        txtEmployee.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent evt) {
+                txtEmployeeKeyPressed(evt);
+            }
+        });
         txtEmployee.setPreferredSize(new Dimension(150, 30));
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -319,7 +332,6 @@ public class EmployeesPanel extends JPanel {
         existingEmployeesScroll.setMinimumSize(new Dimension(500, 200));
         existingEmployeesScroll.setMaximumSize(new Dimension(500, 200));
         existingEmployeesScroll.setName("existingEmployeesScroll");
-        existingEmployeesScroll.setPreferredSize(new Dimension(500, 200));
 
         existingEmployeesTable.setModel(new DefaultTableModel(new Object[][]{}, new String [] {"Id", "Nombre", "Título", "Puesto", "Dirección", "Fecha de nacimiento", "Fecha de registro", "Sexo"}) {
             Class[] types = new Class[] {Integer.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class};
@@ -333,11 +345,11 @@ public class EmployeesPanel extends JPanel {
                 return canEdit [columnIndex];
             }
         });
-        existingEmployeesTable.setFillsViewportHeight(true);
         existingEmployeesTable.setMaximumSize(new Dimension(500, 200));
         existingEmployeesTable.setMinimumSize(new Dimension(500, 200));
+        existingEmployeesTable.setFillsViewportHeight(true);
+        existingEmployeesTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         existingEmployeesTable.setName("existingEmployeesTable");
-        existingEmployeesTable.setPreferredSize(new Dimension(500, 200));
         existingEmployeesScroll.setViewportView(existingEmployeesTable);
 
         gridBagConstraints = new GridBagConstraints();
@@ -345,7 +357,7 @@ public class EmployeesPanel extends JPanel {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.gridheight = 5;
-        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.fill = GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         existingEmployeesPanel.add(existingEmployeesScroll, gridBagConstraints);
@@ -395,30 +407,62 @@ public class EmployeesPanel extends JPanel {
     }
 
     public void initController() {
+        componentList = new ArrayList<>();
+        componentList.add(txtEmployee);
+        componentList.add(txtLastNameF);
+        componentList.add(txtLastNameM);
+        componentList.add(txtHeading);
+        componentList.add(txtPosition);
+        componentList.add(txtAddress);
+        componentList.add(txtBirthday);
+        componentList.add(txtRegisterDate);
+        componentList.add(cmbGender);
+        componentList.add(btnAddEmployee);
+        componentList.add(existingEmployeesTable);
 
+        controller = new EmployeeController(componentList);
+
+        try {
+            ((EmployeeController)controller).initDateFields();
+            ((EmployeeController)controller).refreshExistingEmployeeTable();
+            ((EmployeeController)controller).refreshExistingGenderList();
+        }
+        catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void txtEmployeeKeyPressed(KeyEvent evt) {
+        controller.setFocus(evt);
     }
 
     private void btnAddEmployeeKeyPressed(KeyEvent evt) {
-        // TODO add your handling code here:
+        controller.setFocus(evt);
     }
 
     private void btnModifyEmployeeKeyPressed(KeyEvent evt) {
-        // TODO add your handling code here:
+        controller.setFocus(evt);
     }
 
     private void btnDeleteEmployeeKeyPressed(KeyEvent evt) {
-        // TODO add your handling code here:
+        controller.setFocus(evt);
     }
 
     private void btnAddEmployeeMouseClicked(MouseEvent evt) {
-        // TODO add your handling code here:
+        ((EmployeeController)controller).addEmployee();
+        ((EmployeeController)controller).refreshExistingGenderList();
+        ((EmployeeController)controller).refreshExistingEmployeeTable();
     }
 
     private void btnModifyEmployeeMouseClicked(MouseEvent evt) {
-        // TODO add your handling code here:
+        ((EmployeeController)controller).updateEmployee();
+        ((EmployeeController)controller).refreshExistingGenderList();
+        ((EmployeeController)controller).refreshExistingEmployeeTable();
     }
 
     private void btnDeleteEmployeeMouseClicked(MouseEvent evt) {
-        // TODO add your handling code here:
+        ((EmployeeController)controller).deleteEmployee();
+        ((EmployeeController)controller).refreshExistingGenderList();
+        ((EmployeeController)controller).refreshExistingEmployeeTable();
     }
 }

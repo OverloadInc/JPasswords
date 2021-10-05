@@ -215,10 +215,19 @@ public class ProductController implements Controller {
                 case "btnAddProduct":
                     addProduct();
                     refreshExistingProductsTable();
-                    txtProduct.setText("");
-                    txtProduct.requestFocusInWindow();
+                    break;
+                case "btnModifyProduct":
+                    updateProduct();
+                    refreshExistingProductsTable();
+                    break;
+                case "btnDeleteProduct":
+                    deleteProduct();
+                    refreshExistingProductsTable();
                     break;
             }
+
+            txtProduct.setText("");
+            txtProduct.requestFocusInWindow();
         }
     }
 }

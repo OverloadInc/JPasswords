@@ -7,18 +7,18 @@ import java.awt.event.KeyEvent;
 import java.util.List;
 
 public class ProductKindController implements Controller {
-    private JTextField txtProduct;
-    private JButton btnAddProduct;
-    private JList existingProductsList;
+    private JTextField txtKindProduct;
+    private JButton btnAddKindProduct;
+    private JList existingKindProductsList;
 
     public ProductKindController(List components) {
-        txtProduct = (JTextField)components.get(0);
-        btnAddProduct = (JButton)components.get(1);
-        existingProductsList = (JList)components.get(2);
+        txtKindProduct = (JTextField)components.get(0);
+        btnAddKindProduct = (JButton)components.get(1);
+        existingKindProductsList = (JList)components.get(2);
     }
 
     public void addKindOfProduct() {
-        String productName = txtProduct.getText().trim();
+        String productName = txtKindProduct.getText().trim();
 
         if(!productName.isEmpty()) {
             KindOfProduct kindOfProduct = new KindOfProduct();
@@ -32,7 +32,7 @@ public class ProductKindController implements Controller {
     }
 
     public void updateKindOfProduct() {
-        KindOfProduct kindOfProduct = (KindOfProduct)existingProductsList.getSelectedValue();
+        KindOfProduct kindOfProduct = (KindOfProduct) existingKindProductsList.getSelectedValue();
 
         if(kindOfProduct != null) {
             String newProductName = JOptionPane.showInputDialog("Introduce el tipo de producto deseado");
@@ -48,7 +48,7 @@ public class ProductKindController implements Controller {
     }
 
     public void deleteKindOfProduct() {
-        KindOfProduct kindOfProduct = (KindOfProduct)existingProductsList.getSelectedValue();
+        KindOfProduct kindOfProduct = (KindOfProduct) existingKindProductsList.getSelectedValue();
 
         if(kindOfProduct != null)
             kindOfProduct.deleteKindOfProduct();
@@ -56,21 +56,21 @@ public class ProductKindController implements Controller {
             JOptionPane.showMessageDialog(null, "Selecciona un tipo de producto");
     }
 
-    public void refreshExistingProductsList() {
+    public void refreshExistingKindProductsList() {
         DefaultListModel nameListModel = new DefaultListModel();
 
         for(KindOfProduct current : new KindOfProduct().getAllKindOfProduct())
             nameListModel.addElement(current);
 
-        existingProductsList.setModel(nameListModel);
+        existingKindProductsList.setModel(nameListModel);
     }
 
     @Override
     public void selectText(String name) {
         switch(name) {
             case "txtProduct" :
-                txtProduct.setSelectionStart(0);
-                txtProduct.setSelectionEnd(txtProduct.getText().length());
+                txtKindProduct.setSelectionStart(0);
+                txtKindProduct.setSelectionEnd(txtKindProduct.getText().length());
                 break;
         }
     }
@@ -82,23 +82,32 @@ public class ProductKindController implements Controller {
 
         if(keyCode == 37 || keyCode == 39)
             switch(keySource){
-                case "txtProduct":
-                    btnAddProduct.requestFocusInWindow();
+                case "txtKindProduct":
+                    btnAddKindProduct.requestFocusInWindow();
                     break;
-                case "btnAddProduct":
-                    txtProduct.requestFocusInWindow();
-                    selectText("txtProduct");
+                case "btnAddKindProduct":
+                    txtKindProduct.requestFocusInWindow();
+                    selectText("txtKindProduct");
                     break;
             }
         else if(keyCode == 10) {
             switch(keySource){
-                case "btnAddProduct":
+                case "btnAddKindProduct":
                     addKindOfProduct();
-                    refreshExistingProductsList();
-                    txtProduct.setText("");
-                    txtProduct.requestFocusInWindow();
+                    refreshExistingKindProductsList();
+                    break;
+                case "btnModifyKindProduct":
+                    updateKindOfProduct();
+                    refreshExistingKindProductsList();
+                    break;
+                case "btnDeleteKindProduct":
+                    deleteKindOfProduct();
+                    refreshExistingKindProductsList();
                     break;
             }
+
+            txtKindProduct.setText("");
+            txtKindProduct.requestFocusInWindow();
         }
     }
 }

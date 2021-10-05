@@ -111,10 +111,19 @@ public class HierarchyController implements Controller {
                 case "btnHierarchy":
                     addHierarchy();
                     refreshExistingHierarchiesTable();
-                    txtHierarchy.setText("");
-                    txtHierarchy.requestFocusInWindow();
+                    break;
+                case "btnModifyHierarchy":
+                    updateHierarchy();
+                    refreshExistingHierarchiesTable();
+                    break;
+                case "btnDeleteHierarchy":
+                    deleteHierarchy();
+                    refreshExistingHierarchiesTable();
                     break;
             }
+
+            txtHierarchy.setText("");
+            txtHierarchy.requestFocusInWindow();
         }
     }
 }

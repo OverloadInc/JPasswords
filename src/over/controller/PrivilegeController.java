@@ -97,10 +97,19 @@ public class PrivilegeController implements Controller {
                 case "btnAddPrivilege":
                     addPrivilege();
                     refreshExistingPrivilegeList();
-                    txtPrivilege.setText("");
-                    txtPrivilege.requestFocusInWindow();
+                    break;
+                case "btnModifyPrivilege":
+                    updatePrivilege();
+                    refreshExistingPrivilegeList();
+                    break;
+                case "btnDeletePrivilege":
+                    deletePrivilege();
+                    refreshExistingPrivilegeList();
                     break;
             }
+
+            txtPrivilege.setText("");
+            txtPrivilege.requestFocusInWindow();
         }
     }
 }

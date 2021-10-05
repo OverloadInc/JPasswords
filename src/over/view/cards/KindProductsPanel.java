@@ -181,7 +181,7 @@ public class KindProductsPanel extends JPanel {
         componentList.add(existingKindProductsList);
 
         controller = new ProductKindController(componentList);
-        ((ProductKindController)controller).refreshExistingProductsList();
+        ((ProductKindController)controller).refreshExistingKindProductsList();
     }
 
     private void txtKindProductKeyPressed(KeyEvent evt) {
@@ -202,7 +202,7 @@ public class KindProductsPanel extends JPanel {
 
     private void btnAddKindProductMouseClicked(MouseEvent evt) {
         ((ProductKindController)controller).addKindOfProduct();
-        ((ProductKindController)controller).refreshExistingProductsList();
+        ((ProductKindController)controller).refreshExistingKindProductsList();
 
         txtKindProduct.setText("");
         txtKindProduct.requestFocusInWindow();
@@ -210,11 +210,11 @@ public class KindProductsPanel extends JPanel {
 
     private void btnModifyKindProductMouseClicked(MouseEvent evt) {
         ((ProductKindController)controller).updateKindOfProduct();
-        ((ProductKindController)controller).refreshExistingProductsList();
+        ((ProductKindController)controller).refreshExistingKindProductsList();
     }
 
     private void btnDeleteKindProductMouseClicked(MouseEvent evt) {
         ((ProductKindController)controller).deleteKindOfProduct();
-        ((ProductKindController)controller).refreshExistingProductsList();
+        ((ProductKindController)controller).refreshExistingKindProductsList();
     }
 }

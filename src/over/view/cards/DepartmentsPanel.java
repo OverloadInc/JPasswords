@@ -75,6 +75,11 @@ public class DepartmentsPanel extends JPanel {
         txtDepartment.setMinimumSize(new Dimension(200, 30));
         txtDepartment.setName("txtDepartment");
         txtDepartment.setPreferredSize(new Dimension(200, 30));
+        txtDepartment.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent evt) {
+                txtDepartmentKeyPressed(evt);
+            }
+        });
         departmentPanel.add(txtDepartment);
 
         btnAddDepartment.setText("Agregar");
@@ -180,6 +185,10 @@ public class DepartmentsPanel extends JPanel {
 
         controller = new DepartmentController(componentList);
         ((DepartmentController)controller).refreshExistingDepartmentList();
+    }
+
+    private void txtDepartmentKeyPressed(KeyEvent evt) {
+        controller.setFocus(evt);
     }
 
     private void btnAddDepartmentKeyPressed(KeyEvent evt) {

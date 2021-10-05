@@ -66,10 +66,19 @@ public class PositionsController implements Controller {
                 case "btnAddPosition":
                     addPosition();
                     refreshExistingPositionsTable();
-                    txtPositionName.setText("");
-                    txtPositionName.requestFocusInWindow();
+                    break;
+                case "btnModifyPosition":
+                    updatePosition();
+                    refreshExistingPositionsTable();
+                    break;
+                case "btnDeletePosition":
+                    deletePosition();
+                    refreshExistingPositionsTable();
                     break;
             }
+
+            txtPositionName.setText("");
+            txtPositionName.requestFocusInWindow();
         }
     }
 }

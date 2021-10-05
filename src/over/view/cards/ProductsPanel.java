@@ -80,6 +80,11 @@ public class ProductsPanel extends JPanel {
         txtProduct.setMinimumSize(new Dimension(200, 30));
         txtProduct.setName("txtProduct");
         txtProduct.setPreferredSize(new Dimension(200, 30));
+        txtProduct.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent evt) {
+                txtProductKeyPressed(evt);
+            }
+        });
         productPanel.add(txtProduct);
 
         lblKind.setText("Tipo de producto");
@@ -207,28 +212,20 @@ public class ProductsPanel extends JPanel {
         ((ProductController)controller).refreshExistingProductsTable();
     }
 
-    private void btnAddProductKeyPressed(KeyEvent evt) {
-        ((ProductController)controller).addProduct();
-        ((ProductController)controller).refreshExistingProductsTable();
+    private void txtProductKeyPressed(KeyEvent evt) {
+        controller.setFocus(evt);
+    }
 
-        txtProduct.setText("");
-        txtProduct.requestFocusInWindow();
+    private void btnAddProductKeyPressed(KeyEvent evt) {
+        controller.setFocus(evt);
     }
 
     private void btnModifyProductKeyPressed(KeyEvent evt) {
-        ((ProductController)controller).updateProduct();
-        ((ProductController)controller).refreshExistingProductsTable();
-
-        txtProduct.setText("");
-        txtProduct.requestFocusInWindow();
+        controller.setFocus(evt);
     }
 
     private void btnDeleteProductKeyPressed(KeyEvent evt) {
-        ((ProductController)controller).deleteProduct();
-        ((ProductController)controller).refreshExistingProductsTable();
-
-        txtProduct.setText("");
-        txtProduct.requestFocusInWindow();
+        controller.setFocus(evt);
     }
 
     private void btnAddProductMouseClicked(MouseEvent evt) {

@@ -215,8 +215,17 @@ public class Login extends JFrame {
     }
 
     public static void main(String args[]) {
-        EventQueue.invokeLater(() -> {
-            new Login().setVisible(true);
-        });
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+
+            EventQueue.invokeLater(() -> {
+                BackgroundImage.setName("login_white_blue01.jpg");
+
+                new Login().setVisible(true);
+            });
+        }
+        catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(over.view.Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
     }
 }

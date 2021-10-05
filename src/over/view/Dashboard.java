@@ -98,7 +98,7 @@ public class Dashboard extends JFrame {
     @SuppressWarnings("unchecked")
     private void initComponents() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Holiwallet v0.1 - Dashboard");
+        setTitle("JPasswords v0.1 - Dashboard");
         //setExtendedState(JFrame.MAXIMIZED_BOTH);
         setMinimumSize(new Dimension(800, 600));
         setName("frmDashboard");
@@ -378,13 +378,11 @@ public class Dashboard extends JFrame {
 
     private void btnBackActionPerformed(ActionEvent evt) {
         String panel = Carousel.back(Carousel.getActivePanel(mainPanel));
-        System.out.println(panel);
         cardLayout.show(this.mainPanel, panel);
     }
 
     private void btnNextActionPerformed(ActionEvent evt) {
         String panel = Carousel.next(Carousel.getActivePanel(mainPanel));
-        System.out.println(panel);
         cardLayout.show(this.mainPanel, panel);
     }
 }
