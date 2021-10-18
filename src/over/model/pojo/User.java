@@ -35,9 +35,9 @@ public class User {
             if(name.isEmpty())
                 throw new Exception("User name cannot be empty");                        
             else {
-                String query = "select nombre, clave from usuarios where nombre = '" + this.name + "' and clave = '" + this.password + "'";
+                String query = "SELECT nombre, clave FROM usuarios WHERE nombre = '" + this.name + "' AND clave = '" + this.password + "'";
                 
-                DBConnection dbConnection = new DBConnection();
+                DBConnection dbConnection = DBConnection.getInstance();
                 dbConnection.connect();
                 
                 ResultSet resultSet = dbConnection.executeQuery(query);
