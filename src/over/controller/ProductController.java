@@ -5,8 +5,8 @@ import over.model.pojo.Product;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductController implements Controller {
@@ -16,8 +16,6 @@ public class ProductController implements Controller {
     private JTable existingProductsTable;
     private JButton btnModifyProduct;
     private JButton btnDeleteProduct;
-    private JComboBox cmbType;
-    private JTextField txtName;
 
     public ProductController(List components) {
         txtProduct = (JTextField) components.get(0);
@@ -47,18 +45,17 @@ public class ProductController implements Controller {
 
     public void updateProduct() {
         int row = existingProductsTable.getSelectedRow();
-        int idProduct = Integer.parseInt(existingProductsTable.getValueAt(row, 0).toString());
 
         if(row >= 0) {
-            int result = JOptionPane.showConfirmDialog(null, getUpdateProductPanel(), "Actualización de producto", JOptionPane.OK_CANCEL_OPTION);
-            String name = txtName.getText().trim();
+            int idProduct = Integer.parseInt(existingProductsTable.getValueAt(row, 0).toString());
+            String name = txtProduct.getText().trim();
 
-            if(result == JOptionPane.OK_OPTION && !name.isEmpty()) {
+            if(!name.isEmpty()) {
                 Product product = new Product();
 
                 product.setId(idProduct);
                 product.setName(name);
-                product.setKindOfProduct((KindOfProduct)cmbType.getSelectedItem());
+                product.setKindOfProduct((KindOfProduct)cmbKindProduct.getSelectedItem());
 
                 product.updateProduct();
             }
@@ -85,104 +82,32 @@ public class ProductController implements Controller {
     }
 
     public void refreshExistingProductsTable() {
+        ArrayList<Product> products = new Product().getAllProducts();
+
         DefaultTableModel tableModel = new DefaultTableModel(0, 0);
-        tableModel.setColumnIdentifiers(new String[]{"Id", "Nombre", "Tipo"});
+        tableModel.setColumnIdentifiers(new Object[]{"Id", "Nombre", "Tipo"});
 
         existingProductsTable.setModel(tableModel);
 
-        for(Product current : new Product().getAllProducts()) {
-            tableModel.addRow(new String[]{current.getId() + "", current.getName(), current.getKindOfProduct() + ""});
-        }
+        for(Product current : products)
+            tableModel.addRow(new Object[]{current.getId(), current.getName(), current.getKindOfProduct()});
     }
 
     public void refreshKindOfProductsList() {
+        ArrayList<KindOfProduct> kindOfProducts = new KindOfProduct().getAllKindOfProduct();
+
         cmbKindProduct.removeAllItems();
 
-        for (KindOfProduct kindOfProduct : new KindOfProduct().getAllKindOfProduct()) {
+        for (KindOfProduct kindOfProduct : kindOfProducts)
             cmbKindProduct.addItem(kindOfProduct);
-        }
     }
 
-    private void updateKindOfProductsList() {
-        cmbType.removeAllItems();
+    public void setProductInformation() {
+        String productName = existingProductsTable.getValueAt(existingProductsTable.getSelectedRow(), 1).toString();
+        int idKindProduct = ((KindOfProduct)existingProductsTable.getValueAt(existingProductsTable.getSelectedRow(), 2)).getId();
 
-        for (KindOfProduct kindOfProduct : new KindOfProduct().getAllKindOfProduct()) {
-            cmbType.addItem(kindOfProduct);
-        }
-    }
-
-    private JPanel getUpdateProductPanel() {
-        cmbType = new JComboBox<>();
-        JLabel lblName = new JLabel();
-        JLabel lblType = new JLabel();
-        txtName = new JTextField();
-        Box.Filler southFiller = new Box.Filler(new Dimension(0, 0), new Dimension(0, 30), new Dimension(0, 32767));
-        JPanel updatePanel = new JPanel();
-
-        updateKindOfProductsList();
-
-        GridBagConstraints gridBagConstraints;
-
-        updatePanel.setBackground(new Color(240, 240, 240));
-        updatePanel.setMaximumSize(new Dimension(400, 300));
-        updatePanel.setMinimumSize(new Dimension(400, 300));
-        updatePanel.setName("updatePanel");
-        updatePanel.setLayout(new GridBagLayout());
-
-        lblName.setText("Nuevo nombre");
-        lblName.setName("lblName");
-        gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = GridBagConstraints.EAST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new Insets(0, 0, 10, 10);
-        updatePanel.add(lblName, gridBagConstraints);
-
-        txtName.setMaximumSize(new Dimension(200, 30));
-        txtName.setMinimumSize(new Dimension(200, 30));
-        txtName.setName("txtName");
-        txtName.setPreferredSize(new Dimension(200, 30));
-        gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new Insets(0, 10, 10, 0);
-        updatePanel.add(txtName, gridBagConstraints);
-
-        lblType.setText("Tipo de producto");
-        lblType.setName("lblType");
-        gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = GridBagConstraints.EAST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new Insets(10, 0, 0, 10);
-        updatePanel.add(lblType, gridBagConstraints);
-
-        cmbType.setName("cmbType");
-        gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new Insets(10, 10, 0, 0);
-        updatePanel.add(cmbType, gridBagConstraints);
-
-        southFiller.setName("southFiller");
-        gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        updatePanel.add(southFiller, gridBagConstraints);
-        
-        return updatePanel;
+        txtProduct.setText(productName);
+        cmbKindProduct.setSelectedIndex(idKindProduct - 1);
     }
 
     @Override
