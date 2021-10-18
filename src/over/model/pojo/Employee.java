@@ -9,6 +9,8 @@ import java.util.ArrayList;
 public class Employee {
     private int id;
     private String name;
+    private String lastNameF;
+    private String lastNameM;
     private String address;
     private String title;
     private Date birthdate;
@@ -22,6 +24,14 @@ public class Employee {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setLastNameF(String lastNameF) {
+        this.lastNameF = lastNameF;
+    }
+
+    public void setLastNameM(String lastNameM) {
+        this.lastNameM = lastNameM;
     }
 
     public void setAddress(String address) {
@@ -56,6 +66,14 @@ public class Employee {
         return name;
     }
 
+    public String getLastNameF() {
+        return lastNameF;
+    }
+
+    public String getLastNameM() {
+        return lastNameM;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -81,28 +99,32 @@ public class Employee {
     }
 
     public ArrayList<Employee> getAllEmployees() {
-        ArrayList<Employee> employeeList = new ArrayList<>();
+        Position position = new Position();
 
-        String query = "SELECT * FROM empleados;";
+        ArrayList<Employee> employeeList = new ArrayList<>();
+        ArrayList<Position> positionList = position.getAllpositions();
+
+        String query = "SELECT * FROM empleados ORDER BY id_empleado ASC";
 
         try {
-            DBConnection dbConnection = new DBConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
             dbConnection.connect();
 
             ResultSet resultSet = dbConnection.executeQuery(query);
 
             while(resultSet.next()) {
                 Employee employee = new Employee();
-                Position position = new Position();
 
+                employee.setId(resultSet.getInt("id_empleado"));
                 employee.setName(resultSet.getString("nombre"));
+                employee.setLastNameF(resultSet.getString("apellido_paterno"));
+                employee.setLastNameM(resultSet.getString("apellido_materno"));
                 employee.setAddress(resultSet.getString("direccion"));
                 employee.setTitle(resultSet.getString("titulo"));
                 employee.setBirthdate(resultSet.getDate("fecha_nacimiento"));
                 employee.setRegister(resultSet.getDate("fecha_registro"));
                 employee.setGender(resultSet.getString("sexo").charAt(0));
-                position.setId(resultSet.getInt("id_puesto"));
-                employee.setPosition(position);
+                employee.setPosition(position.getPosition(positionList, resultSet.getInt("id_puesto")));
 
                 employeeList.add(employee);
             }
