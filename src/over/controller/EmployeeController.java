@@ -8,6 +8,10 @@ import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import java.awt.event.KeyEvent;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 
 public class EmployeeController implements Controller{
@@ -51,21 +55,23 @@ public class EmployeeController implements Controller{
 
     public void refreshExistingEmployeeTable() {
         DefaultTableModel tableModel = new DefaultTableModel(0, 0);
-        tableModel.setColumnIdentifiers(new String [] {"Id", "Nombre", "Título", "Puesto", "Dirección", "Fecha de nacimiento", "Fecha de registro", "Sexo"});
+        tableModel.setColumnIdentifiers(new Object[]{"Id", "Nombre", "Apellido Paterno", "Apellido Materno", "Título", "Puesto", "Dirección", "Fecha de nacimiento", "Fecha de registro", "Sexo"});
 
         existingEmployeesTable.setModel(tableModel);
 
         for(Employee employee : new Employee().getAllEmployees()) {
             tableModel.addRow(
-                new String[]{
-                        employee.getId() + "",
-                        employee.getName(),
-                        employee.getTitle(),
-                        employee.getPosition().getId() + "",
-                        employee.getAddress(),
-                        employee.getBirthdate() + "",
-                        employee.getRegister() + "",
-                        employee.getGender() + ""
+                new Object[]{
+                    employee.getId(),
+                    employee.getName(),
+                    employee.getLastNameF(),
+                    employee.getLastNameM(),
+                    employee.getTitle(),
+                    employee.getPosition(),
+                    employee.getAddress(),
+                    employee.getBirthdate(),
+                    employee.getRegister(),
+                    employee.getGender()
                 }
             );
         }
@@ -81,6 +87,41 @@ public class EmployeeController implements Controller{
     public void initDateFields() throws ParseException {
         txtBirthday.setFormatterFactory(new DefaultFormatterFactory(new MaskFormatter("##/##/####")));
         txtRegisterDate.setFormatterFactory(new DefaultFormatterFactory(new MaskFormatter("##/##/####")));
+    }
+
+    public void setEmployeeInformation() throws ParseException {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+        int id = (int)existingEmployeesTable.getValueAt(existingEmployeesTable.getSelectedRow(), 0);
+        String name = existingEmployeesTable.getValueAt(existingEmployeesTable.getSelectedRow(), 1).toString();
+        String lastNameF = existingEmployeesTable.getValueAt(existingEmployeesTable.getSelectedRow(), 2).toString();
+        String lastNameM = existingEmployeesTable.getValueAt(existingEmployeesTable.getSelectedRow(), 3).toString();
+        String title = existingEmployeesTable.getValueAt(existingEmployeesTable.getSelectedRow(), 4).toString();
+        String position = existingEmployeesTable.getValueAt(existingEmployeesTable.getSelectedRow(), 5).toString();
+        String address = existingEmployeesTable.getValueAt(existingEmployeesTable.getSelectedRow(), 6).toString();
+        String birthday = existingEmployeesTable.getValueAt(existingEmployeesTable.getSelectedRow(), 7).toString();
+        String register = existingEmployeesTable.getValueAt(existingEmployeesTable.getSelectedRow(), 8).toString();
+        String gender = existingEmployeesTable.getValueAt(existingEmployeesTable.getSelectedRow(), 9).toString();
+
+        Date birthdayDate = Date.from(LocalDate.parse(birthday).atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+        Date registerDate = Date.from(LocalDate.parse(register).atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+
+        txtEmployee.setText(name);
+        txtLastNameF.setText(lastNameF);
+        txtLastNameM.setText(lastNameM);
+        txtHeading.setText(title);
+        txtPosition.setText(position);
+        txtAddress.setText(address);
+        txtBirthday.setValue(simpleDateFormat.format(birthdayDate));
+        txtRegisterDate.setValue(simpleDateFormat.format(registerDate));
+        cmbGender.setSelectedIndex(getGender(gender));
+    }
+
+    public int getGender(String gender) {
+        if(gender.equals("M"))
+            return 0;
+
+        return 1;
     }
 
     @Override

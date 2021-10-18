@@ -5,6 +5,7 @@ import over.model.pojo.Hierarchy;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.List;
 
 public class HierarchyController implements Controller {
@@ -38,8 +39,8 @@ public class HierarchyController implements Controller {
         int row = existingHierarchiesTable.getSelectedRow();
 
         if(row >= 0) {
-            String newHierarchyName = JOptionPane.showInputDialog("Introduce el nombre de la jerarquía deseada");
-            int newHierarchyId = Integer.parseInt(existingHierarchiesTable.getValueAt(row, 1).toString());
+            String newHierarchyName = txtHierarchy.getText().trim();
+            int newHierarchyId = Integer.parseInt(existingHierarchiesTable.getValueAt(row, 0).toString());
 
             if(!newHierarchyName.isEmpty()) {
                 Hierarchy hierarchy = new Hierarchy();
@@ -57,11 +58,9 @@ public class HierarchyController implements Controller {
         int row = existingHierarchiesTable.getSelectedRow();
 
         if(row >= 0) {
-            String hierarchyName = existingHierarchiesTable.getValueAt(row, 0).toString();
-            int hierarchyId = Integer.parseInt(existingHierarchiesTable.getValueAt(row, 1).toString());
+            int hierarchyId = Integer.parseInt(existingHierarchiesTable.getValueAt(row, 0).toString());
 
             Hierarchy hierarchy = new Hierarchy();
-            hierarchy.setName(hierarchyName);
             hierarchy.setId(hierarchyId);
 
             hierarchy.deleteHierarchy();
@@ -70,15 +69,22 @@ public class HierarchyController implements Controller {
             JOptionPane.showMessageDialog(null, "Selecciona un tipo de jerarquía");
     }
 
+    public void setHierarchyInformation() {
+        int row = existingHierarchiesTable.getSelectedRow();
+
+        txtHierarchy.setText(existingHierarchiesTable.getValueAt(row, 1).toString());
+    }
+
     public void refreshExistingHierarchiesTable() {
+        ArrayList<Hierarchy> hierarchies = new Hierarchy().getAllHierarchies();
+
         DefaultTableModel tableModel = new DefaultTableModel(0, 0);
-        tableModel.setColumnIdentifiers(new String[]{"Nombre", "Tipo"});
+        tableModel.setColumnIdentifiers(new Object[]{"Tipo", "Nombre"});
 
         existingHierarchiesTable.setModel(tableModel);
 
-        for(Hierarchy current : new Hierarchy().getAllHierarchies()) {
-            tableModel.addRow(new String[]{current.getName(), current.getId() + ""});
-        }
+        for(Hierarchy current : hierarchies)
+            tableModel.addRow(new Object[]{current.getId(), current.getName()});
     }
 
     @Override

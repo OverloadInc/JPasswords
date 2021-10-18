@@ -1,13 +1,18 @@
 package over.controller;
 
+import over.model.pojo.Department;
+import over.model.pojo.Hierarchy;
+import over.model.pojo.Position;
+
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.KeyEvent;
 import java.util.List;
 
 public class PositionsController implements Controller {
     private JTextField txtPositionName;
-    private JComboBox<String> cmbDepartments;
-    private JComboBox<String> cmbHierarchies;
+    private JComboBox cmbDepartments;
+    private JComboBox cmbHierarchies;
     private JButton btnAddPosition;
     private JTable existingPositionsTable;
 
@@ -31,8 +36,32 @@ public class PositionsController implements Controller {
 
     }
 
-    public void refreshExistingPositionsTable() {
+    public void setPositionInformation() {
 
+    }
+
+    public void refreshExistingPositionsTable() {
+        DefaultTableModel tableModel = new DefaultTableModel(0, 0);
+        tableModel.setColumnIdentifiers(new Object[]{"Id", "Nombre", "Departamento", "Jerarquía"});
+
+        existingPositionsTable.setModel(tableModel);
+
+        for(Position position : new Position().getAllpositions())
+            tableModel.addRow(new Object[]{position.getId(), position.getName(), position.getDepartment(), position.getHierarchy()});
+    }
+
+    public void refreshExistingDepartmentList() {
+        cmbDepartments.removeAllItems();
+
+        for (Department department : new Department().getAllDepartments())
+            cmbDepartments.addItem(department);
+    }
+
+    public void refreshExistingHierarchyList() {
+        cmbHierarchies.removeAllItems();
+
+        for (Hierarchy hierarchy : new Hierarchy().getAllHierarchies())
+            cmbHierarchies.addItem(hierarchy);
     }
 
     @Override

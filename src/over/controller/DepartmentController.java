@@ -37,7 +37,7 @@ public class DepartmentController implements Controller {
         Department department = (Department) existingDepartmentsList.getSelectedValue();
 
         if(department != null) {
-            String newDepartmentName = JOptionPane.showInputDialog("Introduce el nombre de departamento deseado");
+            String newDepartmentName = txtDepartment.getText().trim();
 
             if(!newDepartmentName.isEmpty()) {
                 department.setName(newDepartmentName);
@@ -56,6 +56,10 @@ public class DepartmentController implements Controller {
             department.deleteDepartment();
         else
             JOptionPane.showMessageDialog(null, "Selecciona un departamento");
+    }
+
+    public void setDepartmentInformation() {
+        txtDepartment.setText(((Department) existingDepartmentsList.getSelectedValue()).getName());
     }
 
     public void refreshExistingDepartmentList() {
