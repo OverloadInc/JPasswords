@@ -119,6 +119,11 @@ public class DepartmentsPanel extends JPanel {
         existingDepartmentsList.setName("existingDepartmentsList");
         existingDepartmentsList.setPreferredSize(new Dimension(300, 250));
         existingDepartmentsList.setVisibleRowCount(10);
+        existingDepartmentsList.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                existingDepartmentsListMouseClicked(evt);
+            }
+        });
         existingDepartmentsScroll.setViewportView(existingDepartmentsList);
 
         gridBagConstraints = new GridBagConstraints();
@@ -201,6 +206,10 @@ public class DepartmentsPanel extends JPanel {
 
     private void btnDeleteDepartmentKeyPressed(KeyEvent evt) {
         controller.setFocus(evt);
+    }
+
+    private void existingDepartmentsListMouseClicked(MouseEvent evt) {
+        ((DepartmentController)controller).setDepartmentInformation();
     }
 
     private void btnAddDepartmentMouseClicked(MouseEvent evt) {

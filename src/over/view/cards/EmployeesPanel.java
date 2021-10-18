@@ -5,7 +5,6 @@ import over.controller.EmployeeController;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -329,27 +328,20 @@ public class EmployeesPanel extends JPanel {
         existingEmployeesPanel.setPreferredSize(new Dimension(750, 250));
         existingEmployeesPanel.setLayout(new GridBagLayout());
 
-        existingEmployeesScroll.setMinimumSize(new Dimension(500, 200));
-        existingEmployeesScroll.setMaximumSize(new Dimension(500, 200));
+        existingEmployeesScroll.setMinimumSize(new Dimension(600, 200));
+        existingEmployeesScroll.setMaximumSize(new Dimension(600, 200));
         existingEmployeesScroll.setName("existingEmployeesScroll");
 
-        existingEmployeesTable.setModel(new DefaultTableModel(new Object[][]{}, new String [] {"Id", "Nombre", "Título", "Puesto", "Dirección", "Fecha de nacimiento", "Fecha de registro", "Sexo"}) {
-            Class[] types = new Class[] {Integer.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class};
-            boolean[] canEdit = new boolean[] {false, false, false, false, false, false, false, false};
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        existingEmployeesTable.setMaximumSize(new Dimension(500, 200));
-        existingEmployeesTable.setMinimumSize(new Dimension(500, 200));
+        existingEmployeesTable.setMaximumSize(new Dimension(600, 200));
+        existingEmployeesTable.setMinimumSize(new Dimension(600, 200));
         existingEmployeesTable.setFillsViewportHeight(true);
         existingEmployeesTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         existingEmployeesTable.setName("existingEmployeesTable");
+        existingEmployeesTable.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                existingEmployeesTableMouseClicked(evt);
+            }
+        });
         existingEmployeesScroll.setViewportView(existingEmployeesTable);
 
         gridBagConstraints = new GridBagConstraints();
@@ -446,6 +438,16 @@ public class EmployeesPanel extends JPanel {
 
     private void btnDeleteEmployeeKeyPressed(KeyEvent evt) {
         controller.setFocus(evt);
+    }
+
+    private void existingEmployeesTableMouseClicked(MouseEvent evt) {
+        try {
+            ((EmployeeController)controller).initDateFields();
+            ((EmployeeController)controller).setEmployeeInformation();
+        }
+        catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     private void btnAddEmployeeMouseClicked(MouseEvent evt) {

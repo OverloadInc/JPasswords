@@ -180,22 +180,16 @@ public class PositionsPanel extends JPanel {
         existingPositionsScroll.setName("existingPositionsScroll");
         existingPositionsScroll.setPreferredSize(new Dimension(400, 200));
 
-        existingPositionsTable.setModel(new DefaultTableModel(new Object[][] {}, new String[] {"Id", "Nombre", "Departamento", "Jerarquía"}) {
-            Class[] types = new Class[] {Integer.class, String.class, String.class, String.class};
-            boolean[] canEdit = new boolean[] {false, false, false, false};
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        existingPositionsTable.setFillsViewportHeight(true);
         existingPositionsTable.setMaximumSize(new Dimension(400, 200));
         existingPositionsTable.setMinimumSize(new Dimension(400, 200));
         existingPositionsTable.setName("existingPositionsTable");
         existingPositionsTable.setPreferredSize(new Dimension(400, 200));
+        existingPositionsTable.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                existingPositionsTableMouseClicked(evt);
+            }
+        });
         existingPositionsScroll.setViewportView(existingPositionsTable);
 
         gridBagConstraints = new GridBagConstraints();
@@ -262,6 +256,8 @@ public class PositionsPanel extends JPanel {
         componentList.add(existingPositionsTable);
 
         controller = new PositionsController(componentList);
+        ((PositionsController)controller).refreshExistingDepartmentList();
+        ((PositionsController)controller).refreshExistingHierarchyList();
         ((PositionsController)controller).refreshExistingPositionsTable();
     }
 
@@ -291,16 +287,26 @@ public class PositionsPanel extends JPanel {
 
     private void btnAddPositionMouseClicked(MouseEvent evt) {
         ((PositionsController)controller).addPosition();
+        ((PositionsController)controller).refreshExistingDepartmentList();
+        ((PositionsController)controller).refreshExistingHierarchyList();
         ((PositionsController)controller).refreshExistingPositionsTable();
     }
 
     private void btnModifyPositionMouseClicked(MouseEvent evt) {
         ((PositionsController)controller).updatePosition();
+        ((PositionsController)controller).refreshExistingDepartmentList();
+        ((PositionsController)controller).refreshExistingHierarchyList();
         ((PositionsController)controller).refreshExistingPositionsTable();
     }
 
     private void btnDeletePositionMouseClicked(MouseEvent evt) {
         ((PositionsController)controller).deletePosition();
+        ((PositionsController)controller).refreshExistingDepartmentList();
+        ((PositionsController)controller).refreshExistingHierarchyList();
         ((PositionsController)controller).refreshExistingPositionsTable();
+    }
+
+    private void existingPositionsTableMouseClicked(MouseEvent evt) {
+        ((PositionsController)controller).setPositionInformation();
     }
 }

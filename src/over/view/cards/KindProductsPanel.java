@@ -1,7 +1,7 @@
 package over.view.cards;
 
 import over.controller.Controller;
-import over.controller.ProductKindController;
+import over.controller.KindProductsController;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -118,6 +118,11 @@ public class KindProductsPanel extends JPanel {
         existingKindProductsList.setName("existingKindProductsList");
         existingKindProductsList.setPreferredSize(new Dimension(300, 200));
         existingKindProductsList.setVisibleRowCount(10);
+        existingKindProductsList.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                existingKindProductsListMouseClicked(evt);
+            }
+        });
         existingKindProductsScroll.setViewportView(existingKindProductsList);
 
         gridBagConstraints = new GridBagConstraints();
@@ -180,8 +185,8 @@ public class KindProductsPanel extends JPanel {
         componentList.add(btnAddKindProduct);
         componentList.add(existingKindProductsList);
 
-        controller = new ProductKindController(componentList);
-        ((ProductKindController)controller).refreshExistingKindProductsList();
+        controller = new KindProductsController(componentList);
+        ((KindProductsController)controller).refreshExistingKindProductsList();
     }
 
     private void txtKindProductKeyPressed(KeyEvent evt) {
@@ -200,21 +205,25 @@ public class KindProductsPanel extends JPanel {
         controller.setFocus(evt);
     }
 
+    private void existingKindProductsListMouseClicked(MouseEvent evt) {
+        ((KindProductsController)controller).setKindProductInformation();
+    }
+
     private void btnAddKindProductMouseClicked(MouseEvent evt) {
-        ((ProductKindController)controller).addKindOfProduct();
-        ((ProductKindController)controller).refreshExistingKindProductsList();
+        ((KindProductsController)controller).addKindOfProduct();
+        ((KindProductsController)controller).refreshExistingKindProductsList();
 
         txtKindProduct.setText("");
         txtKindProduct.requestFocusInWindow();
     }
 
     private void btnModifyKindProductMouseClicked(MouseEvent evt) {
-        ((ProductKindController)controller).updateKindOfProduct();
-        ((ProductKindController)controller).refreshExistingKindProductsList();
+        ((KindProductsController)controller).updateKindOfProduct();
+        ((KindProductsController)controller).refreshExistingKindProductsList();
     }
 
     private void btnDeleteKindProductMouseClicked(MouseEvent evt) {
-        ((ProductKindController)controller).deleteKindOfProduct();
-        ((ProductKindController)controller).refreshExistingKindProductsList();
+        ((KindProductsController)controller).deleteKindOfProduct();
+        ((KindProductsController)controller).refreshExistingKindProductsList();
     }
 }

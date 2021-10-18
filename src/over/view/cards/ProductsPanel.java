@@ -5,7 +5,6 @@ import over.controller.ProductController;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -125,23 +124,16 @@ public class ProductsPanel extends JPanel {
         existingProductsScroll.setName("existingProductsScroll");
         existingProductsScroll.setPreferredSize(new Dimension(400, 300));
 
-        existingProductsTable.setModel(new DefaultTableModel(new Object [][] {}, new String [] {"Id", "Nombre", "Tipo"}) {
-            Class[] types = new Class[] {Integer.class, String.class, Integer.class};
-            boolean[] canEdit = new boolean[] {false, false, false};
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
         existingProductsTable.setFillsViewportHeight(true);
         existingProductsTable.setMaximumSize(new Dimension(400, 300));
         existingProductsTable.setMinimumSize(new Dimension(400, 300));
         existingProductsTable.setName("existingProductsTable");
         existingProductsTable.setPreferredSize(new Dimension(400, 300));
+        existingProductsTable.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                existingProductsTableMouseClicked(evt);
+            }
+        });
         existingProductsScroll.setViewportView(existingProductsTable);
 
         gridBagConstraints = new GridBagConstraints();
@@ -226,6 +218,10 @@ public class ProductsPanel extends JPanel {
 
     private void btnDeleteProductKeyPressed(KeyEvent evt) {
         controller.setFocus(evt);
+    }
+
+    private void existingProductsTableMouseClicked(MouseEvent evt) {
+        ((ProductController)controller).setProductInformation();
     }
 
     private void btnAddProductMouseClicked(MouseEvent evt) {

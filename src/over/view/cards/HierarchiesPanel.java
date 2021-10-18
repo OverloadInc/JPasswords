@@ -5,7 +5,6 @@ import over.controller.HierarchyController;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -114,22 +113,15 @@ public class HierarchiesPanel extends JPanel {
         existingHierarchiesScroll.setName("existingHierarchiesScroll");
         existingHierarchiesScroll.setPreferredSize(new Dimension(300, 200));
 
-        existingHierarchiesTable.setModel(new DefaultTableModel(new Object [][] {}, new String [] {"Nombre", "Tipo"}) {
-            Class[] types = new Class[] {String.class, Integer.class};
-            boolean[] canEdit = new boolean[] {false, false};
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
         existingHierarchiesTable.setFillsViewportHeight(true);
         existingHierarchiesTable.setMinimumSize(new Dimension(300, 200));
         existingHierarchiesTable.setName("existingHierarchiesTable");
         existingHierarchiesTable.setPreferredSize(new Dimension(300, 200));
+        existingHierarchiesTable.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                existingHierarchiesTableMouseClicked(evt);
+            }
+        });
         existingHierarchiesScroll.setViewportView(existingHierarchiesTable);
 
         gridBagConstraints = new GridBagConstraints();
@@ -212,6 +204,10 @@ public class HierarchiesPanel extends JPanel {
 
     private void btnDeleteHierarchyKeyPressed(KeyEvent evt) {
         controller.setFocus(evt);
+    }
+
+    private void existingHierarchiesTableMouseClicked(MouseEvent evt) {
+        ((HierarchyController) controller).setHierarchyInformation();
     }
 
     private void btnHierarchyMouseClicked(MouseEvent evt) {
