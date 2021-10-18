@@ -31,7 +31,7 @@ public class Privilege {
         String query = "SELECT * FROM privilegios ORDER BY id_privilegio ASC;";
 
         try {
-            DBConnection dbConnection = new DBConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
             dbConnection.connect();
 
             ResultSet resultSet = dbConnection.executeQuery(query);
@@ -60,14 +60,13 @@ public class Privilege {
                 "AND u.nombre = '" + user.getName() + "'";
 
         try {
-            DBConnection dbConnection = new DBConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
             dbConnection.connect();
 
             ResultSet resultSet = dbConnection.executeQuery(query);
 
-            while(resultSet.next()) {
+            while(resultSet.next())
                 privilege = resultSet.getString("privilegio");
-            }
 
             dbConnection.disconnect();
         }
@@ -82,7 +81,7 @@ public class Privilege {
         String command = "INSERT INTO privilegios (nombre) VALUES ('" + this.name + "');";
 
         try {
-            DBConnection dbConnection = new DBConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
             dbConnection.connect();
 
             result = dbConnection.executeCommand(command);
@@ -100,7 +99,7 @@ public class Privilege {
         String command = "UPDATE privilegios SET nombre = '" + this.name + "' WHERE id_privilegio = " + this.id + ";";
 
         try {
-            DBConnection dbConnection = new DBConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
             dbConnection.connect();
 
             result = dbConnection.executeCommand(command);
@@ -118,7 +117,7 @@ public class Privilege {
         String command = "DELETE FROM privilegios WHERE id_privilegio = " + this.id + ";";
 
         try {
-            DBConnection dbConnection = new DBConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
             dbConnection.connect();
 
             result = dbConnection.executeCommand(command);

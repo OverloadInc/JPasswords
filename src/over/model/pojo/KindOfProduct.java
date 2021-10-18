@@ -31,7 +31,7 @@ public class KindOfProduct {
         String query = "SELECT * FROM tipo_productos ORDER BY id_tipoproducto ASC;";
 
         try {
-            DBConnection dbConnection = new DBConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
             dbConnection.connect();
 
             ResultSet resultSet = dbConnection.executeQuery(query);
@@ -53,11 +53,9 @@ public class KindOfProduct {
     }
 
     public KindOfProduct getKindOfProduct(ArrayList<KindOfProduct> kindOfProducts, int id) {
-        for(KindOfProduct kindOfProduct : kindOfProducts) {
-            if(kindOfProduct.getId() == id) {
+        for(KindOfProduct kindOfProduct : kindOfProducts)
+            if(kindOfProduct.getId() == id)
                 return kindOfProduct;
-            }
-        }
 
         return null;
     }
@@ -67,7 +65,7 @@ public class KindOfProduct {
         String command = "INSERT INTO tipo_productos (nombre) VALUES ('" + this.name + "');";
 
         try {
-            DBConnection dbConnection = new DBConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
             dbConnection.connect();
 
             result = dbConnection.executeCommand(command);
@@ -85,7 +83,7 @@ public class KindOfProduct {
         String command = "UPDATE tipo_productos SET nombre = '" + this.name + "' WHERE id_tipoproducto = " + this.id + ";";
 
         try {
-            DBConnection dbConnection = new DBConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
             dbConnection.connect();
 
             result = dbConnection.executeCommand(command);
@@ -103,7 +101,7 @@ public class KindOfProduct {
         String command = "DELETE FROM tipo_productos WHERE id_tipoproducto = " + this.id + ";";
 
         try {
-            DBConnection dbConnection = new DBConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
             dbConnection.connect();
 
             result = dbConnection.executeCommand(command);

@@ -35,13 +35,15 @@ public class Product {
     }
 
     public ArrayList<Product> getAllProducts() {
+        KindOfProduct kindOfProduct = new KindOfProduct();
+
         ArrayList<Product> productList = new ArrayList<>();
-        ArrayList<KindOfProduct> kindOfProducts = new KindOfProduct().getAllKindOfProduct();
+        ArrayList<KindOfProduct> kindOfProducts = kindOfProduct.getAllKindOfProduct();
 
         String query = "SELECT * FROM productos ORDER BY id_producto ASC;";
 
         try {
-            DBConnection dbConnection = new DBConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
             dbConnection.connect();
 
             ResultSet resultSet = dbConnection.executeQuery(query);
@@ -51,7 +53,7 @@ public class Product {
 
                 product.setId(resultSet.getInt("id_producto"));
                 product.setName(resultSet.getString("nombre"));
-                product.setKindOfProduct(new KindOfProduct().getKindOfProduct(kindOfProducts, resultSet.getInt("id_tipoproducto")));
+                product.setKindOfProduct(kindOfProduct.getKindOfProduct(kindOfProducts, resultSet.getInt("id_tipoproducto")));
 
                 productList.add(product);
             }
@@ -69,7 +71,7 @@ public class Product {
         String command = "INSERT INTO productos (nombre, id_tipoproducto) VALUES ('" + this.name + "', '" + this.kindOfProduct.getId() + "');";
 
         try {
-            DBConnection dbConnection = new DBConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
             dbConnection.connect();
 
             result = dbConnection.executeCommand(command);
@@ -85,10 +87,9 @@ public class Product {
     public boolean updateProduct() {
         boolean result = false;
         String command = "UPDATE productos SET nombre = '" + this.name + "', id_tipoproducto = " + this.kindOfProduct.getId() + " WHERE id_producto = " + this.id + ";";
-        System.out.println(command);
 
         try {
-            DBConnection dbConnection = new DBConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
             dbConnection.connect();
 
             result = dbConnection.executeCommand(command);
@@ -106,7 +107,7 @@ public class Product {
         String command = "DELETE FROM productos WHERE id_producto = " + this.id + ";";
 
         try {
-            DBConnection dbConnection = new DBConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
             dbConnection.connect();
 
             result = dbConnection.executeCommand(command);

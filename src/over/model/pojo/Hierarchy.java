@@ -31,7 +31,7 @@ public class Hierarchy {
         String query = "SELECT * FROM jerarquias ORDER BY id_jerarquia ASC;";
 
         try {
-            DBConnection dbConnection = new DBConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
             dbConnection.connect();
 
             ResultSet resultSet = dbConnection.executeQuery(query);
@@ -52,12 +52,21 @@ public class Hierarchy {
         return hierarchyList;
     }
 
+    public Hierarchy getHierarchy(ArrayList<Hierarchy> hierarchies, int id) {
+        for(Hierarchy hierarchy : hierarchies) {
+            if(hierarchy.getId() == id)
+                return hierarchy;
+        }
+
+        return null;
+    }
+
     public boolean addHierarchy() {
         boolean result = false;
         String command = "INSERT INTO jerarquias (nombre) VALUES ('" + this.name + "');";
 
         try {
-            DBConnection dbConnection = new DBConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
             dbConnection.connect();
 
             result = dbConnection.executeCommand(command);
@@ -75,7 +84,7 @@ public class Hierarchy {
         String command = "UPDATE jerarquias SET nombre = '" + this.name + "' WHERE id_jerarquia = " + this.id + ";";
 
         try {
-            DBConnection dbConnection = new DBConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
             dbConnection.connect();
 
             result = dbConnection.executeCommand(command);
@@ -93,7 +102,7 @@ public class Hierarchy {
         String command = "DELETE FROM jerarquias WHERE id_jerarquia = " + this.id + ";";
 
         try {
-            DBConnection dbConnection = new DBConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
             dbConnection.connect();
 
             result = dbConnection.executeCommand(command);
@@ -104,5 +113,10 @@ public class Hierarchy {
         }
 
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 }

@@ -31,7 +31,7 @@ public class Department {
         String query = "SELECT * FROM departamentos ORDER BY id_departamento ASC;";
 
         try {
-            DBConnection dbConnection = new DBConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
             dbConnection.connect();
 
             ResultSet resultSet = dbConnection.executeQuery(query);
@@ -52,12 +52,21 @@ public class Department {
         return departments;
     }
 
+    public Department getDepartment(ArrayList<Department> departments, int id) {
+        for (Department department : departments) {
+            if(department.getId() == id)
+                return department;
+        }
+
+        return null;
+    }
+
     public boolean addDepartment() {
         boolean result = false;
         String command = "INSERT INTO departamentos (nombre) VALUES ('" + this.name + "');";
 
         try {
-            DBConnection dbConnection = new DBConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
             dbConnection.connect();
 
             result = dbConnection.executeCommand(command);
@@ -75,7 +84,7 @@ public class Department {
         String command = "UPDATE departamentos SET nombre = '" + this.name + "' WHERE id_departamento = " + this.id + ";";
 
         try {
-            DBConnection dbConnection = new DBConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
             dbConnection.connect();
 
             result = dbConnection.executeCommand(command);
@@ -93,7 +102,7 @@ public class Department {
         String command = "DELETE FROM departamentos WHERE id_departamento = " + this.id + ";";
 
         try {
-            DBConnection dbConnection = new DBConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
             dbConnection.connect();
 
             result = dbConnection.executeCommand(command);
