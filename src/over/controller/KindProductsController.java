@@ -4,14 +4,15 @@ import over.model.pojo.KindOfProduct;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.List;
 
-public class ProductKindController implements Controller {
+public class KindProductsController implements Controller {
     private JTextField txtKindProduct;
     private JButton btnAddKindProduct;
     private JList existingKindProductsList;
 
-    public ProductKindController(List components) {
+    public KindProductsController(List components) {
         txtKindProduct = (JTextField)components.get(0);
         btnAddKindProduct = (JButton)components.get(1);
         existingKindProductsList = (JList)components.get(2);
@@ -35,7 +36,7 @@ public class ProductKindController implements Controller {
         KindOfProduct kindOfProduct = (KindOfProduct) existingKindProductsList.getSelectedValue();
 
         if(kindOfProduct != null) {
-            String newProductName = JOptionPane.showInputDialog("Introduce el tipo de producto deseado");
+            String newProductName = txtKindProduct.getText().trim();
 
             if(!newProductName.isEmpty()) {
                 kindOfProduct.setName(newProductName);
@@ -58,11 +59,18 @@ public class ProductKindController implements Controller {
 
     public void refreshExistingKindProductsList() {
         DefaultListModel nameListModel = new DefaultListModel();
+        ArrayList<KindOfProduct> kindOfProducts = new KindOfProduct().getAllKindOfProduct();
 
-        for(KindOfProduct current : new KindOfProduct().getAllKindOfProduct())
+        for(KindOfProduct current : kindOfProducts)
             nameListModel.addElement(current);
 
         existingKindProductsList.setModel(nameListModel);
+    }
+
+    public void setKindProductInformation() {
+        String kindProductName = ((KindOfProduct)existingKindProductsList.getSelectedValue()).getName();
+
+        txtKindProduct.setText(kindProductName);
     }
 
     @Override
