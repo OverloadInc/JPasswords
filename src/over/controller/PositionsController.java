@@ -25,19 +25,75 @@ public class PositionsController implements Controller {
     }
 
     public void addPosition() {
+        String name = txtPositionName.getText().trim();
+        Department department = (Department) cmbDepartments.getSelectedItem();
+        Hierarchy hierarchy = (Hierarchy) cmbHierarchies.getSelectedItem();
 
+        if(!name.isEmpty()) {
+            Position position = new Position();
+
+            position.setId(0);
+            position.setName(name);
+            position.setDepartment(department);
+            position.setHierarchy(hierarchy);
+
+            position.addPosition();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Introduce un nombre válido");
+        }
     }
 
     public void updatePosition() {
+        int row = existingPositionsTable.getSelectedRow();
 
+        if(row >= 0) {
+            int id = Integer.parseInt(existingPositionsTable.getValueAt(row, 0).toString());
+            String name = txtPositionName.getText().trim();
+            Department department = (Department) cmbDepartments.getSelectedItem();
+            Hierarchy hierarchy = (Hierarchy) cmbHierarchies.getSelectedItem();
+
+            if(!name.isEmpty()) {
+                Position position = new Position();
+
+                position.setId(id);
+                position.setName(name);
+                position.setDepartment(department);
+                position.setHierarchy(hierarchy);
+
+                position.updatePosition();
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Introduce un nombre válido");
+            }
+        }
+        else
+            JOptionPane.showMessageDialog(null, "Selecciona un puesto");
     }
 
     public void deletePosition() {
+        int row = existingPositionsTable.getSelectedRow();
 
+        if(row >= 0) {
+            int id = Integer.parseInt(existingPositionsTable.getValueAt(row, 0).toString());
+
+            Position position = new Position();
+            position.setId(id);
+
+            position.deletePosition();
+        }
+        else
+            JOptionPane.showMessageDialog(null, "Selecciona un puesto");
     }
 
     public void setPositionInformation() {
+        int row = existingPositionsTable.getSelectedRow();
 
+        if(row >= 0) {
+            txtPositionName.setText(existingPositionsTable.getValueAt(row, 1).toString());
+            cmbDepartments.setSelectedIndex(((Department) existingPositionsTable.getValueAt(row, 2)).getId() - 1);
+            cmbHierarchies.setSelectedIndex(((Hierarchy) existingPositionsTable.getValueAt(row, 3)).getId() - 1);
+        }
     }
 
     public void refreshExistingPositionsTable() {
@@ -94,17 +150,16 @@ public class PositionsController implements Controller {
             switch(keySource){
                 case "btnAddPosition":
                     addPosition();
-                    refreshExistingPositionsTable();
                     break;
                 case "btnModifyPosition":
                     updatePosition();
-                    refreshExistingPositionsTable();
                     break;
                 case "btnDeletePosition":
                     deletePosition();
-                    refreshExistingPositionsTable();
                     break;
             }
+
+            refreshExistingPositionsTable();
 
             txtPositionName.setText("");
             txtPositionName.requestFocusInWindow();
