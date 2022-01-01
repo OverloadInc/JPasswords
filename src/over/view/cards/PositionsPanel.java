@@ -5,7 +5,6 @@ import over.controller.PositionsController;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -169,22 +168,21 @@ public class PositionsPanel extends JPanel {
         add(positionsFiller2);
 
         existingPositionsPanel.setBorder(BorderFactory.createTitledBorder("Puestos de trabajo existentes"));
-        existingPositionsPanel.setMinimumSize(new Dimension(750, 300));
+        existingPositionsPanel.setMinimumSize(new Dimension(750, 350));
         existingPositionsPanel.setName("existingPositionsPanel");
         existingPositionsPanel.setOpaque(false);
-        existingPositionsPanel.setPreferredSize(new Dimension(750, 300));
+        existingPositionsPanel.setPreferredSize(new Dimension(750, 350));
         existingPositionsPanel.setLayout(new GridBagLayout());
 
-        existingPositionsScroll.setMaximumSize(new Dimension(400, 200));
-        existingPositionsScroll.setMinimumSize(new Dimension(400, 200));
+        existingPositionsScroll.setMinimumSize(new Dimension(600, 300));
+        existingPositionsScroll.setMaximumSize(new Dimension(600, 300));
         existingPositionsScroll.setName("existingPositionsScroll");
-        existingPositionsScroll.setPreferredSize(new Dimension(400, 200));
 
+        existingPositionsTable.setMaximumSize(new Dimension(600, 300));
+        existingPositionsTable.setMinimumSize(new Dimension(600, 300));
         existingPositionsTable.setFillsViewportHeight(true);
-        existingPositionsTable.setMaximumSize(new Dimension(400, 200));
-        existingPositionsTable.setMinimumSize(new Dimension(400, 200));
+        existingPositionsTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         existingPositionsTable.setName("existingPositionsTable");
-        existingPositionsTable.setPreferredSize(new Dimension(400, 200));
         existingPositionsTable.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 existingPositionsTableMouseClicked(evt);
@@ -261,6 +259,11 @@ public class PositionsPanel extends JPanel {
         ((PositionsController)controller).refreshExistingPositionsTable();
     }
 
+    private void deleteContent() {
+        txtPositionName.setText("");
+        txtPositionName.requestFocusInWindow();
+    }
+
     private void txtPositionNameKeyPressed(KeyEvent evt) {
         controller.setFocus(evt);
     }
@@ -290,6 +293,7 @@ public class PositionsPanel extends JPanel {
         ((PositionsController)controller).refreshExistingDepartmentList();
         ((PositionsController)controller).refreshExistingHierarchyList();
         ((PositionsController)controller).refreshExistingPositionsTable();
+        deleteContent();
     }
 
     private void btnModifyPositionMouseClicked(MouseEvent evt) {
@@ -297,6 +301,7 @@ public class PositionsPanel extends JPanel {
         ((PositionsController)controller).refreshExistingDepartmentList();
         ((PositionsController)controller).refreshExistingHierarchyList();
         ((PositionsController)controller).refreshExistingPositionsTable();
+        deleteContent();
     }
 
     private void btnDeletePositionMouseClicked(MouseEvent evt) {
@@ -304,6 +309,7 @@ public class PositionsPanel extends JPanel {
         ((PositionsController)controller).refreshExistingDepartmentList();
         ((PositionsController)controller).refreshExistingHierarchyList();
         ((PositionsController)controller).refreshExistingPositionsTable();
+        deleteContent();
     }
 
     private void existingPositionsTableMouseClicked(MouseEvent evt) {
