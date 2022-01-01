@@ -90,4 +90,58 @@ public class Position {
 
         return null;
     }
+
+    public boolean addPosition() {
+        boolean result = false;
+        String command = "INSERT INTO puestos (nombre, id_jerarquia, id_departamento) VALUES ('" + this.name + "', '" + this.getHierarchy().getId() + "', '" + this.getDepartment().getId() + "');";
+
+        try {
+            DBConnection dbConnection = DBConnection.getInstance();
+            dbConnection.connect();
+
+            result = dbConnection.executeCommand(command);
+
+            dbConnection.disconnect();
+        }
+        catch(Exception e) {
+        }
+
+        return result;
+    }
+
+    public boolean deletePosition() {
+        boolean result = false;
+        String command = "DELETE FROM puestos WHERE id_puesto = " + this.id + ";";
+
+        try {
+            DBConnection dbConnection = DBConnection.getInstance();
+            dbConnection.connect();
+
+            result = dbConnection.executeCommand(command);
+
+            dbConnection.disconnect();
+        }
+        catch (Exception e) {
+        }
+
+        return result;
+    }
+
+    public boolean updatePosition() {
+        boolean result = false;
+        String command = "UPDATE puestos SET nombre = '" + this.name + "', id_jerarquia = " + this.getHierarchy().getId() + ", id_departamento = " + this.getDepartment().getId() + " WHERE id_puesto = " + this.id + ";";
+
+        try {
+            DBConnection dbConnection = DBConnection.getInstance();
+            dbConnection.connect();
+
+            result = dbConnection.executeCommand(command);
+
+            dbConnection.disconnect();
+        }
+        catch (Exception e) {
+        }
+
+        return result;
+    }
 }
