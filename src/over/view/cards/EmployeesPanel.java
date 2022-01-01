@@ -2,6 +2,7 @@ package over.view.cards;
 
 import over.controller.Controller;
 import over.controller.EmployeeController;
+import over.model.pojo.Position;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -41,7 +42,7 @@ public class EmployeesPanel extends JPanel {
     private JTextField txtHeading;
     private JTextField txtLastNameF;
     private JTextField txtLastNameM;
-    private JTextField txtPosition;
+    private JComboBox<Position> cmbPosition;
     private JFormattedTextField txtRegisterDate;
     private List<Component> componentList;
     private Controller controller;
@@ -66,7 +67,7 @@ public class EmployeesPanel extends JPanel {
         lblHeading = new JLabel();
         txtHeading = new JTextField();
         lblPosition = new JLabel();
-        txtPosition = new JTextField();
+        cmbPosition = new JComboBox<>();
         lblAddress = new JLabel();
         txtAddress = new JTextField();
         lblBirthday = new JLabel();
@@ -202,16 +203,16 @@ public class EmployeesPanel extends JPanel {
         gridBagConstraints.weighty = 1.0;
         employeePanel.add(lblPosition, gridBagConstraints);
 
-        txtPosition.setMaximumSize(new Dimension(150, 30));
-        txtPosition.setMinimumSize(new Dimension(150, 30));
-        txtPosition.setName("txtPosition");
-        txtPosition.setPreferredSize(new Dimension(150, 30));
+        cmbPosition.setMaximumSize(new Dimension(150, 30));
+        cmbPosition.setMinimumSize(new Dimension(150, 30));
+        cmbPosition.setName("txtPosition");
+        cmbPosition.setPreferredSize(new Dimension(150, 30));
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        employeePanel.add(txtPosition, gridBagConstraints);
+        employeePanel.add(cmbPosition, gridBagConstraints);
 
         lblAddress.setText("Dirección");
         lblAddress.setName("lblAddress");
@@ -404,7 +405,7 @@ public class EmployeesPanel extends JPanel {
         componentList.add(txtLastNameF);
         componentList.add(txtLastNameM);
         componentList.add(txtHeading);
-        componentList.add(txtPosition);
+        componentList.add(cmbPosition);
         componentList.add(txtAddress);
         componentList.add(txtBirthday);
         componentList.add(txtRegisterDate);
@@ -416,12 +417,24 @@ public class EmployeesPanel extends JPanel {
 
         try {
             ((EmployeeController)controller).initDateFields();
+            ((EmployeeController)controller).refreshExistingPositionsList();
             ((EmployeeController)controller).refreshExistingEmployeeTable();
             ((EmployeeController)controller).refreshExistingGenderList();
         }
         catch (ParseException e) {
             e.printStackTrace();
         }
+    }
+
+    private void deleteContent() {
+        txtEmployee.setText("");
+        txtLastNameF.setText("");
+        txtLastNameM.setText("");
+        txtHeading.setText("");
+        txtAddress.setText("");
+        txtBirthday.setText("");
+        txtRegisterDate.setText("");
+        txtEmployee.requestFocusInWindow();
     }
 
     private void txtEmployeeKeyPressed(KeyEvent evt) {
@@ -452,19 +465,25 @@ public class EmployeesPanel extends JPanel {
 
     private void btnAddEmployeeMouseClicked(MouseEvent evt) {
         ((EmployeeController)controller).addEmployee();
+        ((EmployeeController)controller).refreshExistingPositionsList();
         ((EmployeeController)controller).refreshExistingGenderList();
         ((EmployeeController)controller).refreshExistingEmployeeTable();
+        deleteContent();
     }
 
     private void btnModifyEmployeeMouseClicked(MouseEvent evt) {
         ((EmployeeController)controller).updateEmployee();
+        ((EmployeeController)controller).refreshExistingPositionsList();
         ((EmployeeController)controller).refreshExistingGenderList();
         ((EmployeeController)controller).refreshExistingEmployeeTable();
+        deleteContent();
     }
 
     private void btnDeleteEmployeeMouseClicked(MouseEvent evt) {
         ((EmployeeController)controller).deleteEmployee();
+        ((EmployeeController)controller).refreshExistingPositionsList();
         ((EmployeeController)controller).refreshExistingGenderList();
         ((EmployeeController)controller).refreshExistingEmployeeTable();
+        deleteContent();
     }
 }
