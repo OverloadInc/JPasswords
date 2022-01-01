@@ -138,14 +138,56 @@ public class Employee {
     }
 
     public boolean addEmployee() {
-        return false;
+        boolean result = false;
+        String command = "INSERT INTO empleados (nombre, apellido_paterno, apellido_materno, direccion, titulo, fecha_nacimiento, fecha_registro, sexo, id_puesto) VALUES ('" + this.name + "', '" + this.lastNameF + "', '" + this.lastNameM + "', '" + this.address + "', '" + this.title + "', '" + this.birthdate + "', '" + this.register + "', '" + this.gender + "', " + this.position.getId() +");";
+
+        try {
+            DBConnection dbConnection = DBConnection.getInstance();
+            dbConnection.connect();
+
+            result = dbConnection.executeCommand(command);
+
+            dbConnection.disconnect();
+        }
+        catch(Exception e) {
+        }
+
+        return result;
     }
 
     public boolean deleteEmployee() {
-        return false;
+        boolean result = false;
+        String command = "DELETE FROM empleados WHERE id_empleado = " + this.id + ";";
+
+        try {
+            DBConnection dbConnection = DBConnection.getInstance();
+            dbConnection.connect();
+
+            result = dbConnection.executeCommand(command);
+
+            dbConnection.disconnect();
+        }
+        catch (Exception e) {
+        }
+
+        return result;
     }
 
     public boolean updateEmployee() {
-        return false;
+        boolean result = false;
+        String command = "UPDATE empleados SET nombre = '" + this.name + "', apellido_paterno = '" + this.lastNameF + "', apellido_materno = '" + this.lastNameM + "', direccion = '" + this.address + "', titulo = '" + this.title + "', fecha_nacimiento = '" + this.birthdate + "', fecha_registro = '" + this.register + "', sexo = '" + this.gender + "', id_puesto= " + this.position.getId() + " WHERE id_empleado = " + this.id + ";";
+
+        try {
+            DBConnection dbConnection = DBConnection.getInstance();
+            dbConnection.connect();
+
+            result = dbConnection.executeCommand(command);
+
+            dbConnection.disconnect();
+        }
+        catch (Exception e) {
+        }
+
+        return result;
     }
 }
