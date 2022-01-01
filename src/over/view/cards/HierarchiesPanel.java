@@ -210,21 +210,26 @@ public class HierarchiesPanel extends JPanel {
         ((HierarchyController) controller).setHierarchyInformation();
     }
 
+    private void deleteContent() {
+        txtHierarchy.setText("");
+        txtHierarchy.requestFocusInWindow();
+    }
+
     private void btnHierarchyMouseClicked(MouseEvent evt) {
         ((HierarchyController)controller).addHierarchy();
         ((HierarchyController)controller).refreshExistingHierarchiesTable();
-
-        txtHierarchy.setText("");
-        txtHierarchy.requestFocusInWindow();
+        deleteContent();
     }
 
     private void btnModifyHierarchyMouseClicked(MouseEvent evt) {
         ((HierarchyController)controller).updateHierarchy();
         ((HierarchyController)controller).refreshExistingHierarchiesTable();
+        deleteContent();
     }
 
     private void btnDeleteHierarchyMouseClicked(MouseEvent evt) {
         ((HierarchyController)controller).deleteHierarchy();
         ((HierarchyController)controller).refreshExistingHierarchiesTable();
+        deleteContent();
     }
 }

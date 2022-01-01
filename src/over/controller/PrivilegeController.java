@@ -96,17 +96,16 @@ public class PrivilegeController implements Controller {
             switch(keySource){
                 case "btnAddPrivilege":
                     addPrivilege();
-                    refreshExistingPrivilegeList();
                     break;
                 case "btnModifyPrivilege":
                     updatePrivilege();
-                    refreshExistingPrivilegeList();
                     break;
                 case "btnDeletePrivilege":
                     deletePrivilege();
-                    refreshExistingPrivilegeList();
                     break;
             }
+
+            refreshExistingPrivilegeList();
 
             txtPrivilege.setText("");
             txtPrivilege.requestFocusInWindow();

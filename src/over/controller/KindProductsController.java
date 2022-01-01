@@ -102,17 +102,16 @@ public class KindProductsController implements Controller {
             switch(keySource){
                 case "btnAddKindProduct":
                     addKindOfProduct();
-                    refreshExistingKindProductsList();
                     break;
                 case "btnModifyKindProduct":
                     updateKindOfProduct();
-                    refreshExistingKindProductsList();
                     break;
                 case "btnDeleteKindProduct":
                     deleteKindOfProduct();
-                    refreshExistingKindProductsList();
                     break;
             }
+
+            refreshExistingKindProductsList();
 
             txtKindProduct.setText("");
             txtKindProduct.requestFocusInWindow();

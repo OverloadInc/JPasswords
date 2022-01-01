@@ -204,6 +204,11 @@ public class ProductsPanel extends JPanel {
         ((ProductController)controller).refreshExistingProductsTable();
     }
 
+    private void deleteContent() {
+        txtProduct.setText("");
+        txtProduct.requestFocusInWindow();
+    }
+
     private void txtProductKeyPressed(KeyEvent evt) {
         controller.setFocus(evt);
     }
@@ -227,24 +232,18 @@ public class ProductsPanel extends JPanel {
     private void btnAddProductMouseClicked(MouseEvent evt) {
         ((ProductController)controller).addProduct();
         ((ProductController)controller).refreshExistingProductsTable();
-
-        txtProduct.setText("");
-        txtProduct.requestFocusInWindow();
+        deleteContent();
     }
 
     private void btnModifyProductMouseClicked(MouseEvent evt) {
         ((ProductController)controller).updateProduct();
         ((ProductController)controller).refreshExistingProductsTable();
-
-        txtProduct.setText("");
-        txtProduct.requestFocusInWindow();
+        deleteContent();
     }
 
     private void btnDeleteProductMouseClicked(MouseEvent evt) {
         ((ProductController)controller).deleteProduct();
         ((ProductController)controller).refreshExistingProductsTable();
-
-        txtProduct.setText("");
-        txtProduct.requestFocusInWindow();
+        deleteContent();
     }
 }

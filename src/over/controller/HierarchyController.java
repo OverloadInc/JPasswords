@@ -116,17 +116,16 @@ public class HierarchyController implements Controller {
             switch(keySource){
                 case "btnHierarchy":
                     addHierarchy();
-                    refreshExistingHierarchiesTable();
                     break;
                 case "btnModifyHierarchy":
                     updateHierarchy();
-                    refreshExistingHierarchiesTable();
                     break;
                 case "btnDeleteHierarchy":
                     deleteHierarchy();
-                    refreshExistingHierarchiesTable();
                     break;
             }
+
+            refreshExistingHierarchiesTable();
 
             txtHierarchy.setText("");
             txtHierarchy.requestFocusInWindow();

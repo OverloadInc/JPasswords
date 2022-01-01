@@ -100,17 +100,16 @@ public class DepartmentController implements Controller {
             switch(keySource){
                 case "btnAddDepartment":
                     addDepartment();
-                    refreshExistingDepartmentList();
                     break;
                 case "btnModifyDepartment":
                     updateDepartment();
-                    refreshExistingDepartmentList();
                     break;
                 case "btnDeleteDepartment":
                     deleteDepartment();
-                    refreshExistingDepartmentList();
                     break;
             }
+
+            refreshExistingDepartmentList();
 
             txtDepartment.setText("");
             txtDepartment.requestFocusInWindow();

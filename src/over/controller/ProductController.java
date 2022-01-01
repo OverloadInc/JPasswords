@@ -139,17 +139,16 @@ public class ProductController implements Controller {
             switch(keySource){
                 case "btnAddProduct":
                     addProduct();
-                    refreshExistingProductsTable();
                     break;
                 case "btnModifyProduct":
                     updateProduct();
-                    refreshExistingProductsTable();
                     break;
                 case "btnDeleteProduct":
                     deleteProduct();
-                    refreshExistingProductsTable();
                     break;
             }
+
+            refreshExistingProductsTable();
 
             txtProduct.setText("");
             txtProduct.requestFocusInWindow();

@@ -189,6 +189,11 @@ public class KindProductsPanel extends JPanel {
         ((KindProductsController)controller).refreshExistingKindProductsList();
     }
 
+    private void deleteContent() {
+        txtKindProduct.setText("");
+        txtKindProduct.requestFocusInWindow();
+    }
+
     private void txtKindProductKeyPressed(KeyEvent evt) {
         controller.setFocus(evt);
     }
@@ -212,18 +217,18 @@ public class KindProductsPanel extends JPanel {
     private void btnAddKindProductMouseClicked(MouseEvent evt) {
         ((KindProductsController)controller).addKindOfProduct();
         ((KindProductsController)controller).refreshExistingKindProductsList();
-
-        txtKindProduct.setText("");
-        txtKindProduct.requestFocusInWindow();
+        deleteContent();
     }
 
     private void btnModifyKindProductMouseClicked(MouseEvent evt) {
         ((KindProductsController)controller).updateKindOfProduct();
         ((KindProductsController)controller).refreshExistingKindProductsList();
+        deleteContent();
     }
 
     private void btnDeleteKindProductMouseClicked(MouseEvent evt) {
         ((KindProductsController)controller).deleteKindOfProduct();
         ((KindProductsController)controller).refreshExistingKindProductsList();
+        deleteContent();
     }
 }

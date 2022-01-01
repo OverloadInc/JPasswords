@@ -294,6 +294,11 @@ public class PrivilegesPanel extends JPanel {
         ((PrivilegeController)controller).refreshExistingPrivilegeList();
     }
 
+    private void deleteContent() {
+        txtPrivilege.setText("");
+        txtPrivilege.requestFocusInWindow();
+    }
+
     private void txtPrivilegeKeyPressed(KeyEvent evt) {
         controller.setFocus(evt);
     }
@@ -313,18 +318,18 @@ public class PrivilegesPanel extends JPanel {
     private void btnAddPrivilegeMouseClicked(MouseEvent evt) {
         ((PrivilegeController)controller).addPrivilege();
         ((PrivilegeController)controller).refreshExistingPrivilegeList();
-
-        txtPrivilege.setText("");
-        txtPrivilege.requestFocusInWindow();
+        deleteContent();
     }
 
     private void btnModifyPrivilegeMouseClicked(MouseEvent evt) {
         ((PrivilegeController)controller).updatePrivilege();
         ((PrivilegeController)controller).refreshExistingPrivilegeList();
+        deleteContent();
     }
 
     private void btnDeletePrivilegeMouseClicked(MouseEvent evt) {
         ((PrivilegeController)controller).deletePrivilege();
         ((PrivilegeController)controller).refreshExistingPrivilegeList();
+        deleteContent();
     }
 }
