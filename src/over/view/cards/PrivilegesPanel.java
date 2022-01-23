@@ -133,6 +133,11 @@ public class PrivilegesPanel extends JPanel {
         existingPrivilegesList.setName("existingPrivilegesList");
         existingPrivilegesList.setMinimumSize(new Dimension(300, 200));
         existingPrivilegesList.setPreferredSize(new Dimension(300, 200));
+        existingPrivilegesList.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                existingPrivilegesListMouseClicked(evt);
+            }
+        });
         existingPrivilegesScroll.setViewportView(existingPrivilegesList);
 
         gridBagConstraints = new GridBagConstraints();
@@ -313,6 +318,10 @@ public class PrivilegesPanel extends JPanel {
 
     private void btnDeletePrivilegeKeyPressed(KeyEvent evt) {
         controller.setFocus(evt);
+    }
+
+    private void existingPrivilegesListMouseClicked(MouseEvent evt) {
+        ((PrivilegeController)controller).setPrivilegeInformation();
     }
 
     private void btnAddPrivilegeMouseClicked(MouseEvent evt) {
