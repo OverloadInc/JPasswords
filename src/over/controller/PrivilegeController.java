@@ -37,7 +37,7 @@ public class PrivilegeController implements Controller {
         Privilege privilege = (Privilege)existingPrivilegesList.getSelectedValue();
 
         if(privilege != null) {
-            String newPrivilegeName = JOptionPane.showInputDialog("Introduce el nombre de privilegio deseado");
+            String newPrivilegeName = txtPrivilege.getText().trim();
 
             if(!newPrivilegeName.isEmpty()) {
                 privilege.setName(newPrivilegeName);
@@ -56,6 +56,12 @@ public class PrivilegeController implements Controller {
             privilege.deletePrivilege();
         else
             JOptionPane.showMessageDialog(null, "Selecciona un privilegio");
+    }
+
+    public void setPrivilegeInformation() {
+        String name = ((Privilege) existingPrivilegesList.getSelectedValue()).getName();
+
+        txtPrivilege.setText(name);
     }
 
     public void refreshExistingPrivilegeList() {
