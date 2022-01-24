@@ -13,6 +13,11 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <code>DepartmentsPanel</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class DepartmentsPanel extends JPanel {
     private JButton btnAddDepartment;
     private JButton btnDeleteDepartment;

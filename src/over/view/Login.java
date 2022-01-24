@@ -13,6 +13,11 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <code>Login</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class Login extends JFrame {
     private JButton btnLogin;
     private JLabel lblLogo;

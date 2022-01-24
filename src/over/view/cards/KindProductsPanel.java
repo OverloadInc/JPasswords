@@ -13,6 +13,11 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <code>KindProductsPanel</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class KindProductsPanel extends JPanel {
     private Box.Filler productsFiller1;
     private Box.Filler productsFiller2;

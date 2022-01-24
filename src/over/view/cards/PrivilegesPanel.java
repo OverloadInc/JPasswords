@@ -13,6 +13,11 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <code>PrivilegesPanel</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class PrivilegesPanel extends JPanel {
     private JCheckBox accessesCheck;
     private JButton btnAddPrivilege;

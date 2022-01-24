@@ -1,5 +1,10 @@
 package over.model.pojo;
 
+/**
+ * <code>Access</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class Access {
     private int id;
     private String name;

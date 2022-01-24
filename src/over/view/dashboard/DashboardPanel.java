@@ -3,6 +3,11 @@ package over.view.dashboard;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * <code>DashboardPanel</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class DashboardPanel extends JPanel {
 
     private JLabel lblAccessLogo;

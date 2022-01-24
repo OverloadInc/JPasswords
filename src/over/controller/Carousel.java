@@ -4,6 +4,11 @@ import java.awt.*;
 import javax.swing.*;
 import java.util.*;
 
+/**
+ * <code>Carousel</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class Carousel {
     private static Vector<String> queue = new Vector<String>();
     

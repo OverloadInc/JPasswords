@@ -2,6 +2,11 @@ package over.model.pojo;
 
 import java.util.*;
 
+/**
+ * <code>Email</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class Email {
     private int id;
     private String email;

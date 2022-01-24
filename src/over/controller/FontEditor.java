@@ -7,6 +7,11 @@ import javax.swing.text.StyleConstants;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * <code>FontEditor</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class FontEditor {
     private SimpleAttributeSet attributeSet;
 

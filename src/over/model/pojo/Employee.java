@@ -6,6 +6,11 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+/**
+ * <code>Employee</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class Employee {
     private int id;
     private String name;

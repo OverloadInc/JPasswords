@@ -5,6 +5,11 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+/**
+ * <code>BackgroundImage</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class BackgroundImage {
     private static String name = null;
     

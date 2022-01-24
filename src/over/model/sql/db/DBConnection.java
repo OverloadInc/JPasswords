@@ -4,6 +4,11 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * <code>DBConnection</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public final class DBConnection {
     private String host;
     private String user;

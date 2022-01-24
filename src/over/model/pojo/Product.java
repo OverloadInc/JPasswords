@@ -5,6 +5,11 @@ import over.model.sql.db.DBConnection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+/**
+ * <code>Product</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class Product {
     private int id;
     private String name;

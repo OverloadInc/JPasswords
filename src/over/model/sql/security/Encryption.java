@@ -9,6 +9,11 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 
+/**
+ * <code>Encryption</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class Encryption {
     private static final String PRIVATE_KEY = "9186";
     private static final String ENCRYPTION_TECHNIQUE = "Blowfish";

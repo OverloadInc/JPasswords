@@ -15,6 +15,11 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
 
+/**
+ * <code>EmployeeController</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class EmployeeController implements Controller{
     private JTextField txtEmployee;
     private JTextField txtLastNameF;

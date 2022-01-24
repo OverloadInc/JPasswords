@@ -13,6 +13,11 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <code>PositionsPanel</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class PositionsPanel extends JPanel {
     private JButton btnAddPosition;
     private JButton btnDeletePosition;

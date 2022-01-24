@@ -1,5 +1,10 @@
 package over.model.pojo;
 
+/**
+ * <code>Credential</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class Credential {
     private int id;
     private String user;

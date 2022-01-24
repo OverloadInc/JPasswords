@@ -9,6 +9,11 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <code>ProductController</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class ProductController implements Controller {
     private JTextField txtProduct;
     private JComboBox cmbKindProduct;

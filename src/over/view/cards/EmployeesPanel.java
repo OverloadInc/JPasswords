@@ -15,6 +15,11 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <code>EmployeesPanel</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class EmployeesPanel extends JPanel {
     private JButton btnAddEmployee;
     private JButton btnDeleteEmployee;

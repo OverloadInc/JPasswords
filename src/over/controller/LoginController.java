@@ -7,6 +7,11 @@ import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.util.List;
 
+/**
+ * <code>LoginController</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class LoginController implements Controller {
     private JTextField txtUser;
     private JPasswordField txtPassword;

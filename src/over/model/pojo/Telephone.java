@@ -2,7 +2,12 @@ package over.model.pojo;
 
 import java.util.*;
 
-public class Telefono {
+/**
+ * <code>Telephone</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
+public class Telephone {
     private int id;
     private String number;
     private List<Employee> employees;

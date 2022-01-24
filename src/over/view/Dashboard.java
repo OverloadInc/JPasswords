@@ -14,6 +14,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * <code>Dashboard</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class Dashboard extends JFrame {
 
     private JButton btnBack;

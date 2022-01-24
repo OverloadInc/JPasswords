@@ -3,6 +3,11 @@ package over.model.pojo;
 import java.sql.ResultSet;
 import over.model.sql.db.DBConnection;
 
+/**
+ * <code>User</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class User {
     private String name;
     private String password;

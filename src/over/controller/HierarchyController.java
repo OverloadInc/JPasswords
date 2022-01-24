@@ -8,6 +8,11 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <code>HierarchyController</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class HierarchyController implements Controller {
     private JTextField txtHierarchy;
     private JButton btnHierarchy, btnModifyHierarchy, btnDeleteHierarchy;

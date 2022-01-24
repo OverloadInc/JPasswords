@@ -7,6 +7,11 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <code>KindProductsController</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class KindProductsController implements Controller {
     private JTextField txtKindProduct;
     private JButton btnAddKindProduct;

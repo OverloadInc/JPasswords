@@ -4,6 +4,11 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 
+/**
+ * <code>AccessesPanel</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class AccessesPanel extends JPanel {
 
     public AccessesPanel() {

@@ -9,6 +9,11 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.KeyEvent;
 import java.util.List;
 
+/**
+ * <code>PositionsController</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class PositionsController implements Controller {
     private JTextField txtPositionName;
     private JComboBox cmbDepartments;

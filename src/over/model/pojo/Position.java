@@ -5,6 +5,11 @@ import over.model.sql.db.DBConnection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+/**
+ * <code>Position</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class Position {
     private int id;
     private String name;

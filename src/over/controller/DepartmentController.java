@@ -6,6 +6,11 @@ import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.util.List;
 
+/**
+ * <code>DepartmentController</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class DepartmentController implements Controller {
     JTextField txtDepartment;
     JButton btnAddDepartment, btnModifyDepartment, btnDeleteDepartment;

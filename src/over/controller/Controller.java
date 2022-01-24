@@ -3,6 +3,11 @@ package over.controller;
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 
+/**
+ * <code>Controller</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public interface Controller {
 
     default String getKeySource(KeyEvent evt) {

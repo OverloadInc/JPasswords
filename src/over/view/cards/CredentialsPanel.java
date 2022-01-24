@@ -4,6 +4,11 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 
+/**
+ * <code>CredentialsPanel</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class CredentialsPanel extends JPanel {
     private Box.Filler credentialsFiller1;
     private Box.Filler credentialsFiller2;

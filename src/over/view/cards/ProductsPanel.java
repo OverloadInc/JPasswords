@@ -13,6 +13,11 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <code>ProductsPanel</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class ProductsPanel extends JPanel {
     private JButton btnAddProduct;
     private JButton btnDeleteProduct;

@@ -4,6 +4,11 @@ import over.controller.FontEditor;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * <code>About</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class About extends JFrame {
     private JPanel aboutPanel;
     private JScrollPane aboutScroll;

@@ -6,6 +6,11 @@ import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.util.List;
 
+/**
+ * <code>PrivilegeController</code> class.
+ * @author Overload Inc.
+ * @version %I%, %G%
+ */
 public class PrivilegeController implements Controller {
     JTextField txtPrivilege;
     JButton btnAddPrivilege, btnModifyPrivilege, btnDeletePrivilege;
