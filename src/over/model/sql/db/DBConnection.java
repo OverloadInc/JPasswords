@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 /**
  * <code>DBConnection</code> class.
  * @author Overload Inc.
- * @version %I%, %G%
+ * @version 1.0, 23 Jan 2022
  */
 public final class DBConnection {
     private String host;

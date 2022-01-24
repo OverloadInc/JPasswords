@@ -6,7 +6,7 @@ import over.model.sql.db.DBConnection;
 /**
  * <code>User</code> class.
  * @author Overload Inc.
- * @version %I%, %G%
+ * @version 1.0, 23 Jan 2022
  */
 public class User {
     private String name;

@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 /**
  * <code>BackgroundImage</code> class.
  * @author Overload Inc.
- * @version %I%, %G%
+ * @version 1.0, 23 Jan 2022
  */
 public class BackgroundImage {
     private static String name = null;

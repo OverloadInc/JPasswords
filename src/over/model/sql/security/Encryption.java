@@ -12,7 +12,7 @@ import javax.crypto.spec.SecretKeySpec;
 /**
  * <code>Encryption</code> class.
  * @author Overload Inc.
- * @version %I%, %G%
+ * @version 1.0, 23 Jan 2022
  */
 public class Encryption {
     private static final String PRIVATE_KEY = "9186";

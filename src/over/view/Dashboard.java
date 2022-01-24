@@ -17,7 +17,7 @@ import java.awt.event.MouseEvent;
 /**
  * <code>Dashboard</code> class.
  * @author Overload Inc.
- * @version %I%, %G%
+ * @version 1.0, 23 Jan 2022
  */
 public class Dashboard extends JFrame {
 

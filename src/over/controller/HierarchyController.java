@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * <code>HierarchyController</code> class.
  * @author Overload Inc.
- * @version %I%, %G%
+ * @version 1.0, 23 Jan 2022
  */
 public class HierarchyController implements Controller {
     private JTextField txtHierarchy;

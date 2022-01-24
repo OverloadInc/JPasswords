@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * <code>Position</code> class.
  * @author Overload Inc.
- * @version %I%, %G%
+ * @version 1.0, 23 Jan 2022
  */
 public class Position {
     private int id;

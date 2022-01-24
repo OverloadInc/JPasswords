@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * <code>Privilege</code> class.
  * @author Overload Inc.
- * @version %I%, %G%
+ * @version 1.0, 23 Jan 2022
  */
 public class Privilege {
     private int id;

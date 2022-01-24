@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * <code>PositionsPanel</code> class.
  * @author Overload Inc.
- * @version %I%, %G%
+ * @version 1.0, 23 Jan 2022
  */
 public class PositionsPanel extends JPanel {
     private JButton btnAddPosition;

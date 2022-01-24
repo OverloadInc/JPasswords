@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * <code>EmployeeController</code> class.
  * @author Overload Inc.
- * @version %I%, %G%
+ * @version 1.0, 23 Jan 2022
  */
 public class EmployeeController implements Controller{
     private JTextField txtEmployee;

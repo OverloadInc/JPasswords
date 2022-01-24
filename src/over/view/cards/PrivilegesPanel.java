@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * <code>PrivilegesPanel</code> class.
  * @author Overload Inc.
- * @version %I%, %G%
+ * @version 1.0, 23 Jan 2022
  */
 public class PrivilegesPanel extends JPanel {
     private JCheckBox accessesCheck;

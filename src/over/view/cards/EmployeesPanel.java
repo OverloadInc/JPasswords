@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * <code>EmployeesPanel</code> class.
  * @author Overload Inc.
- * @version %I%, %G%
+ * @version 1.0, 23 Jan 2022
  */
 public class EmployeesPanel extends JPanel {
     private JButton btnAddEmployee;

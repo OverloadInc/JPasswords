@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * <code>LoginController</code> class.
  * @author Overload Inc.
- * @version %I%, %G%
+ * @version 1.0, 23 Jan 2022
  */
 public class LoginController implements Controller {
     private JTextField txtUser;

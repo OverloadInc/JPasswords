@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * <code>DepartmentsPanel</code> class.
  * @author Overload Inc.
- * @version %I%, %G%
+ * @version 1.0, 23 Jan 2022
  */
 public class DepartmentsPanel extends JPanel {
     private JButton btnAddDepartment;
