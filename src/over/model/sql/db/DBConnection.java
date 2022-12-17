@@ -18,8 +18,8 @@ public final class DBConnection {
 
     private DBConnection() {
         host = "jdbc:postgresql://localhost:5432/dbPasswords";
-        user = "postgres";
-        password = "postgres";
+        user = "overload_inc";
+        password = "admin";
     }
 
     public Connection connect() throws SQLException {
