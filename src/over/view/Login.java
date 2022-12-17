@@ -74,7 +74,7 @@ public class Login extends JFrame {
 
         lblLogo = new JLabel();
         lblLogo.setHorizontalAlignment(SwingConstants.CENTER);
-        lblLogo.setIcon(new ImageIcon(getClass().getResource("/over/resources/img/login/holiday_shield.png")));
+        lblLogo.setIcon(new ImageIcon(getClass().getResource("/over/resources/img/login/privacy.png")));
         lblLogo.setName("lblLogo");
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 1;
